@@ -1,0 +1,103 @@
+<view class="container">
+
+  <!-- 头部 -->
+  <view class="header-container">
+    <image src="/imgs/menu.png" />
+    <view class="header-input">
+      <image src="/imgs/search.png" />
+      <text>输入关键词搜索</text>
+    </view>
+    <image src="/imgs/shopping_car_icon.png" />
+  </view>
+
+  <!-- 图片 -->
+  <view class="images-container">
+    <view class="logo-container">
+      <image src="/imgs/logo_bac.png" />
+      <image src="/imgs/logo.png" />
+    </view>
+    <image class="ss-new" src="/imgs/20ss_new.png" />
+    <image class="girl1" src="/imgs/girl1.png" />
+    <image class="boy1" src="/imgs/boy1.png" />
+    <view class="new-and-hot">
+      <view class="new">
+        <image src="/imgs/girl2.png" />
+        <image src="/imgs/new_btn.png" />
+      </view>
+      <view class="hot">
+        <image src="/imgs/girl3.png" />
+        <image src="/imgs/hot_btn.png" />
+      </view>
+    </view>
+
+    <image class="ss-new ss-new2" src="/imgs/20ss_new.png" />
+
+    <image class="fly" src="/imgs/fly.png" />
+    <view class="story">
+      <view>
+        <text>ENK SHANGHAI   2019   VOL.3</text>
+        <text>往期视频请关注抖音官方账号</text>
+      </view>
+      <image src="/imgs/story_btn.png" />
+    </view>
+    <view class="sale">
+      <image src="/imgs/boy2.png" />
+      <image src="/imgs/sale_btn.png" />
+    </view>
+    <view class="calssify">
+      <view
+        wx:for="{{classifyList}}"
+        wx:key="index"
+      >
+        <image src="{{item.src}}" />
+        <text>{{item.name}}</text>
+      </view>
+    </view>
+    <view class="rainbow">
+      <view
+        wx:for="{{rainbowList}}"
+        wx:key="index"
+      >
+        <image src="{{item.src}}" />
+        <view>
+          <text>{{item.name}}</text>
+          <text wx:if="{{item.desc}}">{{item.desc}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="coupon-and-blueprint">
+      <view class="coupon">
+        <image src="/imgs/coupon.png" />
+        <image src="/imgs/coupon_btn.png" />
+      </view>
+      <view class="blueprint">
+        <image src="/imgs/blueprint.png" />
+        <image src="/imgs/blueprint_btn.png" />
+      </view>
+    </view>
+
+    <image class="recommend" src="/imgs/recommend.png" />
+
+    <view class="outfit">
+      <view
+        wx:for="{{outfitList}}"
+        wx:key="index"
+      >
+        <image src="{{item.src}}" />
+      </view>
+    </view>
+
+    <image class="outfit5" src="/imgs/outfit5.png" />
+
+    <image class="brand-btn" src="/imgs/brand_btn.png" />
+
+    <view class="brand">
+      <image src="/imgs/brand.png" />
+      <image src="/imgs/logo.png" />
+    </view>
+
+    <view class="footer-title">全部商品 go shopping......</view>
+  </view>
+
+</view>
