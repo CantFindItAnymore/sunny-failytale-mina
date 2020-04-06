@@ -1,1 +1,96 @@
-/* pages/my/index.wxss */
+.container {
+  background: #F2F2F2;
+}
+
+.bac {
+  height: 260rpx;
+  width: 100%;
+  border-radius: 0 0 5% 5%;
+  background: #FFCBA1;
+}
+
+.detail {
+  height: 370rpx;
+  width: 700rpx;
+  padding: 0 40rpx;
+  box-sizing: border-box;
+  background: #fff;
+  border-radius: 10rpx;
+  /* box-shadow: 8rpx 8rpx 1rpx 1rpx #c1c1c1; */
+  z-index: 9;
+  margin-top: -200rpx;
+  margin-bottom: 20rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.info {
+  height: 210rpx;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1rpx solid #FFCBA1;
+}
+
+.my {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 24rpx;
+}
+
+.my>view {
+  height: 100rpx;
+  width: 100rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.my>view>image {
+  height: 60rpx;
+  width: 60rpx;
+}
+
+.info>image {
+  height: 100rpx;
+  width: 100rpx;
+  border-radius: 50%;
+  border: 1rpx solid orange;
+}
+
+.list {
+  width: 100%;
+  padding: 0 30rpx;
+  box-sizing: border-box;
+  background: #fff;
+}
+
+.list-item {
+  height: 120rpx;
+  width: 100%;
+  border-bottom: 1rpx solid #DCDCDC;
+  display: flex;
+  align-items: center;
+  font-size: 24rpx;
+  position: relative;
+  background: #fff;
+}
+
+.list-item:active {
+  color: skyblue;
+}
+
+.list-item>image {
+  height: 60rpx;
+  width: 60rpx;
+  margin-right: 20rpx;
+}
+
+.list-item>text:nth-child(3) {
+  position: absolute;
+  right: 0;
+}

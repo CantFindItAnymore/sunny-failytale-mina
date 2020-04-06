@@ -318,6 +318,8 @@
 .brand {
   height: 360rpx;
   width: 100%;
+  padding-right: 26rpx;
+  box-sizing: border-box;
   margin-bottom: 80rpx;
   position: relative;
 }
@@ -332,7 +334,7 @@
   width: 426rpx;
   position: absolute;
   top: 50%;
-  left: 66rpx;
+  left: 50rpx;
   transform: translateY(-50%);
 }
 

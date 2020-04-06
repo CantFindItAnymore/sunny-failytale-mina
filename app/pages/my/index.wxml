@@ -1,2 +1,33 @@
-<!--pages/my/index.wxml-->
-<text>pages/my/index.wxml</text>
+<view class="container">
+  <view class="bac"></view>
+  <view class="detail">
+    <view class="info">
+      <view>123</view>
+      <image src="{{defaultHead}}" />
+    </view>
+    <view class="my">
+      <view
+        wx:for="{{my}}"
+        wx:key="index"
+        data-goal='{{item.goal}}'
+        bind:tap="toSomewhere"
+      >
+        <image src="{{item.src}}" />
+        <text>{{item.name}}</text>
+      </view>
+    </view>
+  </view>
+  <view class="list">
+    <view
+      wx:for="{{list}}"
+      wx:key="index"
+      data-goal='{{item.goal}}'
+      bind:tap="toSomewhere"
+      class="list-item"
+    >
+      <image src="{{item.src}}" />
+      <text>{{item.name}}</text>
+      <text>〉</text>
+    </view>
+  </view>
+</view>
