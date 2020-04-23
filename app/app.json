@@ -3,7 +3,11 @@
     "pages/home/index",
     "pages/classify/index",
     "pages/my/index",
-    "pages/shopping-car/index"
+    "pages/shopping-car/index",
+    "pages/shop/index",
+    "pages/buy/index",
+    "pages/search/index",
+    "pages/goods-detail/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

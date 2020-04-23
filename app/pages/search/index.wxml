@@ -1,0 +1,41 @@
+<view class="container">
+
+  <!-- 头部 -->
+  <view class="header-container">
+    <van-field
+      value="{{ keyWord }}"
+      center
+      placeholder="..."
+      use-button-slot
+      auto-focus
+      input-align='center'
+      confirm-type='搜索'
+      custom-style='borderRadius:10rpx;padding: 30rpx 100rpx;backGround: #fff;'
+      input-class='input-style'
+      bind:change='onKeyChange'
+    >
+      <van-button slot="button" size="small"  color="linear-gradient(to right, #4bb0ff, #6149f6)" bind:tap="handleSearch">搜索</van-button>
+    </van-field>
+  </view>
+
+  <view class="once-container" wx:if="{{onceList.length}}">
+    最近搜过：
+    <van-tag
+      type="primary"
+      wx:for='{{onceList}}'
+      wx:key="index"
+      bind:tap="onKeyChange"
+      data-key='{{item}}'
+    >
+      {{item}}
+    </van-tag>
+
+    <van-tag
+      plain
+      type="danger"
+      bind:tap="handleDelKey"
+    >
+      删除记录
+    </van-tag>
+  </view>
+</view>

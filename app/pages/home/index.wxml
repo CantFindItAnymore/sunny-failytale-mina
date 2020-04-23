@@ -3,7 +3,7 @@
   <!-- 头部 -->
   <view class="header-container">
     <image src="/imgs/menu.png" />
-    <view class="header-input">
+    <view class="header-input" bind:tap="goSearch">
       <image src="/imgs/search.png" />
       <text>输入关键词搜索</text>
     </view>

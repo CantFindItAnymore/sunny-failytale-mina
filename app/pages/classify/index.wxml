@@ -1,2 +1,23 @@
-<!--pages/classify/index.wxml-->
-<text>pages/classify/index.wxml</text>
+<view class="container">
+
+  <van-collapse value="{{ activeName }}" bind:change="onChange" accordion>
+    <van-cell
+      title='全部商品'
+      bind:tap='toShop'
+      is-link
+    />
+
+    <van-collapse-item
+      title="{{item.name}}"
+      name="{{item.id}}"
+      wx:for="{{classifyList}}"
+      wx:key="index"
+    >
+      <r-classify
+        list='{{item.children}}'
+        bind:toShop='toShop'
+      />
+    </van-collapse-item>
+
+  </van-collapse>
+</view>

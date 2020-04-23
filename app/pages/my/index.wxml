@@ -2,8 +2,16 @@
   <view class="bac"></view>
   <view class="detail">
     <view class="info">
-      <view>123</view>
-      <image src="{{defaultHead}}" />
+      <view>
+        {{userInfo.nickName}}
+        {{userInfo.nickName}}
+      </view>
+      <button
+        open-type='getUserInfo'
+        bind:getuserinfo='handleGetUserInfo'
+      >
+        <image src="{{userInfo.avatarUrl || defaultHead}}"/>
+      </button>
     </view>
     <view class="my">
       <view
@@ -12,11 +20,14 @@
         data-goal='{{item.goal}}'
         bind:tap="toSomewhere"
       >
-        <image src="{{item.src}}" />
+        <image
+          src="{{item.src}}"
+        />
         <text>{{item.name}}</text>
       </view>
     </view>
   </view>
+
   <view class="list">
     <view
       wx:for="{{list}}"

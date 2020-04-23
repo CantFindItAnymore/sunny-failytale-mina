@@ -10,5 +10,11 @@ Page({
 
   onLoad: function (options) {
 
+  },
+
+  goSearch() {
+    wx.navigateTo({
+      url: '/pages/search/index'
+    })
   }
 })

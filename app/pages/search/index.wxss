@@ -1,0 +1,29 @@
+.container {
+  background: #F2F2F2;
+}
+
+.header-container {
+  width: 100%;
+  box-sizing: border-box;
+  background: #F2F2F2;
+  opacity: .9;
+}
+
+.input-style {
+  font-size: 22rpx;
+}
+
+.van-field__body {
+  border-bottom: 1rpx solid #ccc;
+}
+
+.once-container {
+  width: 100%;
+  margin-top: 50rpx;
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+
+.van-tag {
+  margin: 0 30rpx 30rpx 0;
+}

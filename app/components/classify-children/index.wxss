@@ -1,0 +1,15 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.classify-child {
+  width: 300rpx;
+  margin: 10rpx 20rpx;
+  height: 90rpx;
+  box-sizing: border-box;
+  text-align: center;
+  line-height: 90rpx;
+  background: #FFCBA1;
+  color: #fff;
+}

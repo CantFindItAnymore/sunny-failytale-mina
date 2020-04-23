@@ -1,1 +1,55 @@
-/* pages/shopping-car/index.wxss */
+.container {
+  background: #F2F2F2;
+}
+
+.list-container {
+  width: 100%;
+  padding-bottom: 100rpx;
+  overflow: hidden;
+}
+
+.list-container .van-card {
+  padding-left: 100rpx;
+  margin: 20rpx 0;
+  background: #fff;
+  box-sizing: border-box;
+}
+
+.select-btn {
+  width: 150rpx;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.select-btn > image {
+  height: 50rpx;
+  width: 50rpx;
+}
+
+.tags-container {
+  height: 220rpx;
+  width: 100rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 0;
+  z-index: 9;
+}
+
+.tags-container > image {
+  height: 50rpx;
+  width: 50rpx;
+}
+
+.del-container {
+  height: 100%;
+  width: 130rpx;
+  background: red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24rpx;
+  color: #fff;
+}

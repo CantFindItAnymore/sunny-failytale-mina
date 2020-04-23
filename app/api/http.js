@@ -7,7 +7,7 @@ const http = class HTTP {
     url,
     data = {},
     method = 'GET',
-    type = 'x-www-form-urlencoded'
+    type = 'json'
   }) {
     return new Promise((resolve, reject) => {
       this._request(url, resolve, reject, data, method, type)
@@ -35,19 +35,13 @@ const http = class HTTP {
       header: header,
       data: data,
       success: res => {
-        const code = res.data.resp_code === 0 || res.data.code === 0
+        const code = res.data.resp_code === 10000 || res.data.code === 10000
         const status = res.statusCode.toString()
         if (status.startsWith('2') && code) {
           wx.hideLoading()
           resolve(res.data.datas || res.data.data)
         } else if (status === '401') {
-          // 这里判断url的原因是：在welcome页调用了这个接口用于判断token是否过期
-          if (url !== 'api-user/admin/company/user/list') {
-            this._tokenOut()
-          } else {
-            wx.hideLoading()
-            reject(res)
-          }
+          this._tokenOut()
         } else {
           console.log('IO成功但请求失败：', res)
           this._showErr(res.resp_msg || res.data.resp_msg)
@@ -83,11 +77,11 @@ const http = class HTTP {
     wx.removeStorageSync('token')
     // wx.removeStorageSync('mobile')
     // wx.removeStorageSync('openId')
-    setTimeout(() => {
-      wx.navigateTo({
-        url: '/pages/welcome/welcome'
-      })
-    }, 2000)
+    // setTimeout(() => {
+    //   wx.navigateTo({
+    //     url: '/pages/welcome/welcome'
+    //   })
+    // }, 2000)
   }
 }
 

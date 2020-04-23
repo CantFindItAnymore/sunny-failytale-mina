@@ -1,0 +1,12 @@
+<view class="container">
+  <view
+    class="classify-child"
+    wx:for="{{list}}"
+    wx:key="index"
+    bind:tap='toShop'
+    data-id='{{item.id}}'
+    data-classify='{{item.name}}'
+  >
+    {{item.name}}
+  </view>
+</view>

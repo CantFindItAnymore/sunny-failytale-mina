@@ -1,2 +1,34 @@
-<!--pages/shopping-car/index.wxml-->
-<text>pages/shopping-car/index.wxml</text>
+<view class="container">
+  <view class="list-container">
+    <van-swipe-cell
+      right-width="{{ 65 }}"
+      wx:for='{{[1,2,3,4,5,6,7,8,9]}}'
+    >
+
+      <view class="tags-container">
+        <image src="{{selected}}" />
+      </view>
+
+      <van-card
+        num="2"
+        price="10.00"
+        desc="描述信息"
+        title="商品标题"
+        thumb="/imgs/coupon.png"
+      >
+      </van-card>
+
+      <view slot="right" class="del-container">删除</view>
+    </van-swipe-cell>
+  </view>
+
+
+
+  <van-submit-bar
+    price="{{ 3050 }}"
+    button-text="去结算"
+    bind:submit="onBuy"
+  >
+    <view class="select-btn" bind:tap='switchSelect'>全选 <image src="{{selectedAll?selected:unSelected}}" /></view>
+  </van-submit-bar>
+</view>

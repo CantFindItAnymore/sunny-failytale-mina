@@ -1,0 +1,22 @@
+<view class="container">
+  <view class="header" wx:if="{{classify}}">
+    {{classify}}
+  </view>
+
+  <view class="list">
+    <view
+      class="list-item"
+      wx:for='{{[1,2,3,4,5]}}'
+      wx:key="index"
+    >
+      <image src="../../imgs/girl3.png"  bind:tap="toShopDetail" data-gid='{{item.gid}}' />
+      <view class="list-item-desc">
+        <view bind:tap="toShopDetail" data-gid='{{item.gid}}' >css 文本 超过两行或者三行隐藏并在后面加上省略隐藏并在后面加上隐藏并在后面加上省略省略号</view>
+        <view class="list-item-desc-footer">
+          <view class="amount"><text class="weight-font">￥</text> 123</view>
+          <image src="{{like}}" />
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
