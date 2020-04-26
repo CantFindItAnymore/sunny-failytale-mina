@@ -8,14 +8,20 @@
   <view class="list">
     <view
       class="list-item"
-      wx:for='{{[1,2,3,4,5]}}'
+      wx:for='{{list.data}}'
       wx:key="index"
     >
-      <image src="../../imgs/girl3.png"  bind:tap="toShopDetail" data-gid='{{item.gid}}' />
+      <image src="{{item.mainPicUrl}}"  bind:tap="toShopDetail" data-gid='{{item.id}}' />
       <view class="list-item-desc">
-        <view bind:tap="toShopDetail" data-gid='{{item.gid}}' >css 文本 超过两行或者三行隐藏并在后面加上省略隐藏并在后面加上隐藏并在后面加上省略省略号</view>
+        <view bind:tap="toShopDetail" data-gid='{{item.id}}' >{{item.productType[0].description}}</view>
         <view class="list-item-desc-footer">
-          <view class="amount"><text class="weight-font">￥</text> 123</view>
+          <view class="amount">
+            <text class="weight-font">￥</text>
+            {{item.minPrice}}
+            <text class="weight-font"> ~ </text>
+            <text class="weight-font">￥</text>
+            {{item.maxPrice}}
+          </view>
           <image src="{{like}}" />
         </view>
       </view>
