@@ -1,7 +1,9 @@
 <view class="container">
-  <view class="header" wx:if="{{classify}}">
-    {{classify}}
-  </view>
+  <van-sticky>
+    <view class="header" wx:if="{{classify}}">
+      {{classify}}
+    </view>
+  </van-sticky>
 
   <view class="list">
     <view

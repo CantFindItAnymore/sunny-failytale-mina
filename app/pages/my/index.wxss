@@ -78,6 +78,39 @@
   background: #fff;
 }
 
+.list>button {
+  border: none;
+  background: #fff;
+  padding: 0;
+  border-bottom: 1rpx solid #DCDCDC;
+  height: 120rpx;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  font-size: 24rpx;
+  position: relative;
+  background: #fff;
+}
+
+.list>button::after {
+  border: none;
+}
+
+.list>button :active {
+  color: skyblue;
+}
+
+.list>button >image {
+  height: 60rpx;
+  width: 60rpx;
+  margin-right: 20rpx;
+}
+
+.list>button >text:nth-child(3) {
+  position: absolute;
+  right: 0;
+}
+
 .list-item {
   height: 120rpx;
   width: 100%;

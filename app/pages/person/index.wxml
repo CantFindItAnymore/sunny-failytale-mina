@@ -1,0 +1,143 @@
+<view class="container">
+  <van-cell-group>
+
+    <van-divider contentPosition="center" customStyle="color: #1989fa;border-color: #1989fa;">家长信息</van-divider>
+
+    <van-field
+      label="姓名"
+      value="{{ userInfo.name }}"
+      bind:change="onUserInfoChange"
+      data-type='name'
+      input-align="right"
+      hold-keyboard
+      auto-focus
+    />
+    <van-field
+      label="手机号"
+      value="{{ userInfo.mobile }}"
+      bind:change="onUserInfoChange"
+      data-type='mobile'
+      type='number'
+      input-align="right"
+      hold-keyboard
+      auto-focus
+    />
+    <van-cell
+      title="性别"
+      value="{{ userInfo.sex }}"
+      bind:tap="switchSex"
+    />
+
+    <block wx:if="{{userInfo.sexShow}}">
+      <van-cell
+        title="男"
+        clickable
+        data-name="男"
+        bind:click="handleSwitchSex"
+      >
+        <van-radio slot="right-icon" name="男" />
+      </van-cell>
+      <van-cell
+        title="女"
+        clickable
+        data-name="女"
+        bind:click="handleSwitchSex"
+      >
+        <van-radio slot="right-icon" name="女" />
+      </van-cell>
+    </block>
+
+
+    <van-cell
+      title="生日"
+      value="{{ userInfo.birthday }}"
+      bind:tap="openDatePicker"
+    />
+
+    <van-cell
+      title="喜欢的活动"
+      value="{{ userInfo.likeActivity.name }}"
+      bind:tap="openSheet"
+      data-type='likeActivity'
+    />
+    <van-cell
+      title="喜欢的增值服务"
+      value="{{ userInfo.likeService.name }}"
+      bind:tap="openSheet"
+      data-type='likeService'
+    />
+    <van-cell
+      title="喜欢的购物环境"
+      value="{{ userInfo.likeEnvironment.name }}"
+      bind:tap="openSheet"
+      data-type='likeEnvironment'
+    />
+    <van-cell
+      title="喜欢的购物方式"
+      value="{{ userInfo.likeMethod.name }}"
+      bind:tap="openSheet"
+      data-type='likeMethod'
+    />
+    <van-cell
+      title="职业"
+      value="{{ userInfo.Job.name }}"
+      bind:tap="openSheet"
+      data-type='Job'
+    />
+
+
+    <van-divider contentPosition="center" customStyle="color: #1989fa;border-color: #1989fa;">宝宝信息</van-divider>
+
+
+    <!-- 宝宝信息 -->
+    <van-field
+      label="手机号"
+      value="{{ userInfo.mobile }}"
+      bind:change="onChange"
+      data-type='mobile'
+      input-align="right"
+      hold-keyboard
+      auto-focus
+    />
+    <van-field
+      label="手机号"
+      value="{{ userInfo.mobile }}"
+      bind:change="onChange"
+      data-type='mobile'
+      input-align="right"
+      hold-keyboard
+      auto-focus
+    />
+    <van-field
+      label="手机号"
+      value="{{ userInfo.mobile }}"
+      bind:change="onChange"
+      data-type='mobile'
+      input-align="right"
+      hold-keyboard
+      auto-focus
+    />
+  </van-cell-group>
+
+
+  <van-popup show="{{ datePickerShow }}" bind:close="closeDatePicker" position='top'>
+    <van-datetime-picker
+      type="date"
+      value="{{ currentDate }}"
+      min-date="{{ minDate }}"
+      max-date='{{currentDate}}'
+      formatter="{{ formatter }}"
+      bind:cancel='closeDatePicker'
+      bind:confirm='confirmDatePicker'
+    />
+  </van-popup>
+
+  <van-action-sheet
+    show="{{ sheetShow }}"
+    actions="{{ actions }}"
+    bind:close="closeSheet"
+    bind:cancel="closeSheet"
+    bind:select='selectedSheet'
+    cancel-text="取消"
+  />
+</view>

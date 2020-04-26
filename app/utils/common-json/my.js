@@ -1,9 +1,9 @@
 const list = [
-  {
-    name: '客服中心',
-    goal: 'service',
-    src: '/imgs/service.png'
-  },
+  // {
+  //   name: '客服中心',
+  //   goal: 'service',
+  //   src: '/imgs/service.png'
+  // },
   {
     name: '地址管理',
     goal: 'address',

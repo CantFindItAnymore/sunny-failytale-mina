@@ -1,0 +1,60 @@
+<view class="container">
+  <van-swipe-cell
+    right-width="{{ 65 }}"
+    wx:for='{{list}}'
+    wx:key="index"
+  >
+    <view
+      class="item"
+    >
+      <view>
+        <view class="weight-font">冉俊</view>
+        <view>18408248904</view>
+        <van-tag type="warning" wx:if="{{item.isDefault}}">默认地址</van-tag>
+      </view>
+      <view>
+        <view>四川省 成都市 高新区 某某某街道益州大道一段1088号西城小区07-1020</view>
+        <view bind:tap="openDialog" data-index='{{index}}'>编辑</view>
+      </view>
+    </view>
+    <view slot="right" class="del-container">删除</view>
+  </van-swipe-cell>
+
+  <van-button size='large' color='#51E3BF' bind:tap="openDialog" data-index='-1'>新增地址</van-button>
+
+  <van-dialog
+    use-slot
+    title="{{activeIndex>0?'编辑':'新增'}}地址"
+    show="{{ dialogShow }}"
+    show-cancel-button='{{true}}'
+    close-on-click-overlay
+    bind:close="onClose"
+    bind:confirm='onConfirm'
+    bind:cancel='onClose'
+  >
+    <van-field
+      value="{{ addressInfo.name }}"
+      label="姓名"
+      input-align="right"
+      hold-keyboard
+      auto-focus
+    />
+
+    <van-field
+      value="{{ addressInfo.mobile }}"
+      type='number'
+      label="手机号"
+      input-align="right"
+      hold-keyboard
+    />
+
+    <van-field
+      value="{{ addressInfo.address }}"
+      label="地址"
+      input-align="right"
+      hold-keyboard
+      type="textarea"
+      autosize
+    />
+  </van-dialog>
+</view>

@@ -1,7 +1,7 @@
 .header {
-  height: 80rpx;
+  height: 50rpx;
   width: 100%;
-  background: palegreen;
+  background: #ccc;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -12,7 +12,7 @@
 .list {
   width: 100%;
   background: #F2F2F2;
-  padding-top: 80rpx;
+  padding-top: 50rpx;
   box-sizing: border-box;
   display: flex;
   flex-wrap: wrap;

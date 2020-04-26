@@ -32,6 +32,15 @@ class MyModel extends HTTP {
     })
   }
 
+  login(jsCode) {
+    return this.request({
+      url: 'user/auth/login',
+      data: {
+        jsCode
+      }
+    })
+  }
+
 }
 
 export {

@@ -7,7 +7,13 @@
     "pages/shop/index",
     "pages/buy/index",
     "pages/search/index",
-    "pages/goods-detail/index"
+    "pages/goods-detail/index",
+    "pages/address/index",
+    "pages/card/index",
+    "pages/collect/index",
+    "pages/live/index",
+    "pages/order/index",
+    "pages/person/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

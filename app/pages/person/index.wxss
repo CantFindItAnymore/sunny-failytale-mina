@@ -1,0 +1,6 @@
+van-cell-group,
+van-popup,
+van-datetime-picker,
+van-action-sheet {
+  width: 100%;
+}

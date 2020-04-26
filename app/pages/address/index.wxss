@@ -1,0 +1,67 @@
+.container {
+  background: #F2F2F2;
+}
+
+.item {
+  width: 100%;
+  background: #fff;
+  padding: 30rpx;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-bottom: 20rpx;
+}
+
+.item >view:nth-child(1) {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.item >view:nth-child(1)>view:nth-child(2) {
+  margin-left: 20rpx;
+}
+
+.item >view:nth-child(2) {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20rpx;
+}
+
+.item >view:nth-child(2)>view:nth-child(1) {
+  padding-right: 100rpx;
+}
+
+.item >view:nth-child(2)>view:nth-child(2) {
+  border-left: 1rpx solid #ccc;
+  height: 50rpx;
+  line-height: 50rpx;
+  width: 100rpx;
+  text-align: center;
+}
+
+van-button {
+  color: #fff;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+van-tag {
+  position: absolute;
+  right: 0;
+}
+
+.del-container {
+  height: 100%;
+  width: 130rpx;
+  background: red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24rpx;
+  color: #fff;
+}

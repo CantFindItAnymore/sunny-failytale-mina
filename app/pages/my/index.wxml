@@ -29,6 +29,11 @@
   </view>
 
   <view class="list">
+    <button open-type="contact">
+      <image src="/imgs/service.png" />
+      <text>客服中心</text>
+      <text>〉</text>
+    </button>
     <view
       wx:for="{{list}}"
       wx:key="index"

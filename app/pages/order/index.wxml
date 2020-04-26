@@ -1,0 +1,20 @@
+<view class="container">
+
+  <van-tabs active="{{ active }}" animated sticky>
+    <van-tab title="全部">
+      <r-order-list list='{{allList}}' />
+    </van-tab>
+    <van-tab title="待发货">
+      <r-order-list list='{{postList}}' />
+    </van-tab>
+    <van-tab title="待收货">
+      <r-order-list list='{{getList}}' />
+    </van-tab>
+    <van-tab title="已完成">
+      <r-order-list list='{{finishedList}}' />
+    </van-tab>
+    <van-tab title="已取消">
+      <r-order-list list='{{cancelledList}}' />
+    </van-tab>
+  </van-tabs>
+</view>
