@@ -2,6 +2,9 @@ import {ShopModel} from '../../api/models/shop'
 
 const Shop = new ShopModel()
 
+import {CollectionModel} from '../../api/models/collection'
+const Collection = new CollectionModel()
+
 Page({
 
   /**
@@ -10,6 +13,7 @@ Page({
   data: {
     classify: '',
     list: [],
+    likedIdList: [],
     like: '/imgs/like.png',
     unLike: '/imgs/unLike.png'
   },
@@ -35,6 +39,20 @@ Page({
         console.log(res)
         this.setData({
           list: res
+        })
+      })
+
+    // 收藏
+    wx.getStorageSync('token') && Collection.getCollection()
+      .then(res => {
+        console.log(res.all)
+        let likedIdList = []
+        res.all.map(item => {
+          likedIdList.push(item.id)
+        })
+
+        this.setData({
+          likedIdList
         })
       })
 

@@ -21,10 +21,12 @@
       input-align="right"
       hold-keyboard
       auto-focus
+      required
     />
     <van-cell
       title="性别"
       value="{{ userInfo.sex }}"
+      data-role='user'
       bind:tap="switchSex"
     />
 
@@ -33,6 +35,7 @@
         title="男"
         clickable
         data-name="男"
+        data-role='user'
         bind:click="handleSwitchSex"
       >
         <van-radio slot="right-icon" name="男" />
@@ -41,6 +44,7 @@
         title="女"
         clickable
         data-name="女"
+        data-role='user'
         bind:click="handleSwitchSex"
       >
         <van-radio slot="right-icon" name="女" />
@@ -51,6 +55,7 @@
     <van-cell
       title="生日"
       value="{{ userInfo.birthday }}"
+      data-role='user'
       bind:tap="openDatePicker"
     />
 
@@ -80,9 +85,9 @@
     />
     <van-cell
       title="职业"
-      value="{{ userInfo.Job.name }}"
+      value="{{ userInfo.job.name }}"
       bind:tap="openSheet"
-      data-type='Job'
+      data-type='job'
     />
 
 
@@ -91,33 +96,72 @@
 
     <!-- 宝宝信息 -->
     <van-field
-      label="手机号"
-      value="{{ userInfo.mobile }}"
-      bind:change="onChange"
-      data-type='mobile'
+      label="姓名"
+      value="{{ babyInfo.name }}"
+      bind:change="onBabyInfoChange"
+      data-type='name'
       input-align="right"
       hold-keyboard
       auto-focus
     />
+
+    <van-cell
+      title="性别"
+      value="{{ babyInfo.sex }}"
+      data-role='baby'
+      bind:tap="switchSex"
+    />
+
+    <block wx:if="{{babyInfo.sexShow}}">
+      <van-cell
+        title="男"
+        clickable
+        data-name="男"
+        data-role='baby'
+        bind:click="handleSwitchSex"
+      >
+        <van-radio slot="right-icon" name="男" />
+      </van-cell>
+      <van-cell
+        title="女"
+        clickable
+        data-name="女"
+        data-role='baby'
+        bind:click="handleSwitchSex"
+      >
+        <van-radio slot="right-icon" name="女" />
+      </van-cell>
+    </block>
+
+    <van-cell
+      title="生日"
+      value="{{ babyInfo.birthday }}"
+      data-role='baby'
+      bind:tap="openDatePicker"
+    />
+
     <van-field
-      label="手机号"
-      value="{{ userInfo.mobile }}"
-      bind:change="onChange"
-      data-type='mobile'
+      label="身高"
+      type='digit'
+      placeholder='CM'
+      value="{{ babyInfo.height }}"
+      bind:change="onBabyInfoChange"
+      data-type='height'
       input-align="right"
       hold-keyboard
       auto-focus
     />
-    <van-field
-      label="手机号"
-      value="{{ userInfo.mobile }}"
-      bind:change="onChange"
-      data-type='mobile'
-      input-align="right"
-      hold-keyboard
-      auto-focus
-    />
+
   </van-cell-group>
+
+  <van-button
+    type='primary'
+    size='large'
+    style="margin-top: 100rpx; width: 100%"
+    bind:tap='handleConfirm'
+  >
+    认证 / 修改 / 补充
+  </van-button>
 
 
   <van-popup show="{{ datePickerShow }}" bind:close="closeDatePicker" position='top'>

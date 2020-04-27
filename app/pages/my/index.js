@@ -73,6 +73,18 @@ Page({
           .then(res => {
 						console.log(res)
 						wx.setStorageSync('token', res.token)
+						wx.showModal({
+							title: '提示',
+							content: '为了更好的用户体验，请先进行认证操作',
+							success (res) {
+								if (res.confirm) {
+									wx.navigateTo({
+										url: '/pages/person/index'
+									})
+								} else if (res.cancel) {
+								}
+							}
+						})
           })
 
         wx.hideLoading()

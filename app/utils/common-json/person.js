@@ -80,7 +80,7 @@ const actionsList = {
     }
   ],
   // 1-全职辣妈 2-公务员 3-上班族 4-自由职业
-  Job: [
+  job: [
     {
       name: '全职辣妈',
       value: '1'

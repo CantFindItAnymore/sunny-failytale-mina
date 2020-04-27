@@ -22,7 +22,7 @@
             <text class="weight-font">￥</text>
             {{item.maxPrice}}
           </view>
-          <image src="{{like}}" />
+          <image src="{{likedIdList.include(item.id)?like:unLike}}" />
         </view>
       </view>
     </view>

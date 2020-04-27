@@ -1,6 +1,6 @@
 import {
   config
-} from './config.js'
+} from './config'
 
 const http = class HTTP {
   request({
@@ -14,20 +14,15 @@ const http = class HTTP {
     })
   }
 
-  _request(url, resolve, reject, data = {}, method = 'GET', type = 'x-www-form-urlencoded') {
+  _request(url, resolve, reject, data = {}, method = 'GET', type) {
     wx.showLoading({
       mask: true
     })
 
-    const header = (url === 'api-uaa/oauth/openId/token' || url === 'api-uaa/oauth/regist')
-      ? {
-        'content-type': `application/${type}`,
-        'Authorization': config.defaultToken
-      }
-      : {
-        'content-type': `application/${type}`,
-        'Authorization': wx.getStorageSync('token')?'Bearer ' + wx.getStorageSync('token'):''
-      }
+    const header = {
+      'content-type': `application/${type}`,
+      'Authorization': wx.getStorageSync('token')?wx.getStorageSync('token'):''
+    }
 
     wx.request({
       url: config.baseUrl + url,
@@ -35,19 +30,28 @@ const http = class HTTP {
       header: header,
       data: data,
       success: res => {
-        const code = res.data.resp_code === 10000 || res.data.code === 10000
+        const code = res.data.code
         const status = res.statusCode.toString()
-        if (status.startsWith('2') && code) {
-          wx.hideLoading()
-          resolve(res.data.datas || res.data.data)
-        } else if (status === '401') {
-          this._tokenOut()
-        } else {
-          console.log('IO成功但请求失败：', res)
-          this._showErr(res.resp_msg || res.data.resp_msg)
-          setTimeout(() => {
-            reject(res)
-          }, 2000)
+        if (status.startsWith('2')) {
+          switch (code) {
+            case 10000:
+              wx.hideLoading()
+              resolve(res.data.data)
+              break;
+            case 10005:
+              this._tokenOut()
+              break;
+            case 10009:
+              this._unAuth()
+              break;
+            default:
+              console.log('IO成功但请求失败：', res)
+              this._showErr(res.data.message)
+              setTimeout(() => {
+                reject()
+              }, 2000)
+              break;
+          }
         }
       },
       fail: err => {
@@ -56,6 +60,9 @@ const http = class HTTP {
         setTimeout(() => {
           reject(err)
         }, 2000)
+      },
+      complete: () => {
+        wx.hideLoading()
       }
     })
   }
@@ -73,15 +80,78 @@ const http = class HTTP {
   }
 
   _tokenOut () {
-    this._showErr('账号过期，请重新登录')
-    wx.removeStorageSync('token')
-    // wx.removeStorageSync('mobile')
-    // wx.removeStorageSync('openId')
-    // setTimeout(() => {
-    //   wx.navigateTo({
-    //     url: '/pages/welcome/welcome'
-    //   })
-    // }, 2000)
+    console.log('un login')
+    wx.showLoading({
+      mask: true
+    })
+    // 无token
+    wx.getSetting({
+			success: (data) => {
+				if (data.authSetting['scope.userInfo']) {
+          this._showErr('账号过期，正在重新登录')
+          // 1. token丢失(静默重新获取token)
+          wx.login({
+            success(res) {
+              if (res.code) {
+                wx.setStorageSync('jsCode', res.code)
+                wx.request({
+                  url: config.baseUrl + 'user/auth/login/',
+                  header: {
+                    'content-type': 'application/json'
+                  },
+                  data: {
+                    jsCode: res.code
+                  },
+                  success (res) {
+                    wx.setStorageSync('token', res.data.data.token)
+                    wx.showToast({
+                      title: '登录成功',
+                      icon: 'none',
+                      duration: 2000
+                    })
+                  }
+                })
+              }
+            },
+          })
+        }
+        else {
+          // 2. 新用户未登录
+          wx.showModal({
+            title: '提示',
+            content: '请点击头像登录后再进行该操作',
+            success (res) {
+              if (res.confirm) {
+                wx.switchTab({
+                  url: '/pages/my/index'
+                })
+              } else if (res.cancel) {
+              }
+            }
+          })
+        }
+			},
+			complete() {
+				wx.hideLoading()
+      }
+    })
+  }
+
+  _unAuth () {
+    console.log('un auth')
+    // 1. 新用户未认证
+    wx.showModal({
+      title: '提示',
+      content: '请认证后再进行该操作',
+      success (res) {
+        if (res.confirm) {
+          wx.switchTab({
+            url: '/pages/person/index'
+          })
+        } else if (res.cancel) {
+        }
+      }
+    })
   }
 }
 
