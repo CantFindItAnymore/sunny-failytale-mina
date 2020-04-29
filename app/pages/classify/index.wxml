@@ -4,6 +4,7 @@
     <van-cell
       title='全部商品'
       bind:tap='toShop'
+      data-classify='全部商品'
       is-link
     />
 

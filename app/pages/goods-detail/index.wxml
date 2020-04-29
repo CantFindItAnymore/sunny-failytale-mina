@@ -1,2 +1,168 @@
-<!--pages/goods-detail/index.wxml-->
-<text>pages/goods-detail/index.wxml</text>
+<view class="container">
+  <!-- 轮播图 -->
+  <view class="swiper-container">
+    <swiper
+      indicator-dots
+      autoplay
+      interval="3000"
+      duration="500"
+      indicator-color='#999'
+      indicator-active-color='#FFCBA1'
+    >
+      <block wx:for="{{detail.carouselPics}}" wx:key="index">
+        <swiper-item>
+          <view class="swiper-item">
+            <image src="{{item.url}}" />
+            <!-- <image src="/imgs/like.png" /> -->
+          </view>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <!-- 名字/收藏 -->
+  <view class="title">
+    <view>{{detail.name}}</view>
+    <image src="{{tool.isLike(detail.id, likedIdList)?like:unLike}}" data-cid='{{detail.id}}' data-is='{{tool.isLike(detail.id, likedIdList)}}' bind:tap="switchCollect" />
+  </view>
+  <!-- 价格 -->
+  <view class="price">
+    <text class="weight-font">￥</text>
+    <text class="weight-price">{{detail.minPrice}}</text>
+    <block  wx:if="{{detail.minPrice !== detail.maxPrice}}">
+      <text class="weight-font">~</text>
+      <text class="weight-font">￥</text>
+      <text class="weight-price">{{detail.maxPrice}}</text>
+    </block>
+  </view>
+  <!-- 快递费/销量 -->
+  <view class="saleInfo">
+    <view>
+      快递费:￥10
+      <van-tag type="warning">下单7天内发货</van-tag>
+    </view>
+    <view>
+      销量：{{detail.salesVolume}}
+    </view>
+  </view>
+
+  <!-- 参数 -->
+  <view class="params">
+    <text class="weight-font">商品参数</text>
+    <view class="params-detail">
+      <van-cell-group>
+        <van-cell
+          title="{{item.name}}"
+          value="{{ item.propValue }}"
+          wx:for="{{detail.parameters}}"
+          wx:key="index"
+        />
+      </van-cell-group>
+    </view>
+  </view>
+
+  <!-- 评论 -->
+  <view class="comment">
+    <text class="weight-font">商品评论</text>
+    <view class="comment-detail">
+      <van-panel title="{{item.userName}}" status="{{item.replyTime}}" wx:for="{{comments}}" wx:key="index">
+        <view class="comment-desc">
+          <view>{{item.comment}}</view>
+          <view style="background: #ccc" wx:if="{{item.reply}}">店家回复：{{item.reply}}</view>
+        </view>
+      </van-panel>
+    </view>
+  </view>
+
+  <!-- 详情 -->
+  <view class="detail">
+    <text class="weight-font">商品详情</text>
+    <view class="detail-detail">
+      <block wx:for="{{detail.detailPics}}" wx:key="index">
+        <image src="{{item.url}}" />
+      </block>
+    </view>
+  </view>
+
+  <!-- 尾部 -->
+  <van-goods-action>
+    <van-goods-action-icon
+      icon="chat-o"
+      text="客服"
+      open-type="contact"
+    />
+    <van-goods-action-icon
+      icon="cart-o"
+      text="购物车"
+      bind:click="toShopCar"
+    />
+    <van-goods-action-button
+      text="加入购物车"
+      data-type='add'
+      bind:click="openSku"
+    />
+    <van-goods-action-button
+      text="立即购买"
+      data-type='buy'
+      bind:click="openSku"
+    />
+  </van-goods-action>
+
+  <!-- buyShow -->
+  <van-popup
+    show="{{ skuShow }}"
+    position="bottom"
+    custom-style="height: 900rpx;"
+    bind:close="closeSku"
+  >
+    <view class="sku">
+      <view class="sku-title">
+        <image src="{{skuInfo.url || detail.mainPicUrl}}" />
+        <view>
+          <view style='margin-bottom: 20rpx; color: red' wx:if="{{skuInfo.price}}">￥ <text class="weight-font">{{skuInfo.price}}</text></view>
+          <view wx:if="{{skuInfo.selectedSkuName}}">已选：{{skuInfo.selectedSkuName}}</view>
+          <view wx:else>请选择规格</view>
+        </view>
+      </view>
+      <scroll-view scroll-y class="sku-content">
+        <view class="sku-item" wx:for="{{sku.skuProps}}" wx:key="index">
+          <view>{{item.name}}</view>
+          <view class="sku-option">
+            <van-tag
+              data-skuprop='{{options.propName}}'
+              data-skuname='{{options.optionValue}}'
+              data-skuid='{{options.id}}'
+              color="{{options.optionValue===skuInfo.props[options.propName]['skuName']?'#FFCBA1':'#999'}}"
+              bind:tap='handleSelectSku'
+              size="medium"
+              wx:for="{{item.optionVos}}"
+              wx:for-item="options"
+              wx:key="index"
+            >
+              {{options.optionValue}}
+            </van-tag>
+          </view>
+        </view>
+        <view class="sku-remain" wx:if="{{skuInfo.skuId}}">库存：{{skuInfo.remainStoreNum}}</view>
+        <view class="sku-count">
+          <Text>购买数量</Text>
+          <van-stepper value='{{skuInfo.count}}' max="{{ skuInfo.remainStoreNum }}" bind:change="onCountChange" />
+        </view>
+      </scroll-view>
+      <view class="sku-btn">
+        <van-button type="warning" bind:tap='addOrBuy'>确定</van-button>
+      </view>
+    </view>
+  </van-popup>
+</view>
+
+<wxs module="tool">
+  var isLike = function(id, list){
+    if(list.indexOf(id) !== -1) {
+      return true
+    }
+    return false
+  }
+  module.exports = {
+    isLike: isLike
+  }
+</wxs>

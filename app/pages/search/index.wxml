@@ -25,6 +25,7 @@
       wx:for='{{onceList}}'
       wx:key="index"
       bind:tap="onKeyChange"
+      data-from='once'
       data-key='{{item}}'
     >
       {{item}}

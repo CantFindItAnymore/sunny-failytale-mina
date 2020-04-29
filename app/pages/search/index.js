@@ -12,17 +12,20 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onShow: function (options) {
     wx.getStorageSync('keyWords').length && this.setData({
       onceList: wx.getStorageSync('keyWords')
     })
   },
 
   onKeyChange(e) {
-    const keyWord = e.currentTarget.dataset.key || e.detail
+    const keyWord = e.currentTarget.dataset.key || e.detail.replace(/^\s*|\s*$/g,"")
     this.setData({
       keyWord
     })
+
+    const from = e.currentTarget.dataset.from
+    from === 'once' && this.handleSearch()
   },
 
   handleSearch() {
@@ -39,7 +42,7 @@ Page({
     once = once.slice(0, 10)
 
     wx.setStorageSync('keyWords', once)
-
+    wx.setStorageSync('classify', this.data.keyWord)
     wx.navigateTo({
       url: '/pages/shop/index?key=' + this.data.keyWord
     })

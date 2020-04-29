@@ -2,6 +2,10 @@
   background: #F2F2F2;
 }
 
+van-tabs {
+  width: 100%;
+}
+
 .list-container {
   width: 100%;
   padding-bottom: 100rpx;
@@ -53,3 +57,14 @@
   font-size: 24rpx;
   color: #fff;
 }
+
+van-swipe-cell {
+  min-height: 200rpx;
+}
+
+/* .num-slot {
+  display: inline-flex;
+  position: absolute;
+  right: 0;
+  bottom: 30rpx;
+} */

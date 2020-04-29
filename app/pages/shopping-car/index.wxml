@@ -1,35 +1,111 @@
 <view class="container">
-  <view class="list-container">
-    <van-swipe-cell
-      right-width="{{ 65 }}"
-      wx:for='{{[1,2,3,4,5,6,7,8,9]}}'
-      wx:key="index"
-    >
+  <van-tabs active="{{ activeTab }}" bind:change="onTabChange">
+    <van-tab title="全部" name='all'>
+      <view class="list-container">
+        <van-swipe-cell
+          right-width="{{ 65 }}"
+          wx:for='{{catList.all}}'
+          wx:key="index"
+        >
 
-      <view class="tags-container">
-        <image src="{{selected}}" />
+          <view class="tags-container"
+            bind:tap="switchSelected"
+            data-index='{{index}}'
+          >
+            <image
+              src="{{item.nowIsSelect?selected:unSelected}}"
+            />
+          </view>
+
+          <van-card
+            price="{{item.productSkuVo.price}}"
+            desc="{{item.productSkuVo.skuName}}"
+            title="{{item.productSkuVo.name}}"
+            thumb="{{item.productSkuVo.picUrl || item.productSkuVo.mainPicUrl}}"
+            thumb-link='/pages/goods-detail/index?gid={{item.productId}}'
+          >
+            <view slot="footer" class="num-slot">
+              <van-stepper max='{{item.productSkuVo.remainStoreNum}}' value="{{item.nowCount}}" bind:change="onCountChange" data-index='{{index}}'/>
+            </view>
+          </van-card>
+
+          <view slot="right" class="del-container" data-id='{{item.id}}' bind:tap="handleDelShop">删除</view>
+        </van-swipe-cell>
       </view>
+    </van-tab>
+    <van-tab title="已降价" name='depreciates'>
+      <view class="list-container">
+        <van-swipe-cell
+          right-width="{{ 65 }}"
+          wx:for='{{catList.depreciates}}'
+          wx:key="index"
+        >
 
-      <van-card
-        num="2"
-        price="10.00"
-        desc="描述信息"
-        title="商品标题"
-        thumb="/imgs/coupon.png"
-      >
-      </van-card>
+          <view class="tags-container"
+            bind:tap="switchSelected"
+            data-index='{{index}}'
+          >
+            <image
+              src="{{item.nowIsSelect?selected:unSelected}}"
+            />
+          </view>
 
-      <view slot="right" class="del-container">删除</view>
-    </van-swipe-cell>
-  </view>
+          <van-card
+            price="{{item.productSkuVo.price}}"
+            desc="{{item.productSkuVo.skuName}}"
+            title="{{item.productSkuVo.name}}"
+            thumb="{{item.productSkuVo.picUrl || item.productSkuVo.mainPicUrl}}"
+            thumb-link='/pages/goods-detail/index?gid={{item.productId}}'
+          >
+            <view slot="footer" class="num-slot">
+              <van-stepper max='{{item.productSkuVo.remainStoreNum}}' value="{{item.nowCount}}" bind:change="onCountChange" data-index='{{index}}'/>
+            </view>
+          </van-card>
 
+          <view slot="right" class="del-container" data-id='{{item.id}}' bind:tap="handleDelShop">删除</view>
+        </van-swipe-cell>
+      </view>
+    </van-tab>
+    <van-tab title="已失效" name='failures'>
+      <view class="list-container">
+        <van-swipe-cell
+          right-width="{{ 65 }}"
+          wx:for='{{catList.failures}}'
+          wx:key="index"
+        >
 
+          <view class="tags-container"
+            bind:tap="switchSelected"
+            data-index='{{index}}'
+          >
+            <image
+              src="{{item.nowIsSelect?selected:unSelected}}"
+            />
+          </view>
+
+          <van-card
+            price="{{item.productSkuVo.price}}"
+            desc="{{item.productSkuVo.skuName}}"
+            title="{{item.productSkuVo.name}}"
+            thumb="{{item.productSkuVo.picUrl || item.productSkuVo.mainPicUrl}}"
+            thumb-link='/pages/goods-detail/index?gid={{item.productId}}'
+          >
+            <view slot="footer" class="num-slot">
+              <van-stepper max='{{item.productSkuVo.remainStoreNum}}' value="{{item.nowCount}}" bind:change="onCountChange" data-index='{{index}}'/>
+            </view>
+          </van-card>
+
+          <view slot="right" class="del-container" data-id='{{item.id}}' bind:tap="handleDelShop">删除</view>
+        </van-swipe-cell>
+      </view>
+    </van-tab>
+  </van-tabs>
 
   <van-submit-bar
-    price="{{ 3050 }}"
+    price="{{ catList.nowAllPrice[activeTab] * 100 || 0 }}"
     button-text="去结算"
     bind:submit="onBuy"
   >
-    <view class="select-btn" bind:tap='switchSelect'>全选 <image src="{{selectedAll?selected:unSelected}}" /></view>
+    <view class="select-btn" bind:tap='switchSelectAll'>全选 <image src="{{selectedAll[activeTab]===2?selected:unSelected}}" /></view>
   </van-submit-bar>
 </view>

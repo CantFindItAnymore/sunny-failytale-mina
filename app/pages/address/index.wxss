@@ -1,8 +1,15 @@
 .container {
   background: #F2F2F2;
+  padding-bottom: 100rpx;
+  box-sizing: border-box;
+  position: relative;
 }
 
-.item {
+van-swipe-cell {
+  width: 100%;
+}
+
+.address-item {
   width: 100%;
   background: #fff;
   padding: 30rpx;
@@ -13,28 +20,28 @@
   margin-bottom: 20rpx;
 }
 
-.item >view:nth-child(1) {
+.address-item >view:nth-child(1) {
   display: flex;
   align-items: center;
   position: relative;
 }
 
-.item >view:nth-child(1)>view:nth-child(2) {
+.address-item >view:nth-child(1)>view:nth-child(2) {
   margin-left: 20rpx;
 }
 
-.item >view:nth-child(2) {
+.address-item >view:nth-child(2) {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-top: 20rpx;
 }
 
-.item >view:nth-child(2)>view:nth-child(1) {
+.address-item >view:nth-child(2)>view:nth-child(1) {
   padding-right: 100rpx;
 }
 
-.item >view:nth-child(2)>view:nth-child(2) {
+.address-item >view:nth-child(2)>view:nth-child(2) {
   border-left: 1rpx solid #ccc;
   height: 50rpx;
   line-height: 50rpx;

@@ -1,1 +1,170 @@
-/* pages/goods-detail/index.wxss */
+.container {
+  background: #F2F2F2;
+  padding-bottom: 100rpx;
+}
+.swiper-container {
+  width: 100%;
+  height: 480rpx;
+  background: #fff;
+}
+
+swiper,
+swiper-item
+.swiper-item {
+  height: 480rpx;
+  width: 100%;
+}
+
+.swiper-item image {
+  height: 100%;
+  width: 100%;
+}
+
+.title {
+  width: 100%;
+  background: #fff;
+  padding: 30rpx;
+  box-sizing: border-box;
+  display: flex;
+}
+
+.title>view:nth-child(1) {
+  width: 550rpx;
+}
+
+.title>image {
+  height: 30rpx;
+  width: 30rpx;
+  margin-left: 55rpx;
+}
+
+.title>view:nth-child(2) {
+  display: flex;
+  flex-direction: column;
+}
+
+.price {
+  width: 100%;
+  background: #fff;
+  padding: 0 30rpx;
+  box-sizing: border-box;
+  color: #FFCBA1;
+  background: #fff;
+}
+
+.weight-price {
+  font-size: 48rpx;
+}
+
+.saleInfo {
+  width: 100%;
+  background: #fff;
+  padding: 30rpx;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+}
+
+.saleInfo > view:nth-child(1) {
+  width: 500rpx;
+}
+
+.saleInfo > view:nth-child(1)>van-tag {
+  margin-left: 10rpx;
+}
+
+.saleInfo > view:nth-child(2) {
+  width: 190rpx;
+  text-align: right;
+}
+
+.params,
+.comment,
+.detail {
+  width: 100%;
+  background: #fff;
+  padding: 30rpx;
+  box-sizing: border-box;
+  font-size: 10rpx;
+}
+
+.comment-desc>view {
+  padding: 30rpx;
+}
+
+.detail-detail,
+.detail-detail>image {
+  width: 100%;
+}
+
+
+.sku {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  /* background: #ff976a; */
+}
+
+.sku-title {
+  height: 300rpx;
+  width: 100%;
+  padding: 30rpx;
+  box-sizing: border-box;
+  display: flex;
+  align-items: flex-end;
+}
+
+.sku-title>view:nth-child(2) {
+  display: flex;
+  flex-direction: column;
+}
+
+.sku-title>image {
+  height: 240rpx;
+  width: 240rpx;
+  margin-right: 20rpx;
+}
+
+.sku-content {
+  height: 500rpx;
+}
+
+.sku-remain {
+  height: 100rpx;
+  padding: 30rpx;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sku-count {
+  height: 100rpx;
+  padding: 30rpx;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sku-btn {
+  height: 100rpx;
+  width: 100%;
+}
+
+.sku-btn .van-button {
+  height: 100%;
+  width: 100%;
+}
+
+.sku-item {
+  padding: 30rpx;
+}
+
+.sku-option {
+  margin-top: 20rpx;
+}
+
+.sku-option>van-tag {
+  margin: 0 30rpx 30rpx 0;
+}

@@ -1,23 +1,24 @@
 <view class="container">
   <van-swipe-cell
     right-width="{{ 65 }}"
-    wx:for='{{list}}'
+    wx:for='{{addressList}}'
     wx:key="index"
   >
     <view
-      class="item"
+      class="address-item"
     >
       <view>
-        <view class="weight-font">冉俊</view>
-        <view>18408248904</view>
+        <view class="weight-font">{{item.userName}}</view>
+        <view>{{item.phoneNumber}}</view>
         <van-tag type="warning" wx:if="{{item.isDefault}}">默认地址</van-tag>
+        <van-tag type="primary" wx:if="{{!item.isDefault}}" data-id='{{item.id}}' bind:tap="setDefault">设置为默认地址</van-tag>
       </view>
       <view>
-        <view>四川省 成都市 高新区 某某某街道益州大道一段1088号西城小区07-1020</view>
+        <view>{{item.areaAddress}} {{item.address}}</view>
         <view bind:tap="openDialog" data-index='{{index}}'>编辑</view>
       </view>
     </view>
-    <view slot="right" class="del-container">删除</view>
+    <view slot="right" class="del-container" data-id='{{item.id}}' bind:tap="handleDelAddress">删除</view>
   </van-swipe-cell>
 
   <van-button size='large' color='#51E3BF' bind:tap="openDialog" data-index='-1'>新增地址</van-button>
@@ -26,35 +27,62 @@
     use-slot
     title="{{activeIndex>0?'编辑':'新增'}}地址"
     show="{{ dialogShow }}"
-    show-cancel-button='{{true}}'
+    show-cancel-button
     close-on-click-overlay
     bind:close="onClose"
     bind:confirm='onConfirm'
     bind:cancel='onClose'
+    zIndex='9'
   >
-    <van-field
-      value="{{ addressInfo.name }}"
-      label="姓名"
-      input-align="right"
-      hold-keyboard
-      auto-focus
-    />
+    <van-cell-group>
+      <van-field
+        value="{{ addressInfo.name }}"
+        label="姓名"
+        input-align="right"
+        hold-keyboard
+        auto-focus
+        data-type='name'
+        bind:change='onChange'
+      />
 
-    <van-field
-      value="{{ addressInfo.mobile }}"
-      type='number'
-      label="手机号"
-      input-align="right"
-      hold-keyboard
-    />
+      <van-field
+        value="{{ addressInfo.mobile }}"
+        type='number'
+        label="手机号"
+        input-align="right"
+        hold-keyboard
+        data-type='mobile'
+        bind:change='onChange'
+      />
 
-    <van-field
-      value="{{ addressInfo.address }}"
-      label="地址"
-      input-align="right"
-      hold-keyboard
-      type="textarea"
-      autosize
-    />
+      <van-cell
+        title='地址选择'
+        value='{{addressInfo.areaAddress.name}}'
+        bind:tap='showArea'
+      />
+
+      <van-field
+        value="{{ addressInfo.address }}"
+        label="详细地址"
+        input-align="right"
+        hold-keyboard
+        type="textarea"
+        autosize
+        data-type='address'
+        bind:change='onChange'
+      />
+    </van-cell-group>
   </van-dialog>
+
+  <van-popup
+    show="{{ areaShow }}"
+    bind:close="onAreaClose"
+    position="bottom"
+  >
+    <van-area
+      area-list="{{ areaList }}"
+      bind:confirm='handleConfirmArea'
+      bind:cancel	='onAreaClose'
+    />
+  </van-popup>
 </view>

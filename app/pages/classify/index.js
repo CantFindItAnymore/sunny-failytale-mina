@@ -32,6 +32,7 @@ Page({
   },
 
   toShop (e) {
+    e.currentTarget.dataset.classify && wx.setStorageSync('classify', e.currentTarget.dataset.classify)
     const id = e.detail.id || ''
 
     wx.navigateTo({
