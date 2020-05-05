@@ -6,6 +6,8 @@
   >
     <view
       class="address-item"
+      bind:tap="selectAddress"
+      data-index='{{index}}'
     >
       <view>
         <view class="weight-font">{{item.userName}}</view>

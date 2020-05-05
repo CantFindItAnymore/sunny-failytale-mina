@@ -22,7 +22,8 @@ Page({
       address: ''
     },
     areaShow: false,
-    areaList
+    areaList,
+    fromBuyPage: false
   },
 
   /**
@@ -35,6 +36,21 @@ Page({
           addressList: res
         })
       })
+
+    if (options.from === 'buyPage') {
+      this.setData({
+        fromBuyPage: true
+      })
+    }
+  },
+
+  selectAddress(e) {
+    if (this.data.fromBuyPage) {
+      wx.setStorageSync('address', this.data.addressList[e.currentTarget.dataset.index])
+      wx.navigateBack({
+        delta: 1
+      })
+    }
   },
 
   onChange(e) {
@@ -135,6 +151,7 @@ Page({
             address: ''
           }
         })
+
         this.onLoad()
       })
   },

@@ -1,19 +1,19 @@
 <view class="container">
 
   <van-tabs active="{{ active }}" animated sticky>
-    <van-tab title="全部">
+    <van-tab title="全部" name='all'>
       <r-order-list list='{{allList}}' />
     </van-tab>
-    <van-tab title="待发货">
+    <van-tab title="待发货" name='post'>
       <r-order-list list='{{postList}}' />
     </van-tab>
-    <van-tab title="待收货">
+    <van-tab title="待收货" name='get'>
       <r-order-list list='{{getList}}' />
     </van-tab>
-    <van-tab title="已完成">
+    <van-tab title="已完成" name='finished'>
       <r-order-list list='{{finishedList}}' />
     </van-tab>
-    <van-tab title="已取消">
+    <van-tab title="已取消" name='cancelled'>
       <r-order-list list='{{cancelledList}}' />
     </van-tab>
   </van-tabs>

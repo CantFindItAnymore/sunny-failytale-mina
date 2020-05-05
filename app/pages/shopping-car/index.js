@@ -130,6 +130,20 @@ Page({
       return
     }
 
+    let buyList = []
+    this.data.catList.all && this.data.catList.all.map(item => {
+      if (item.nowIsSelect) {
+        buyList.push(item)
+      }
+    })
+    this.data.catList.depreciates && this.data.catList.depreciates.map(item => {
+      if (item.nowIsSelect) {
+        buyList.push(item)
+      }
+    })
+
+    wx.setStorageSync('buyList', buyList)
+
     wx.navigateTo({
       url: '/pages/buy/index'
     })

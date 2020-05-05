@@ -63,6 +63,51 @@ class ShopModel extends HTTP {
       }
     })
   }
+
+  place({
+    address,
+    carriage,
+    couponId=null,
+    couponPrice=null,
+    couponUserId=null,
+    leaveWord=null,
+    realPrice,
+    skuList,
+    totalPrice
+  }) {
+    return this.request({
+      url: 'order/place',
+      method: 'POST',
+      data: {
+        address,
+        carriage,
+        couponId,
+        couponPrice,
+        couponUserId,
+        leaveWord,
+        realPrice,
+        skuList,
+        totalPrice
+      }
+    })
+  }
+
+  //pay
+  pay({
+    openId,
+    orderNo,
+    totalFee
+  }) {
+    return this.request({
+      url: 'wechat/pay/evoke-pay',
+      method: 'POST',
+      data: {
+        openId,
+        orderNo,
+        totalFee
+      }
+    })
+  }
 }
 
 export {

@@ -109,6 +109,9 @@ const http = class HTTP {
                       icon: 'none',
                       duration: 2000
                     })
+                    wx.switchTab({
+                      url: '/pages/home/index'
+                    })
                   }
                 })
               }

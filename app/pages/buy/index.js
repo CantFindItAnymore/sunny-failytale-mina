@@ -1,66 +1,109 @@
-// pages/buy/index.js
+import { MyModel } from '../../api/models/my'
+const My = new MyModel()
+
+import { ShopModel } from '../../api/models/shop'
+const Shop = new ShopModel()
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    address: {},
+    buyList: [],
+    remark: '',
+    totalFee: 0
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-
+  onLoad: function () {
+    My.getMyAddress()
+      .then(res => {
+        res.map(item => {
+          if (item.isDefault) {
+            wx.setStorageSync('address', item)
+            this.setData({
+              address: item
+            })
+          }
+        })
+      })
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
   onShow: function () {
+    const buyList = wx.getStorageSync('buyList')
+    let totalFee = 0
+    buyList && buyList.map(item => {
+      totalFee += item.addPrice
+    })
+    this.setData({
+      buyList,
+      totalFee
+    })
 
+    const address = wx.getStorageSync('address')
+    address && this.setData({
+      address
+    })
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
+  changeAddress() {
+    wx.navigateTo({
+      url: '/pages/address/index?from=buyPage'
+    })
   },
 
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
+  onChange(e) {
+    this.setData({
+      remark: e.detail
+    })
   },
 
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
+  onPay() {
+    let skuList = []
+    this.data.buyList.map(item => {
+      skuList.push({
+        amount: item.count,
+        price: item.addPrice,
+        productId: item.productId,
+        productMainPicUrl: item.productSkuVo.mainPicUrl,
+        productName: item.productSkuVo.name,
+        // productType: item.productSkuVo.productType,
+        skuId: item.productSkuVo.skuId,
+        skuName: item.productSkuVo.skuName,
+        skuPicUrl: item.productSkuVo.picUrl
+      })
+    })
 
-  },
+    Shop.place({
+      address: {
+        areaAddress: this.data.address.areaAddress,
+        consignee: this.data.address.userName,
+        detailedAddress: this.data.address.address,
+        phone: this.data.address.phoneNumber
+      },
+      carriage: 1000,
+      couponId: '',
+      couponPrice: '',
+      couponUserId: '',
+      leaveWord: this.data.remark,
+      realPrice: this.data.totalFee,
+      skuList,
+      totalPrice: this.data.totalFee + 1000
+    })
+      .then(() => {
+        // return
+      })
+    // ShopModel.pay({
+    //   openId: '',
+    //   orderNo: '',
+    //   totalFee: ''
+    // })
+    //   .then(res => {
 
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+    //   })
   }
 })

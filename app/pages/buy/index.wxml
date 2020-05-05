@@ -1,2 +1,69 @@
-<!--pages/buy/index.wxml-->
-<text>pages/buy/index.wxml</text>
+<view class="container">
+  <view class="address" bind:tap="changeAddress">
+    <image src="/imgs/address.png" />
+    <view>
+      <view style="margin-bottom: 10rpx; display: flex;">
+        <view class="name weight-font">{{address.userName}}</view>
+        <view class="mobile">{{address.phoneNumber}}</view>
+      </view>
+      <view class="address-item">{{address.areaAddress}}{{address.address}}</view>
+    </view>
+    <view>></view>
+  </view>
+
+  <view class="detail">
+    <van-cell-group>
+      <van-panel style="margin-bottom: 20rpx">
+        <view class="sku" wx:for="{{buyList}}" wx:key="index">
+          <image src="{{item.productSkuVo.mainPicUrl}}" />
+          <view class="sku-detail">
+            <view class="sku-name">{{item.productSkuVo.name}}</view>
+            <view class="sku-size">{{item.productSkuVo.skuName}}</view>
+            <view class="sku-rate">
+              <view>￥{{item.productSkuVo.price}}</view>
+              <view>x {{item.nowCount}}</view>
+            </view>
+          </view>
+        </view>
+      </van-panel>
+      <van-cell
+        title='运费'
+        value='￥10'
+      />
+    </van-cell-group>
+  </view>
+
+  <view class="card">
+    <van-cell-group>
+      <van-cell
+        title='优惠券'
+      />
+      <van-field
+        value="{{ remark }}"
+        label="留言"
+        input-align="right"
+        hold-keyboard
+        type="textarea"
+        autosize
+        bind:change='onChange'
+      />
+    </van-cell-group>
+  </view>
+
+  <view class="footer">
+    <view>共2件商品</view>
+    <view>合计：<text class="weight-font" style="color: #FFCBA1">￥{{tool.fixedT(totalFee)}}</text></view>
+    <van-button color='#FFCBA1' round type='danger' size='small' bind:tap="onPay">
+      支付
+    </van-button>
+  </view>
+</view>
+
+<wxs module="tool">
+  var fixedT = function(fee){
+    return (fee/100).toFixed(2)
+  }
+  module.exports = {
+    fixedT: fixedT
+  }
+</wxs>
