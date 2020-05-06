@@ -1,1 +1,92 @@
-/* pages/collect/index.wxss */
+.header {
+  height: 50rpx;
+  width: 100%;
+  background: #ccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  position: absolute;
+}
+
+.list {
+  width: 100%;
+  background: #F2F2F2;
+  padding-top: 50rpx;
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+  min-height: 100vh;
+}
+
+.list-item {
+  height: 500rpx;
+  width: 330rpx;
+  margin: 23.5rpx;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+
+  box-shadow: rgba(0,0,0,.2) 0 1rpx 5rpx 0rpx;
+}
+
+.list-item > image {
+  height: 330rpx;
+  width: 330rpx;
+}
+
+.list-item-desc {
+  padding: 18rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.list-item-desc>view:nth-child(1) {
+  height: 100rpx;
+  width: 100%;
+  padding: 4rpx 0;
+  box-sizing: border-box;
+  font-size: 24rpx;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /*截取3行*/
+  -webkit-box-orient: vertical;
+}
+
+.list-item-desc>view:nth-child(2) {
+  height: 70rpx;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.list-item-desc-footer {
+  font-size: 22rpx;
+}
+
+.list-item-desc-footer > image {
+  height: 30rpx;
+  width: 30rpx;
+}
+
+van-icon {
+  position: absolute;
+  right: 50rpx;
+}
+
+.list-no-result {
+  height: 300rpx;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+van-tab,
+van-tabs {
+  width: 100%;
+}

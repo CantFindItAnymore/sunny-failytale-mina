@@ -192,11 +192,17 @@ Page({
       return
     }
 
+
+    let productType = []
+    this.data.detail.productType.map(item => {
+      productType.push(item.id)
+    })
     this.data.activeBuyType === 'add' && Shop.addShopCar({
-      addPrice: this.data.skuInfo.price*100,
+      addPrice: this.data.skuInfo.price,
       count: this.data.skuInfo.count,
       productId: this.data.gid,
-      skuId: this.data.skuInfo.skuId
+      skuId: this.data.skuInfo.skuId,
+      productType
     })
       .then(() => {
         wx.showToast({

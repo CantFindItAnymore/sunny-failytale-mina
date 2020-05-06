@@ -1,6 +1,7 @@
 {
   "onReachBottomDistance": 50,
   "usingComponents": {
-    "van-sticky": "/@vant/weapp/sticky/index"
+    "van-sticky": "/@vant/weapp/sticky/index",
+    "van-icon": "/@vant/weapp/icon/index"
   }
 }

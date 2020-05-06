@@ -162,7 +162,11 @@
     }
     return false
   }
+  var fixedT = function(fee){
+    return (fee/100).toFixed(2)
+  }
   module.exports = {
-    isLike: isLike
+    isLike: isLike,
+    fixedT: fixedT
   }
 </wxs>

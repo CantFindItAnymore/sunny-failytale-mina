@@ -1,6 +1,9 @@
 <view class="container">
   <van-sticky>
-    <view class="header" wx:if="{{classify}}">{{classify}}</view>
+    <view class="header" wx:if="{{classify}}">
+      {{classify}}
+      <van-icon name="search" bind:tap='toSearch'/>
+    </view>
   </van-sticky>
   <view class="list">
     <view class="list-item" wx:for='{{list.data}}' wx:key="index">
@@ -22,6 +25,9 @@
           <image src="{{tool.isLike(item.id, likedIdList)?like:unLike}}" data-cid='{{item.id}}' data-is='{{tool.isLike(item.id, likedIdList)}}' bind:tap="switchCollect" />
         </view>
       </view>
+    </view>
+    <view class="list-no-result" wx:if="{{!list.data.length}}">
+      暂无相关商品
     </view>
   </view>
 </view>

@@ -1,11 +1,22 @@
-// pages/collect/index.js
+import {ShopModel} from '../../api/models/shop'
+
+const Shop = new ShopModel()
+
+import {CollectionModel} from '../../api/models/collection'
+const Collection = new CollectionModel()
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    active: 'all',
+    likeList: [],
+    failuresList: [],
+    likedIdList: [],
+    like: '/imgs/like.png',
+    unLike: '/imgs/unLike.png'
   },
 
   /**
@@ -13,54 +24,59 @@ Page({
    */
   onLoad: function (options) {
 
+    this._getCollection()
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
+  switchCollect(e) {
+    const {cid, is} = e.currentTarget.dataset
 
+    console.log(is)
+
+    is || Collection.addCollection(cid)
+      .then(res => {
+        this._getCollection()
+      })
+
+    if(is) {
+      const delIds = []
+      this.data.likeList.map(item => {
+        if (item.productId === cid) {
+          delIds.push(item.id)
+        }
+      })
+      Collection.delCollection(delIds)
+      .then(res => {
+        this._getCollection()
+      })
+    }
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
+  toShopDetail(e) {
+    wx.navigateTo({
+      url: '/pages/goods-detail/index?gid=' + e.currentTarget.dataset.gid
+    })
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
+  _getCollection() {
+    // 获取收藏 // 没有登陆/认证就不去拿
+    wx.getStorageSync('token') && Collection.getCollection()
+      .then(res => {
+        let likedIdList = []
+        res && res.all && res.all.map(item => {
+          likedIdList.push(item.productId)
+        })
 
-  },
+        res && res.all && this.setData({
+          likeList: res.all
+        })
 
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
+        res && res.failures && this.setData({
+          failuresList: res.failures
+        })
 
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+        this.setData({
+          likedIdList
+        })
+      })
   }
 })

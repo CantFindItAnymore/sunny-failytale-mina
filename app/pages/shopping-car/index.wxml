@@ -109,3 +109,12 @@
     <view class="select-btn" bind:tap='switchSelectAll'>全选 <image src="{{selectedAll[activeTab]===2?selected:unSelected}}" /></view>
   </van-submit-bar>
 </view>
+
+<wxs module="tool">
+  var fixedT = function(fee){
+    return (fee/100).toFixed(2)
+  }
+  module.exports = {
+    fixedT: fixedT
+  }
+</wxs>

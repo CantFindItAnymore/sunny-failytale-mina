@@ -2,8 +2,7 @@
   <view class="bac"></view>
   <view class="detail">
     <view class="info">
-      <view>
-        {{userInfo.nickName}}
+      <view class="weight-font">
         {{userInfo.nickName}}
       </view>
       <button

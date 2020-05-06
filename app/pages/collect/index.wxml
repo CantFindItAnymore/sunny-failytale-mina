@@ -1,2 +1,71 @@
-<!--pages/collect/index.wxml-->
-<text>pages/collect/index.wxml</text>
+<view class="container">
+  
+  <van-tabs active="{{ active }}" animated sticky>
+    <van-tab title="收藏" name='all'>
+      <view class="list">
+        <view class="list-item" wx:for='{{likeList}}' wx:key="index">
+          <image src="{{item.mainPicUrl}}" bind:tap="toShopDetail" data-gid='{{item.id}}' />
+          <view class="list-item-desc">
+            <view bind:tap="toShopDetail" data-gid='{{item.id}}'>
+              {{item.productType[0].description}}
+            </view>
+            <view class="list-item-desc-footer">
+              <view class="amount">
+                <text class="weight-font">￥</text>
+                {{item.minPrice}}
+                <block  wx:if="{{item.minPrice !== item.maxPrice}}">
+                  <text class="weight-font">~</text>
+                  <text class="weight-font">￥</text>
+                  {{item.maxPrice}}
+                </block>
+              </view>
+              <image src="{{tool.isLike(item.id, likedIdList)?like:unLike}}" data-cid='{{item.id}}' data-is='{{tool.isLike(item.id, likedIdList)}}' bind:tap="switchCollect" />
+            </view>
+          </view>
+        </view>
+        <view class="list-no-result" wx:if="{{!likeList.length}}">
+          暂无商品
+        </view>
+      </view>
+    </van-tab>
+    <van-tab title="已失效" name='failures'>
+      <view class="list">
+        <view class="list-item" wx:for='{{failuresList}}' wx:key="index">
+          <image src="{{item.mainPicUrl}}" data-gid='{{item.id}}' />
+          <view class="list-item-desc">
+            <view data-gid='{{item.id}}'>
+              {{item.productType[0].description}}
+            </view>
+            <view class="list-item-desc-footer">
+              <view class="amount">
+                <text class="weight-font">￥</text>
+                {{item.minPrice}}
+                <block  wx:if="{{item.minPrice !== item.maxPrice}}">
+                  <text class="weight-font">~</text>
+                  <text class="weight-font">￥</text>
+                  {{item.maxPrice}}
+                </block>
+              </view>
+              <image src="{{tool.isLike(item.id, likedIdList)?like:unLike}}" />
+            </view>
+          </view>
+        </view>
+        <view class="list-no-result" wx:if="{{!failuresList.length}}">
+          暂无商品
+        </view>
+      </view>
+    </van-tab>
+  </van-tabs>
+</view>
+
+<wxs module="tool">
+  var isLike = function(id, list){
+    if(list.indexOf(id) !== -1) {
+      return true
+    }
+    return false
+  }
+  module.exports = {
+    isLike: isLike
+  }
+</wxs>

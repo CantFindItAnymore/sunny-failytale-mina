@@ -1,2 +1,9 @@
-<!--pages/card/index.wxml-->
-<text>pages/card/index.wxml</text>
+<view class="container">
+  <view class="item" wx:for="{{cardList}}" wx:key="index">
+    <view class="rate">
+      
+    </view>
+    <view class="desc"></view>
+    <view class="status"></view>
+  </view>
+</view>

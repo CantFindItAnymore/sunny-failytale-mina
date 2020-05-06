@@ -1,1 +1,43 @@
-/* pages/card/index.wxss */
+.item {
+  min-height: 150rpx;
+  width: 690rpx;
+  border: 2rpx dashed #999;
+  border-radius: 10rpx;
+  background: #fff;
+  padding: 20rpx;
+  margin: 20rpx 0;
+  box-sizing: border-box;
+  display: flex;
+}
+
+.rate {
+  height: 100%;
+  width: 190rpx;
+  border-right: 1rpx solid #B3B3B3;
+  color: #51E3BF;
+  font-size: 50rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.status {
+  height: 100%;
+  width: 150rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.status>view {
+  padding: 0 30rpx;
+  margin: 8rpx 0;
+}
+
+.desc {
+  height: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}

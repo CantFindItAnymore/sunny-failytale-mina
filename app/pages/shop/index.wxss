@@ -72,3 +72,16 @@
   height: 30rpx;
   width: 30rpx;
 }
+
+van-icon {
+  position: absolute;
+  right: 50rpx;
+}
+
+.list-no-result {
+  height: 300rpx;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

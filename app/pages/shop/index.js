@@ -66,6 +66,12 @@ Page({
       })
   },
 
+  toSearch() {
+    wx.navigateTo({
+      url: '/pages/search/index'
+    })
+  },
+
   switchCollect(e) {
     const {cid, is} = e.currentTarget.dataset
 

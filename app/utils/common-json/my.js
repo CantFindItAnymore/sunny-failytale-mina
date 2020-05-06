@@ -14,11 +14,11 @@ const list = [
     goal: 'person',
     src: '/imgs/person.png'
   },
-  {
-    name: '直播链接',
-    goal: 'live',
-    src: '/imgs/live.png'
-  }
+  // {
+  //   name: '直播链接',
+  //   goal: 'live',
+  //   src: '/imgs/live.png'
+  // }
 ]
 
 const my = [

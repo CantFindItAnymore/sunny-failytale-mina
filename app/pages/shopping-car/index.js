@@ -26,26 +26,27 @@ Page({
     My.getMyCar()
       .then(res => {
         ['all', 'depreciates', 'failures'].map(item => {
-          res[item] && res[item].map((pro, index) => {
+          res && res[item] && res[item].map((pro, index) => {
             if (!Object.keys(this.data.catList).length) {
-              pro.nowCount = 1
+              pro.nowCount = pro.count
               pro.nowIsSelect = false
               console.log('没有 count')
             } else {
-              pro.nowCount = this.data.catList[item][index].nowCount
-              pro.nowIsSelect = this.data.catList[item][index].nowIsSelect
+              pro.nowCount = this.data.catList[item][index].nowCount || pro.count
+              pro.nowIsSelect = this.data.catList[item][index].nowIsSelect || false
               console.log('有 count')
             }
           })
         })
 
-        res.nowAllPrice || (res.nowAllPrice = {
+        if (res && !res.nowAllPrice) {
+          res.nowAllPrice = {
           all: 0,
           depreciates: 0,
           failures: 0
-        })
+        }}
 
-        this.setData({
+        res && this.setData({
           catList: res
         })
       })
@@ -200,7 +201,7 @@ Page({
     let activeTab = this.data.activeTab
     catList.nowAllPrice[activeTab] = 0
     catList[activeTab] && catList[activeTab].map(item => {
-      item.nowIsSelect && (catList.nowAllPrice[activeTab] += item.productSkuVo.price * item.nowCount)
+      item.nowIsSelect && (catList.nowAllPrice[activeTab] += (item.productSkuVo.price * 100 * item.nowCount)/100)
     })
 
     this.setData({

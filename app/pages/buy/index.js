@@ -37,8 +37,9 @@ Page({
     const buyList = wx.getStorageSync('buyList')
     let totalFee = 0
     buyList && buyList.map(item => {
-      totalFee += item.addPrice
+      totalFee += (item.productSkuVo.price*100)*item.nowCount
     })
+    totalFee = totalFee/100
     this.setData({
       buyList,
       totalFee
@@ -66,12 +67,12 @@ Page({
     let skuList = []
     this.data.buyList.map(item => {
       skuList.push({
-        amount: item.count,
+        amount: item.nowCount,
         price: item.addPrice,
         productId: item.productId,
         productMainPicUrl: item.productSkuVo.mainPicUrl,
         productName: item.productSkuVo.name,
-        // productType: item.productSkuVo.productType,
+        productType: item.productSkuVo.productType,
         skuId: item.productSkuVo.skuId,
         skuName: item.productSkuVo.skuName,
         skuPicUrl: item.productSkuVo.picUrl
@@ -85,25 +86,24 @@ Page({
         detailedAddress: this.data.address.address,
         phone: this.data.address.phoneNumber
       },
-      carriage: 1000,
-      couponId: '',
-      couponPrice: '',
-      couponUserId: '',
+      carriage: '10.00',
+      // couponId: '',
+      // couponPrice: ,
+      // couponUserId: '',
       leaveWord: this.data.remark,
-      realPrice: this.data.totalFee,
+      realPrice: this.data.totalFee + 10,
       skuList,
-      totalPrice: this.data.totalFee + 1000
+      totalPrice: this.data.totalFee + 10
     })
       .then(() => {
-        // return
+        return ShopModel.pay({
+          openId: '',
+          orderNo: '',
+          totalFee: ''
+        })
       })
-    // ShopModel.pay({
-    //   openId: '',
-    //   orderNo: '',
-    //   totalFee: ''
-    // })
-    //   .then(res => {
+      .then(res => {
 
-    //   })
+      })
   }
 })

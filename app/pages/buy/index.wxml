@@ -1,6 +1,6 @@
 <view class="container">
   <view class="address" bind:tap="changeAddress">
-    <image src="/imgs/address.png" />
+    <image src="/imgs/address_icon.png" />
     <view>
       <view style="margin-bottom: 10rpx; display: flex;">
         <view class="name weight-font">{{address.userName}}</view>
@@ -52,7 +52,7 @@
 
   <view class="footer">
     <view>共2件商品</view>
-    <view>合计：<text class="weight-font" style="color: #FFCBA1">￥{{tool.fixedT(totalFee)}}</text></view>
+    <view>合计：<text class="weight-font" style="color: #FFCBA1">￥{{totalFee+10}}</text></view>
     <van-button color='#FFCBA1' round type='danger' size='small' bind:tap="onPay">
       支付
     </van-button>

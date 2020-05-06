@@ -39,7 +39,8 @@ class ShopModel extends HTTP {
     addPrice,
     count,
     productId,
-    skuId
+    skuId,
+    productType
   }) {
     return this.request({
       url: 'cart/add',
@@ -48,7 +49,8 @@ class ShopModel extends HTTP {
         addPrice,
         count,
         productId,
-        skuId
+        skuId,
+        productType
       }
     })
   }
