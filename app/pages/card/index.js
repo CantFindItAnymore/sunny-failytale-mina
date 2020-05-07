@@ -7,8 +7,12 @@ Page({
    * 页面的初始数据
    */
   data: {
+    selected: '/imgs/selected.png',
+    unSelected: '/imgs/unSelected.png',
+    lose: '/imgs/lose.png',
+    used: '/imgs/used.png',
     current: 0,
-    cardList: [1,2,3]
+    cardList: []
   },
 
   /**

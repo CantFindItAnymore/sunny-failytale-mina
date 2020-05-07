@@ -1,5 +1,17 @@
 <view class="container">
   <view class="item" wx:for="{{list}}" wx:key="index">
-    {{item}}
+    <view class="status">{{status[item.status]}}</view>
+
+    <view class="detail" wx:for="{{item.skuList}}" wx:for-item="pro" wx:key='index'>
+      <image src="{{pro.skuPicUrl}}" />
+      <view>
+        <view>{{pro.productName}}</view>
+        <view>{{pro.skuName}}</view>
+        <view class="font-weight">￥{{pro.totalPrice}}</view>
+      </view>
+    </view>
+
+    <view class="rate"></view>
+    <view class="menu"></view>
   </view>
 </view>

@@ -8,11 +8,12 @@ Page({
    */
   data: {
     active: 'all',
-    allList: [1,2,3],
-    postList: [],
-    getList: [],
-    finishedList: [],
-    cancelledList: []
+    allList: [],
+    payList: [],
+    deliveryList: [],
+    receiptList: [],
+    finishList: [],
+    cancelList: [],
   },
 
   /**
@@ -21,7 +22,20 @@ Page({
   onShow: function (options) {
     Order.getOrder()
       .then(res => {
-        
+        this.setData({
+          allList: res.all,
+          payList: res.pay,
+          deliveryList: res.delivery,
+          receiptList: res.receipt,
+          finishList: res.finish,
+          cancelList: res.cancel,
+        })
       })
+  },
+
+  onClickTab(e) {
+    this.setData({
+      active: e.detail.name
+    })
   }
 })

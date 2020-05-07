@@ -73,7 +73,10 @@ Page({
           .then(res => {
 						console.log(res)
 						wx.setStorageSync('token', res.token)
-						wx.showModal({
+						return My.isAuthed()
+					})
+					.then(res => {
+						res || wx.showModal({
 							title: '提示',
 							content: '为了更好的用户体验，请先进行认证操作',
 							success (res) {
@@ -85,7 +88,7 @@ Page({
 								}
 							}
 						})
-          })
+					})
 
         wx.hideLoading()
       } else {

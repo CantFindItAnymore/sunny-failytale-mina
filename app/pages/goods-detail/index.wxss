@@ -85,7 +85,7 @@ swiper-item
   background: #fff;
   padding: 30rpx;
   box-sizing: border-box;
-  font-size: 10rpx;
+  font-size: 20rpx;
 }
 
 .comment-desc>view {

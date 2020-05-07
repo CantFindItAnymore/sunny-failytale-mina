@@ -96,7 +96,6 @@ class ShopModel extends HTTP {
 
   //pay
   pay({
-    openId,
     orderNo,
     totalFee
   }) {
@@ -104,7 +103,6 @@ class ShopModel extends HTTP {
       url: 'wechat/pay/evoke-pay',
       method: 'POST',
       data: {
-        openId,
         orderNo,
         totalFee
       }

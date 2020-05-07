@@ -57,16 +57,16 @@ const rainbowList = [
 
 const outfitList = [
   {
-    src: '/imgs/outfit1.png'
+    src: 'https://tvax4.sinaimg.cn/large/006lIpJvgy1gejqnxmsvxj30a80ev79q.jpg'
   },
   {
-    src: '/imgs/outfit2.png'
+    src: 'https://tva3.sinaimg.cn/large/006lIpJvgy1gejqoitloxj307a0alwgh.jpg'
   },
   {
-    src: '/imgs/outfit3.png'
+    src: 'https://tva3.sinaimg.cn/large/006lIpJvgy1gejqootwhhj307a0altbn.jpg'
   },
   {
-    src: '/imgs/outfit4.png'
+    src: 'https://tvax4.sinaimg.cn/large/006lIpJvgy1gejqowicdgj30a80evti2.jpg'
   }
 ]
 

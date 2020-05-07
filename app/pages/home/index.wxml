@@ -17,22 +17,22 @@
       <image src="/imgs/logo.png" />
     </view>
     <image class="ss-new" src="/imgs/20ss_new.png" />
-    <image class="girl1" src="/imgs/girl1.png" />
+    <image class="girl1" src="https://tva2.sinaimg.cn/large/006lIpJvgy1gejqpt2vlmj30ku0egjzv.jpg" />
     <image class="boy1" src="/imgs/boy1.png" />
     <view class="new-and-hot">
       <view class="new">
-        <image src="/imgs/girl2.png" />
+        <image src="https://tvax4.sinaimg.cn/large/006lIpJvgy1gejqq28utyj30af0f60za.jpg" />
         <image src="/imgs/new_btn.png" />
       </view>
       <view class="hot">
-        <image src="/imgs/girl3.png" />
+        <image src="https://tvax4.sinaimg.cn/large/006lIpJvgy1gejqqd1d5lj30af0f647r.jpg" />
         <image src="/imgs/hot_btn.png" />
       </view>
     </view>
 
     <image class="ss-new ss-new2" src="/imgs/20ss_new.png" />
 
-    <image class="fly" src="/imgs/fly.png" />
+    <image class="fly" src="https://tvax1.sinaimg.cn/large/006lIpJvgy1gejqqvmm2tj30ku0by4da.jpg" />
     <view class="story">
       <view>
         <text>ENK SHANGHAI   2019   VOL.3</text>
@@ -41,7 +41,7 @@
       <image src="/imgs/story_btn.png" />
     </view>
     <view class="sale">
-      <image src="/imgs/boy2.png" />
+      <image src="https://tva3.sinaimg.cn/large/006lIpJvgy1gejqrjgwrej30ku0byjud.jpg" />
       <image src="/imgs/sale_btn.png" />
     </view>
     <view class="calssify">
@@ -68,11 +68,11 @@
 
     <view class="coupon-and-blueprint">
       <view class="coupon">
-        <image src="/imgs/coupon.png" />
+        <image src="https://tvax1.sinaimg.cn/large/006lIpJvgy1gejqqnuda0j30au0f0n4o.jpg" />
         <image src="/imgs/coupon_btn.png" />
       </view>
       <view class="blueprint">
-        <image src="/imgs/blueprint.png" />
+        <image src="https://tvax2.sinaimg.cn/large/006lIpJvgy1gejqr88cc7j30a507iwhd.jpg" />
         <image src="/imgs/blueprint_btn.png" />
       </view>
     </view>
@@ -88,7 +88,7 @@
       </view>
     </view>
 
-    <image class="outfit5" src="/imgs/outfit5.png" />
+    <image class="outfit5" src="https://tvax2.sinaimg.cn/large/006lIpJvgy1gejquwdek6j30ku0krn6s.jpg" />
 
     <image class="brand-btn" src="/imgs/brand_btn.png" />
 

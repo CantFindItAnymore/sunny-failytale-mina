@@ -12,6 +12,12 @@ class MyModel extends HTTP {
     })
   }
 
+  isAuthed() {
+    return this.request({
+      url: 'user/check/certification'
+    })
+  }
+
   getMyAddress() {
     return this.request({
       url: 'address/mine'

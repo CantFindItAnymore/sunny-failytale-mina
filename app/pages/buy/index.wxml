@@ -8,7 +8,7 @@
       </view>
       <view class="address-item">{{address.areaAddress}}{{address.address}}</view>
     </view>
-    <view>></view>
+    <view>〉</view>
   </view>
 
   <view class="detail">

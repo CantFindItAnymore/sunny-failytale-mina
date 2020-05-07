@@ -7,3 +7,37 @@
   padding: 30rpx;
   box-sizing: border-box;
 }
+
+.status {
+  height: 50rpx;
+  display: flex;
+  justify-content: flex-end;
+  border-bottom: 1rpx solid #999;
+}
+
+.detail {
+  min-height: 250rpx;
+  width: 100%;
+  padding: 30rpx;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+}
+
+.detail>image {
+  height: 170rpx;
+  width: 170rpx;
+}
+
+.detail>view:nth-child(2) {
+  flex: 1;
+  padding: 0 20rpx;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+.detail>view:nth-child(2)>view {
+  margin: 10rpx 0;
+}
+

@@ -1,9 +1,31 @@
 <view class="container">
-  <view class="item" wx:for="{{cardList}}" wx:key="index">
-    <view class="rate">
-      
+  <view class="item {{item.status?'lose':''}}" wx:for="{{cardList.data}}" wx:key="index">
+    <view class="content">
+      <view class="rate weight-font">
+        ￥{{item.couponPrice}}
+      </view>
+      <view class="desc">
+        <view>{{item.rule}}</view>
+        <view wx:if="{{item.validPrice}}">满{{item.validPrice}}元有效</view>
+        <view wx:else>无门槛</view>
+        <view>{{tool.getFullTime(item.validTime)}}至{{tool.getFullTime(item.invalidTime)}}</view>
+      </view>
+      <view class="status">
+        <image src="{{unSelected}}" />
+      </view>
     </view>
-    <view class="desc"></view>
-    <view class="status"></view>
+
+    <image wx:if="{{item.status === 1}}" class="loseIcon" src="{{used}}" />
+    <image wx:if="{{item.status === 2}}" class="loseIcon" src="{{lose}}" />
   </view>
+
 </view>
+
+<wxs module="tool">
+  var getFullTime = function(time){
+    return time.slice(0,11)
+  }
+  module.exports = {
+    getFullTime: getFullTime
+  }
+</wxs>

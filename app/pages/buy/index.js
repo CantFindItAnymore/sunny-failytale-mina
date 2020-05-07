@@ -95,11 +95,11 @@ Page({
       skuList,
       totalPrice: this.data.totalFee + 10
     })
-      .then(() => {
-        return ShopModel.pay({
-          openId: '',
-          orderNo: '',
-          totalFee: ''
+      .then(res => {
+        return Shop.pay({
+          orderNo: res,
+          // totalFee: (this.data.totalFee + 10)*100
+          totalFee: 0.01
         })
       })
       .then(res => {
