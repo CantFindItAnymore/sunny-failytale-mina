@@ -1,3 +1,7 @@
+.container {
+  background: wheat;
+}
+
 .item {
   min-height: 200rpx;
   width: 690rpx;
@@ -7,7 +11,7 @@
   padding: 20rpx;
   margin: 20rpx 0;
   box-sizing: border-box;
-  position: absolute;
+  /* position: absolute; */
 }
 
 .rate {
@@ -57,12 +61,21 @@
   width: 50rpx;
 }
 
-.loseIcon {
+.loseIcon,
+.usedIcon,
+.rabishIcon {
   position: absolute;
-  top: 0;
+  bottom: 0;
   right: 0;
   height: 100rpx;
   width: 100rpx;
+}
+
+.usedIcon {
+  height: 108rpx;
+  width: 108rpx;
+  margin-right: -2rpx;
+  margin-bottom: -1rpx;
 }
 
 
@@ -70,4 +83,21 @@
 
 .lose {
 	-webkit-filter: grayscale(.95);
+}
+
+.notice {
+  height: 200rpx;
+  line-height: 200rpx;
+}
+
+van-tab,
+van-tabs {
+  width: 100%;
+}
+
+.wrapper {
+  /* height: 1000rpx; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

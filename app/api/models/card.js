@@ -5,15 +5,13 @@ import {
 class CardModel extends HTTP {
 
   getCard({
-    current,
-    status
+    current
   }) {
     return this.request({
       url: 'coupon/user/query-user-coupons',
       method: 'POST',
       data: {
-        current,
-        status
+        current
       }
     })
   }

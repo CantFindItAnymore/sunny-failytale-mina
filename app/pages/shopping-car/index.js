@@ -25,15 +25,25 @@ Page({
   onShow: function (options) {
     My.getMyCar()
       .then(res => {
+
         ['all', 'depreciates', 'failures'].map(item => {
           res && res[item] && res[item].map((pro, index) => {
+            // 无值
             if (!Object.keys(this.data.catList).length) {
               pro.nowCount = pro.count
               pro.nowIsSelect = false
               console.log('没有 count')
             } else {
-              pro.nowCount = this.data.catList[item][index].nowCount || pro.count
-              pro.nowIsSelect = this.data.catList[item][index].nowIsSelect || false
+              // 有值
+              if (index > this.data.catList[item].length-1) {
+                // （防止count被覆盖）
+                pro.nowCount = pro.count
+                pro.nowIsSelect = false
+                console.log('xinzhi', index)
+              } else {
+                pro.nowCount = this.data.catList[item][index].nowCount
+                pro.nowIsSelect = this.data.catList[item][index].nowIsSelect
+              }
               console.log('有 count')
             }
           })
@@ -48,7 +58,8 @@ Page({
 
         res && this.setData({
           catList: res
-        })
+        });
+
       })
   },
 

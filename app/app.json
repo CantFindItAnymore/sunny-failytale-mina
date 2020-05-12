@@ -12,7 +12,9 @@
     "pages/card/index",
     "pages/collect/index",
     "pages/order/index",
-    "pages/person/index"
+    "pages/person/index",
+    "pages/buy-suc/index",
+    "pages/order-detail/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

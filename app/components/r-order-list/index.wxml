@@ -3,15 +3,31 @@
     <view class="status">{{status[item.status]}}</view>
 
     <view class="detail" wx:for="{{item.skuList}}" wx:for-item="pro" wx:key='index'>
-      <image src="{{pro.skuPicUrl}}" />
+      <image src="{{pro.skuPicUrl}}" bind:tap="toDetail" data-id="{{pro.productId}}" />
       <view>
         <view>{{pro.productName}}</view>
         <view>{{pro.skuName}}</view>
-        <view class="font-weight">￥{{pro.totalPrice}}</view>
+        <view class="weight-font">￥{{pro.totalPrice}}</view>
       </view>
+      <view>x {{pro.amount}}</view>
     </view>
 
-    <view class="rate"></view>
-    <view class="menu"></view>
+    <view class="rate weight-font">共{{item.skuList.length}}件商品，合计：￥{{item.realPrice}}（含运费）</view>
+    <view class="menu">
+      <view wx:if="{{item.status === 0}}" class="menu-item">
+        <van-button size='small' round type="info" bind:tap="handleBuyNow" data-id='{{item.id}}' data-realPrice='{{item.realPrice}}'>立即购买</van-button>
+        <van-button size='small' round type="info" bind:tap="handleCancel" data-id='{{item.id}}'>取消订单</van-button>
+      </view>
+      <view wx:if="{{item.status === 1}}" class="menu-item">
+      </view>
+      <view wx:if="{{item.status === 2}}" class="menu-item">
+        <van-button size='small' round type="info" bind:tap="handleLook" data-id='{{item.id}}'>查看物流</van-button>
+      </view>
+      <view wx:if="{{item.status === 3}}" class="menu-item">
+        <van-button size='small' round type="info" bind:tap="handleComment" data-id='{{item.id}}'>评价商品</van-button>
+      </view>
+      <view wx:if="{{item.status === 4}}" class="menu-item">
+      </view>
+    </view>
   </view>
 </view>

@@ -1,23 +1,100 @@
 <view class="container">
-  <view class="item {{item.status?'lose':''}}" wx:for="{{cardList.data}}" wx:key="index">
-    <view class="content">
-      <view class="rate weight-font">
-        ￥{{item.couponPrice}}
-      </view>
-      <view class="desc">
-        <view>{{item.rule}}</view>
-        <view wx:if="{{item.validPrice}}">满{{item.validPrice}}元有效</view>
-        <view wx:else>无门槛</view>
-        <view>{{tool.getFullTime(item.validTime)}}至{{tool.getFullTime(item.invalidTime)}}</view>
-      </view>
-      <view class="status">
-        <image src="{{unSelected}}" />
-      </view>
-    </view>
 
-    <image wx:if="{{item.status === 1}}" class="loseIcon" src="{{used}}" />
-    <image wx:if="{{item.status === 2}}" class="loseIcon" src="{{lose}}" />
-  </view>
+  <van-tabs active="{{ active || 'ok' }}" sticky  bind:click="onClickTab">
+    <van-tab title="未使用" name='ok'>
+      <view class="wrapper">
+        <view class="item" wx:for="{{okList}}" wx:key="index" bind:tap="handleSelectCard" data-index='{{index}}'>
+          <view class="content">
+            <view class="rate weight-font">
+              ￥{{item.couponPrice}}
+            </view>
+            <view class="desc">
+              <view>{{item.rule}}</view>
+              <view wx:if="{{item.validPrice}}">满{{item.validPrice}}元有效</view>
+              <view wx:else>无门槛</view>
+              <view>{{tool.getFullTime(item.validTime)}}至{{tool.getFullTime(item.invalidTime)}}</view>
+            </view>
+            <view class="status">
+              <image src="{{unSelected}}" />
+            </view>
+          </view>
+
+          <image wx:if="{{item.status === 1}}" class="loseIcon" src="{{used}}" />
+          <image wx:if="{{item.status === 2}}" class="loseIcon" src="{{lose}}" />
+        </view>
+        <view class="notice" wx:if="{{okList.length}}">暂无未使用优惠券</view>
+      </view>
+    </van-tab>
+
+    <van-tab title="已使用" name='used'>
+      <view class="wrapper">
+        <view class="item lose" wx:for="{{usedList}}" wx:key="index">
+          <view class="content">
+            <view class="rate weight-font">
+              ￥{{item.couponPrice}}
+            </view>
+            <view class="desc">
+              <view>{{item.rule}}</view>
+              <view wx:if="{{item.validPrice}}">满{{item.validPrice}}元有效</view>
+              <view wx:else>无门槛</view>
+              <view>{{tool.getFullTime(item.validTime)}}至{{tool.getFullTime(item.invalidTime)}}</view>
+            </view>
+            <view class="status">
+              <image src="{{unSelected}}" />
+            </view>
+          </view>
+
+          <image class="usedIcon" src="{{used}}" />
+        </view>
+        <view class="notice" wx:if="{{!usedList.length}}">暂无已使用优惠券</view>
+      </view>
+    </van-tab>
+
+    <van-tab title="已过期" name='losed'>
+      <view class="wrapper">
+        <view class="item lose" wx:for="{{losedList}}" wx:key="index">
+          <view class="content">
+            <view class="rate weight-font">
+              ￥{{item.couponPrice}}
+            </view>
+            <view class="desc">
+              <view>{{item.rule}}</view>
+              <view wx:if="{{item.validPrice}}">满{{item.validPrice}}元有效</view>
+              <view wx:else>无门槛</view>
+              <view>{{tool.getFullTime(item.validTime)}}至{{tool.getFullTime(item.invalidTime)}}</view>
+            </view>
+            <view class="status">
+              <image src="{{unSelected}}" />
+            </view>
+          </view>
+          <image class="loseIcon" src="{{lose}}" />
+        </view>
+        <view class="notice" wx:if="{{!losedList.length}}">暂无已过期优惠券</view>
+      </view>
+    </van-tab>
+    <van-tab title="已作废" name='rabish'>
+      <view class="wrapper">
+        <view class="item lose" wx:for="{{rabishList}}" wx:key="index">
+          <view class="content">
+            <view class="rate weight-font">
+              ￥{{item.couponPrice}}
+            </view>
+            <view class="desc">
+              <view>{{item.rule}}</view>
+              <view wx:if="{{item.validPrice}}">满{{item.validPrice}}元有效</view>
+              <view wx:else>无门槛</view>
+              <view>{{tool.getFullTime(item.validTime)}}至{{tool.getFullTime(item.invalidTime)}}</view>
+            </view>
+            <view class="status">
+              <image src="{{unSelected}}" />
+            </view>
+          </view>
+          <image class="rabishIcon" src="{{rabish}}" />
+        </view>
+        <view class="notice" wx:if="{{!rabishList.length}}">暂无已作废优惠券</view>
+      </view>
+    </van-tab>
+  </van-tabs>
 
 </view>
 

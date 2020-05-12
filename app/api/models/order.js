@@ -10,6 +10,12 @@ class OrderModel extends HTTP {
     })
   }
 
+  cancelOrder(id) {
+    return this.request({
+      url: 'order/cancel/' + id
+    })
+  }
+
 }
 
 export {

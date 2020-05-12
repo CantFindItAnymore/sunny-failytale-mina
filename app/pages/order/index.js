@@ -7,7 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    active: 'all',
+    active: '',
     allList: [],
     payList: [],
     deliveryList: [],
@@ -37,5 +37,9 @@ Page({
     this.setData({
       active: e.detail.name
     })
+  },
+
+  refresh() {
+    this.onShow()
   }
 })

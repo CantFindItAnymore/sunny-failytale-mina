@@ -99,11 +99,26 @@ Page({
         return Shop.pay({
           orderNo: res,
           // totalFee: (this.data.totalFee + 10)*100
-          totalFee: 0.01
+          totalFee: 1
         })
       })
       .then(res => {
-
+        console.log(res.packageValue)
+        wx.requestPayment({
+          timeStamp: res.timestamp.toString(),
+          nonceStr: res.nonceStr,
+          package: res.packageValue,
+          signType: 'MD5',
+          paySign: res.paySign,
+          success () {
+            wx.redirectTo({
+              url: '/pages/buy-suc/index'
+            })
+          },
+          fail (res) {
+            console.log(res)
+          }
+        })
       })
   }
 })
