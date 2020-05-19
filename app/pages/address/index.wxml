@@ -6,10 +6,11 @@
   >
     <view
       class="address-item"
-      bind:tap="selectAddress"
-      data-index='{{index}}'
     >
-      <view>
+      <view
+        bind:tap="selectAddress"
+        data-index='{{index}}'
+      >
         <view class="weight-font">{{item.userName}}</view>
         <view>{{item.phoneNumber}}</view>
         <van-tag type="warning" wx:if="{{item.isDefault}}">默认地址</van-tag>

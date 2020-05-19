@@ -63,11 +63,11 @@ Page({
           sex: res.sex === 1?'女':(res.sex === 0?'男':''),
           sexShow: false,
           birthday: res.birthday,
-          likeActivity: actionsList.likeActivity.filter(item => (item.value === res.favoriteActivity.toString()))[0],
-          likeService: actionsList.likeService.filter(item => (item.value === res.favoriteService.toString()))[0],
-          likeEnvironment: actionsList.likeEnvironment.filter(item => (item.value === res.favoriteShopping.toString()))[0],
-          likeMethod: actionsList.likeMethod.filter(item => (item.value === res.favoriteShoppingWay.toString()))[0],
-          job: actionsList.job.filter(item => (item.value === res.job.toString()))[0]
+          likeActivity: actionsList.likeActivity.filter(item => (item.value === res.favoriteActivity.toString()))[0] || '',
+          likeService: actionsList.likeService.filter(item => (item.value === res.favoriteService.toString()))[0] || '',
+          likeEnvironment: actionsList.likeEnvironment.filter(item => (item.value === res.favoriteShopping.toString()))[0] || '',
+          likeMethod: actionsList.likeMethod.filter(item => (item.value === res.favoriteShoppingWay.toString()))[0] || '',
+          job: actionsList.job.filter(item => (item.value === res.job.toString()))[0] || ''
         }
 
         let babyInfo = {

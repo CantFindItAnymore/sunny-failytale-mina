@@ -111,9 +111,9 @@ Page({
           signType: 'MD5',
           paySign: res.paySign,
           success () {
-            wx.redirectTo({
-              url: '/pages/buy-suc/index'
-            })
+            // wx.redirectTo({
+            //   url: '/pages/buy-suc/index'
+            // })
           },
           fail (res) {
             console.log(res)

@@ -105,6 +105,7 @@
     price="{{ catList.nowAllPrice[activeTab] * 100 || 0 }}"
     button-text="去结算"
     bind:submit="onBuy"
+    button-class='btn-class'
   >
     <view class="select-btn" bind:tap='switchSelectAll'>全选 <image src="{{selectedAll[activeTab]===2?selected:unSelected}}" /></view>
   </van-submit-bar>

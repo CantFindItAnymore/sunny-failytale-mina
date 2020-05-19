@@ -197,25 +197,34 @@ Page({
     this.data.detail.productType.map(item => {
       productType.push(item.id)
     })
-    this.data.activeBuyType === 'add' && Shop.addShopCar({
-      addPrice: this.data.skuInfo.price,
-      count: this.data.skuInfo.count,
-      productId: this.data.gid,
-      skuId: this.data.skuInfo.skuId,
-      productType
-    })
-      .then(() => {
-        wx.showToast({
-          title: '添加成功',
-          icon: 'none',
-          duration: 2000
-        })
-        this.setData({
-          skuShow: false
-        })
+    if (this.data.activeBuyType === 'add') {
+      Shop.addShopCar({
+        addPrice: this.data.skuInfo.price,
+        count: this.data.skuInfo.count,
+        productId: this.data.gid,
+        skuId: this.data.skuInfo.skuId,
+        productType
       })
+        .then(() => {
+          wx.showToast({
+            title: '添加成功',
+            icon: 'none',
+            duration: 2000
+          })
+          this.setData({
+            skuShow: false
+          })
+        })
+    }
 
-    // this.data.activeBuyType === 'buy'
+    if (this.data.activeBuyType === 'buy') {
+
+      wx.setStorageSync('buyList', [this.data.skuInfo])
+
+      wx.navigateTo({
+        url: '/pages/buy/index'
+      })
+    }
   },
 
   _getCollection() {

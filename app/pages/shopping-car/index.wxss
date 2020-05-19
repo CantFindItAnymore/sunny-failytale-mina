@@ -68,3 +68,7 @@ van-swipe-cell {
   right: 0;
   bottom: 30rpx;
 } */
+
+.btn-class {
+  background: #FFCBA1;
+}
