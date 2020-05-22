@@ -45,6 +45,7 @@ Page({
   },
 
   selectAddress(e) {
+    console.log(1)
     if (this.data.fromBuyPage) {
       wx.setStorageSync('address', this.data.addressList[e.currentTarget.dataset.index])
       wx.navigateBack({
@@ -127,7 +128,12 @@ Page({
   handleDelAddress(e) {
     My.delAddress([e.currentTarget.dataset.id])
       .then(() => {
-        this.onLoad()
+        return My.getMyAddress()
+      })
+      .then(res => {
+        this.setData({
+          addressList: res
+        })
       })
   },
 
@@ -151,8 +157,12 @@ Page({
             address: ''
           }
         })
-
-        this.onLoad()
+        return My.getMyAddress()
+      })
+      .then(res => {
+        this.setData({
+          addressList: res
+        })
       })
   },
 
@@ -203,7 +213,12 @@ Page({
           this.setData({
             dialogShow: false
           })
-          this.onLoad()
+          return My.getMyAddress()
+        })
+        .then(res => {
+          this.setData({
+            addressList: res
+          })
         })
     } else {
       // 编辑
@@ -219,7 +234,12 @@ Page({
           this.setData({
             dialogShow: false
           })
-          this.onLoad()
+          return My.getMyAddress()
+        })
+        .then(res => {
+          this.setData({
+            addressList: res
+          })
         })
     }
   }

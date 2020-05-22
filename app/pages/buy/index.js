@@ -13,6 +13,7 @@ Page({
     address: {},
     buyList: [],
     remark: '',
+    orderNo: null,
     totalFee: 0
   },
 
@@ -96,14 +97,19 @@ Page({
       totalPrice: this.data.totalFee + 10
     })
       .then(res => {
+        this.setData({
+          orderNo: res.code
+        })
         return Shop.pay({
-          orderNo: res,
+          orderNo: res.code,
+          orderId: res.id,
           // totalFee: (this.data.totalFee + 10)*100
-          totalFee: 1
+          totalFee: '1'
         })
       })
       .then(res => {
         console.log(res.packageValue)
+        const _this = this
         wx.requestPayment({
           timeStamp: res.timestamp.toString(),
           nonceStr: res.nonceStr,
@@ -111,9 +117,15 @@ Page({
           signType: 'MD5',
           paySign: res.paySign,
           success () {
-            // wx.redirectTo({
-            //   url: '/pages/buy-suc/index'
-            // })
+            let timer = setTimeout(() => {
+              Shop.checkPay(_this.data.orderNo)
+                .then(() => {
+                  clearTimeout(timer)
+                  wx.redirectTo({
+                    url: '/pages/buy-suc/index'
+                  })
+                })
+            }, 1000)
           },
           fail (res) {
             console.log(res)

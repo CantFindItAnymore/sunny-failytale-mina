@@ -14,7 +14,10 @@
     "pages/order/index",
     "pages/person/index",
     "pages/buy-suc/index",
-    "pages/order-detail/index"
+    "pages/order-detail/index",
+    "pages/refund/index",
+    "pages/comment/index",
+    "pages/log/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

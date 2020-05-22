@@ -18,3 +18,23 @@ page>.container {
   font-size: 28rpx;
   font-weight: bolder;
 }
+
+/* 底部按钮view */
+.bottom-btn-container {
+  height: 150rpx;
+  width: 100%;
+  padding: 30rpx;
+  box-sizing: border-box;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 9;
+}
+.bottom-btn-container>van-button {
+  width: 100%;
+}

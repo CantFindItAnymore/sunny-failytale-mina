@@ -29,14 +29,23 @@ Component({
         url: '/pages/goods-detail/index?gid=' + e.currentTarget.dataset.id
       })
     },
+
+    handleDetail(e) {
+      wx.navigateTo({
+        url: '/pages/order-detail/index?orderId=' + e.currentTarget.dataset.id
+      })
+    },
+
     handleBuyNow(e) {
 
       Shop.pay({
-        orderNo: e.currentTarget.dataset.id,
-        // totalFee: (e.currentTarget.dataset.realPrice)*100
-        totalFee: 101
+        orderNo: e.currentTarget.dataset.code,
+        orderId: e.currentTarget.dataset.id,
+        // totalFee: (this.data.totalFee + 10)*100
+        totalFee: '1'
       })
         .then(res => {
+          const _this = this
           wx.requestPayment({
             timeStamp: res.timestamp.toString(),
             nonceStr: res.nonceStr,
@@ -44,9 +53,15 @@ Component({
             signType: 'MD5',
             paySign: res.paySign,
             success () {
-              wx.redirectTo({
-                url: '/pages/buy-suc/index'
-              })
+              let timer = setTimeout(() => {
+                Shop.checkPay(e.currentTarget.dataset.code)
+                  .then(() => {
+                    clearTimeout(timer)
+                    wx.redirectTo({
+                      url: '/pages/buy-suc/index'
+                    })
+                  })
+              }, 1000)
             },
             fail (res) {
               console.log(res)
@@ -67,11 +82,23 @@ Component({
         })
     },
     handleLook(e) {
-
+      wx.navigateTo({
+        url: '/pages/log/index?orderId=' + e.currentTarget.dataset.id
+      })
     },
     handleComment(e) {
       wx.navigateTo({
-        url: '/pages/comment/index'
+        url: '/pages/comment/index?orderId=' + e.currentTarget.dataset.id
+      })
+    },
+    handleRefund(e) {
+      wx.navigateTo({
+        url: `/pages/refund/index?type=${e.currentTarget.dataset.type}&orderId=${e.currentTarget.dataset.id}`
+      })
+    },
+    handleExchange(e) {
+      wx.navigateTo({
+        url: `/pages/refund/index?type=${e.currentTarget.dataset.type}&orderId=${e.currentTarget.dataset.id}`
       })
     },
   }

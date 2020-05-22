@@ -3,11 +3,12 @@ import {
 } from '../http.js'
 
 class MyModel extends HTTP {
-  login(jsCode) {
+  login({jsCode, nickName}) {
     return this.request({
       url: 'user/auth/login',
       data: {
-        jsCode
+        jsCode,
+        nickName
       }
     })
   }

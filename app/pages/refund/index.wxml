@@ -1,0 +1,18 @@
+<view class="container">
+
+  <van-field
+    value="{{ info.reason }}"
+    label="{{typeText[type]}}原因"
+    type="textarea"
+    maxlength='150'
+    autosize
+    clearable
+    auto-focus
+    show-word-limit
+  />
+
+  <view class="bottom-btn-container">
+    <van-button size='large' color='#FFCBA1' bind:tap="handleRefund">申请{{typeText[type]}}</van-button>
+  </view>
+
+</view>

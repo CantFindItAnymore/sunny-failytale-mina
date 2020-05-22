@@ -14,19 +14,21 @@
 
     <view class="rate weight-font">共{{item.skuList.length}}件商品，合计：￥{{item.realPrice}}（含运费）</view>
     <view class="menu">
-      <view wx:if="{{item.status === 0}}" class="menu-item">
-        <van-button size='small' round type="info" bind:tap="handleBuyNow" data-id='{{item.id}}' data-realPrice='{{item.realPrice}}'>立即购买</van-button>
-        <van-button size='small' round type="info" bind:tap="handleCancel" data-id='{{item.id}}'>取消订单</van-button>
+      <view wx:if="{{item.status === 0}}" class="menu-item" bind:tap='handleDetail'>
+        <van-button color='#FFCBA1' size='small' round type="info" catch:tap="handleBuyNow" data-id='{{item.id}}' data-code='{{item.code}}' data-realPrice='{{item.realPrice}}'>立即购买</van-button>
       </view>
-      <view wx:if="{{item.status === 1}}" class="menu-item">
+      <view wx:if="{{item.status === 1}}" class="menu-item" bind:tap='handleDetail'>
+        <van-button color='#FFCBA1' size='small' round type="info" catch:tap="handleCancel" data-id='{{item.id}}'>取消订单</van-button>
       </view>
-      <view wx:if="{{item.status === 2}}" class="menu-item">
-        <van-button size='small' round type="info" bind:tap="handleLook" data-id='{{item.id}}'>查看物流</van-button>
+      <view wx:if="{{item.status === 2}}" class="menu-item" bind:tap='handleDetail'>
+        <van-button color='#FFCBA1' size='small' round type="info" catch:tap="handleLook" data-id='{{item.id}}'>查看物流</van-button>
       </view>
-      <view wx:if="{{item.status === 3}}" class="menu-item">
-        <van-button size='small' round type="info" bind:tap="handleComment" data-id='{{item.id}}'>评价商品</van-button>
+      <view wx:if="{{item.status === 3}}" class="menu-item" bind:tap='handleDetail'>
+        <van-button color='#FFCBA1' size='small' round type="info" catch:tap="handleComment" data-id='{{item.id}}'>评价商品</van-button>
+        <van-button color='#FFCBA1' size='small' round type="info" catch:tap="handleRefund" data-id='{{item.id}}' data-type='0'>退货</van-button>
+        <van-button color='#FFCBA1' size='small' round type="info" catch:tap="handleExchange" data-id='{{item.id}}' data-type='1'>换货</van-button>
       </view>
-      <view wx:if="{{item.status === 4}}" class="menu-item">
+      <view wx:if="{{item.status === 4}}" class="menu-item" bind:tap='handleDetail'>
       </view>
     </view>
   </view>

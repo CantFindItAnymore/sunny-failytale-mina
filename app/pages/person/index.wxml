@@ -19,6 +19,7 @@
       data-type='mobile'
       type='number'
       input-align="right"
+      maxlength='11'
       hold-keyboard
       auto-focus
       required

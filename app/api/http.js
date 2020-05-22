@@ -100,7 +100,8 @@ const http = class HTTP {
                     'content-type': 'application/json'
                   },
                   data: {
-                    jsCode: res.code
+                    jsCode: res.code,
+                    nickName: wx.getStorageSync('nickName')
                   },
                   success (res) {
                     wx.setStorageSync('token', res.data.data.token)

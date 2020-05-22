@@ -3,7 +3,7 @@
   <van-tabs active="{{ active || 'ok' }}" sticky  bind:click="onClickTab">
     <van-tab title="未使用" name='ok'>
       <view class="wrapper">
-        <view class="item" wx:for="{{okList}}" wx:key="index" bind:tap="handleSelectCard" data-index='{{index}}'>
+        <view class="item" wx:for="{{okList.length}}" wx:key="index" bind:tap="handleSelectCard" data-index='{{index}}'>
           <view class="content">
             <view class="rate weight-font">
               ￥{{item.couponPrice}}
@@ -22,7 +22,7 @@
           <image wx:if="{{item.status === 1}}" class="loseIcon" src="{{used}}" />
           <image wx:if="{{item.status === 2}}" class="loseIcon" src="{{lose}}" />
         </view>
-        <view class="notice" wx:if="{{okList.length}}">暂无未使用优惠券</view>
+        <view class="notice" wx:if="{{!okList.length}}">暂无未使用优惠券</view>
       </view>
     </van-tab>
 

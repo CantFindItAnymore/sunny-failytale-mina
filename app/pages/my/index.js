@@ -68,8 +68,12 @@ Page({
         this.setData({
           userInfo,
           authorized: true,
-        })
-        My.login(this.data.jsCode)
+				})
+				wx.setStorageSync('nickName', userInfo.nickName)
+        My.login({
+					jsCode: this.data.jsCode,
+					nickName: userInfo.nickName
+				})
           .then(res => {
 						console.log(res)
 						wx.setStorageSync('token', res.token)

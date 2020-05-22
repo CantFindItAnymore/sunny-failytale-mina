@@ -55,16 +55,6 @@ class ShopModel extends HTTP {
     })
   }
 
-  // buy
-  buy({
-  }) {
-    return this.request({
-      url: 'order/place',
-      method: 'POST',
-      data: {
-      }
-    })
-  }
 
   place({
     address,
@@ -97,6 +87,7 @@ class ShopModel extends HTTP {
   //pay
   pay({
     orderNo,
+    orderId,
     totalFee
   }) {
     return this.request({
@@ -104,8 +95,47 @@ class ShopModel extends HTTP {
       method: 'POST',
       data: {
         orderNo,
+        orderId,
         totalFee
       }
+    })
+  }
+
+  checkPay(orderNo) {
+    return this.request({
+      url: 'wechat/pay/pay-query',
+      method: 'POST',
+      data: {
+        orderNo
+      }
+    })
+  }
+
+  refundOrExchange({
+    orderId,
+    reason,
+    type
+  }) {
+    return this.request({
+      url: 'order/returns/apply',
+      method: 'POST',
+      data: {
+        agree,
+        expressCode,
+        expressCompanyName,
+        id,
+        orderId,
+        reason,
+        rejectReason,
+        returnsPrice,
+        type
+      }
+    })
+  }
+
+  cancelOrder(id) {
+    return this.request({
+      url: 'order/cancel/' + id
     })
   }
 }

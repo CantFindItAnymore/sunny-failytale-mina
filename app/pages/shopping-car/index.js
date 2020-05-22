@@ -109,7 +109,7 @@ Page({
       default:
         break;
     }
-    
+
     this._computeAllPrice()
     this.setData({
       selectedAll

@@ -46,12 +46,15 @@
         type="textarea"
         autosize
         bind:change='onChange'
+        maxlength='100'
+        clearable
+        show-word-limit
       />
     </van-cell-group>
   </view>
 
   <view class="footer">
-    <view>共2件商品</view>
+    <view>共{{buyList.length}}件商品</view>
     <view>合计：<text class="weight-font" style="color: #FFCBA1">￥{{totalFee+10}}</text></view>
     <van-button color='#FFCBA1' round type='danger' size='small' bind:tap="onPay">
       支付
