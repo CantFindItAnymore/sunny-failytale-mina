@@ -14,7 +14,8 @@ Page({
     buyList: [],
     remark: '',
     orderNo: null,
-    totalFee: 0
+    totalFee: 0,
+    selectedCard: null
   },
 
   /**
@@ -50,11 +51,22 @@ Page({
     address && this.setData({
       address
     })
+
+    const selectedCard = wx.getStorageSync('selectedCard')
+    selectedCard && this.setData({
+      selectedCard
+    })
   },
 
   changeAddress() {
     wx.navigateTo({
       url: '/pages/address/index?from=buyPage'
+    })
+  },
+
+  toCard() {
+    wx.navigateTo({
+      url: '/pages/card/index?from=buyPage'
     })
   },
 
@@ -88,11 +100,10 @@ Page({
         phone: this.data.address.phoneNumber
       },
       carriage: '10.00',
-      // couponId: '',
-      // couponPrice: ,
-      // couponUserId: '',
+      couponPrice: this.data.selectedCard.couponPrice || null,
+      couponUserId: this.data.selectedCard.id || null,
       leaveWord: this.data.remark,
-      realPrice: this.data.totalFee + 10,
+      realPrice: this.data.totalFee + 10 - this.data.selectedCard.couponPrice,
       skuList,
       totalPrice: this.data.totalFee + 10
     })
@@ -103,8 +114,8 @@ Page({
         return Shop.pay({
           orderNo: res.code,
           orderId: res.id,
-          // totalFee: (this.data.totalFee + 10)*100
-          totalFee: '1'
+          // totalFee: (this.data.totalFee + 10) * 100 - (this.data.selectedCard.couponPrice || 0) * 100
+          totalFee: (this.data.totalFee) * 100 - (this.data.selectedCard.couponPrice || 0) * 100
         })
       })
       .then(res => {

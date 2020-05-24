@@ -16,6 +16,26 @@ class CardModel extends HTTP {
     })
   }
 
+  checkCard({
+    invalidTime,
+    productTypes,
+    skuList,
+    validPrice,
+    validTime
+  }) {
+    return this.request({
+      url: 'coupon/user/verify-useable',
+      method: 'POST',
+      data: {
+        invalidTime,
+        productTypes,
+        skuList,
+        validPrice,
+        validTime
+      }
+    })
+  }
+
 }
 
 export {

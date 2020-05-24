@@ -3,7 +3,7 @@
   <van-tabs active="{{ active || 'ok' }}" sticky  bind:click="onClickTab">
     <van-tab title="未使用" name='ok'>
       <view class="wrapper">
-        <view class="item" wx:for="{{okList.length}}" wx:key="index" bind:tap="handleSelectCard" data-index='{{index}}'>
+        <view wx:for="{{okList}}" class="item" wx:key="index" bind:tap="handleSelectCard" data-index='{{index}}'>
           <view class="content">
             <view class="rate weight-font">
               ￥{{item.couponPrice}}
@@ -99,8 +99,10 @@
 </view>
 
 <wxs module="tool">
-  var getFullTime = function(time){
-    return time.slice(0,11)
+  var getFullTime = function(originTime){
+    console.log(originTime)
+    var time = originTime.slice(0,11)
+    return time
   }
   module.exports = {
     getFullTime: getFullTime

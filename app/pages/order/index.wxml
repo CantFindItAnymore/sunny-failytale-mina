@@ -1,6 +1,6 @@
 <view class="container">
 
-  <van-tabs active="{{ active || 'all' }}" sticky  bind:click="onClickTab">
+  <van-tabs active="{{ active }}" sticky  bind:click="onClickTab">
     <van-tab title="全部" name='all'>
       <r-order-list list='{{allList}}' bind:refresh='refresh' />
     </van-tab>

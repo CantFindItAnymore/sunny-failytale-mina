@@ -2,3 +2,8 @@
   background: #F2F2F2;
 }
 
+van-tabs,
+van-tab {
+  width: 100%;
+}
+

@@ -59,7 +59,6 @@ class ShopModel extends HTTP {
   place({
     address,
     carriage,
-    couponId=null,
     couponPrice=null,
     couponUserId=null,
     leaveWord=null,
@@ -73,7 +72,6 @@ class ShopModel extends HTTP {
       data: {
         address,
         carriage,
-        couponId,
         couponPrice,
         couponUserId,
         leaveWord,
@@ -136,6 +134,12 @@ class ShopModel extends HTTP {
   cancelOrder(id) {
     return this.request({
       url: 'order/cancel/' + id
+    })
+  }
+
+  getOrderDetail(id) {
+    return this.request({
+      url: 'order/details/' + id
     })
   }
 }
