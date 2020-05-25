@@ -42,19 +42,29 @@ Page({
                 console.log('xinzhi', index)
               } else {
                 pro.nowCount = this.data.catList[item][index].nowCount
-                pro.nowIsSelect = this.data.catList[item][index].nowIsSelect
+                // pro.nowIsSelect = this.data.catList[item][index].nowIsSelect
+                pro.nowIsSelect = false
               }
               console.log('有 count')
             }
           })
         })
 
-        if (res && !res.nowAllPrice) {
+        // if (res && !res.nowAllPrice) {
           res.nowAllPrice = {
-          all: 0,
-          depreciates: 0,
-          failures: 0
-        }}
+            all: 0,
+            depreciates: 0,
+            failures: 0
+          }
+        // }
+
+        this.setData({
+          selectedAll: {
+            all: 0,
+            depreciates: 0,
+            failures: 0
+          }
+        })
 
         res && this.setData({
           catList: res

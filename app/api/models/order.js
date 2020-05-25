@@ -16,6 +16,12 @@ class OrderModel extends HTTP {
     })
   }
 
+  getOrderDetail(id) {
+    return this.request({
+      url: 'order/details/' + id
+    })
+  }
+
 }
 
 export {

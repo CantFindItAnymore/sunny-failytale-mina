@@ -30,8 +30,8 @@ Page({
 
   handleRefund() {
     Shop.refundOrExchange({
-      orderId,
-      reason,
+      orderId: this.data.orderId,
+      reason: this.data.reason,
       type: this.data.type
     })
       .then(() => {

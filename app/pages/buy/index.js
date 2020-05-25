@@ -111,6 +111,9 @@ Page({
         this.setData({
           orderNo: res.code
         })
+        // 清除优惠券&buyList
+        wx.removeStorageSync('selectedCard')
+        wx.removeStorageSync('buyList')
         return Shop.pay({
           orderNo: res.code,
           orderId: res.id,

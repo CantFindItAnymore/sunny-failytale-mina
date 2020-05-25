@@ -18,6 +18,9 @@
     </view>
     <image class="ss-new" src="/imgs/20ss_new.png" />
     <image class="girl1" src="https://tva2.sinaimg.cn/large/006lIpJvgy1gejqpt2vlmj30ku0egjzv.jpg" />
+    <!-- 轮播 -->
+    
+
     <image class="boy1" src="/imgs/boy1.png" />
     <view class="new-and-hot">
       <view class="new">
@@ -97,7 +100,7 @@
       <image src="/imgs/logo.png" />
     </view>
 
-    <view class="footer-title">全部商品 go shopping......</view>
+    <view class="footer-title" bind:tap='goShop'>全部商品 go shopping......</view>
   </view>
 
 </view>

@@ -1,7 +1,7 @@
 <view class="container">
 
   <van-field
-    value="{{ info.reason }}"
+    value="{{ reason }}"
     label="{{typeText[type]}}原因"
     type="textarea"
     maxlength='150'

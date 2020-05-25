@@ -1,2 +1,25 @@
-<!--pages/order-detail/index.wxml-->
-<text>pages/order-detail/index.wxml</text>
+<view class="container">
+
+  <view class="banner">
+    {{status[detail.status]}}
+  </view>
+
+  <view class="address">
+    <view>
+      <view class="weight-font">{{detail.address.consignee}}</view>
+      <view>{{detail.address.phone}}</view>
+    </view>
+    <view>{{detail.address.areaAddress}} {{detail.address.detailedAddress}}</view>
+  </view>
+
+  <view class="detail" wx:for="{{detail.skuList}}" wx:for-item="pro" wx:key='index'>
+    <image src="{{pro.skuPicUrl}}" bind:tap="toDetail" data-id="{{pro.productId}}" />
+    <view>
+      <view>{{pro.productName}}</view>
+      <view>{{pro.skuName}}</view>
+      <view class="weight-font">￥{{pro.totalPrice}}</view>
+    </view>
+    <view>x {{pro.amount}}</view>
+  </view>
+
+</view>

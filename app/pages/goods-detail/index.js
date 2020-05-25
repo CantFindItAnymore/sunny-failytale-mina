@@ -220,14 +220,24 @@ Page({
     if (this.data.activeBuyType === 'buy') {
 
       let buyList = []
-      this.data.catList.all && this.data.catList.all.map(item => {
-        if (item.nowIsSelect) {
-          buyList.push(item)
-        }
-      })
-      this.data.catList.depreciates && this.data.catList.depreciates.map(item => {
-        if (item.nowIsSelect) {
-          buyList.push(item)
+      buyList.push({
+        id: this.data.detail.id,
+        productId: this.data.gid,
+        skuId: this.data.skuInfo.skuId,
+        nowCount: this.data.skuInfo.count,
+        addPrice: this.data.skuInfo.price,
+        productSkuVo: {
+          productId: this.data.gid,
+          code: this.data.detail.code,
+          name: this.data.detail.name,
+          productType: this.data.detail.productType,
+          mainPicUrl: this.data.detail.mainPicUrl,
+          // onsale: this.data.gid,
+          skuId: this.data.skuInfo.skuId,
+          skuName: this.data.skuInfo.selectedSkuName,
+          remainStoreNum: this.data.skuInfo.remainStoreNum,
+          price: this.data.skuInfo.price,
+          picUrl: this.data.skuInfo.url,
         }
       })
 

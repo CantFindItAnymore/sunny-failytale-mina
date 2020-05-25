@@ -1,66 +1,88 @@
-// pages/comment/index.js
+import { ShopModel } from "../../api/models/shop"
+const Shop = new ShopModel()
+
+// pages/refund/index.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    selected: '/imgs/selected.png',
+    unSelected: '/imgs/unSelected.png',
+    comment: '',
+    orderId: '',
+    commentSkuList: [],
+    activeSku: {}
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    const { orderId } = options
+    this.setData({
+      orderId
+    })
 
+    let commentSkuList = wx.getStorageSync('commentSkuList')
+    if (commentSkuList.length === 1) {
+      commentSkuList.map(item => {
+        item.nowIsSelect = true
+      })
+    } else {
+      commentSkuList.map(item => {
+        item.nowIsSelect = false
+      })
+    }
+    this.setData({
+      commentSkuList
+    })
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
+  switchSelected(e) {
 
+    let commentSkuList = this.data.commentSkuList
+    let activeSku = this.data.activeSku
+    if (commentSkuList.length === 1) {
+      return
+    } else {
+      commentSkuList[e.currentTarget.dataset.index].nowIsSelect = !commentSkuList[e.currentTarget.dataset.index].nowIsSelect
+
+      commentSkuList[e.currentTarget.dataset.index].nowIsSelect === true && (activeSku = commentSkuList[e.currentTarget.dataset.index])
+
+      commentSkuList.map((item, index) => {
+        if (index !== e.currentTarget.dataset.index) {
+          item.nowIsSelect = false
+        }
+      })
+
+      this.setData({
+        commentSkuList,
+        activeSku
+      })
+    }
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
+  handleRefund() {
+    Shop.comment({
+      orderId: this.data.orderId,
+      comment: this.data.comment,
+      productId: this.data.activeSku.productId,
+      skuId: this.data.activeSku.skuId
+    })
+      .then(() => {
+        wx.showToast({
+          title: `评价成功`,
+          icon: 'none',
+          duration: 2000
+        })
 
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+        setTimeout(() => {
+          wx.navigateBack({
+            delta: 1
+          })
+        }, 1000)
+      })
   }
 })

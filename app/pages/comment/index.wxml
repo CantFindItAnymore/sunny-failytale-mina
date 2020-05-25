@@ -1,2 +1,38 @@
-<!--pages/comment/index.wxml-->
-<text>pages/comment/index.wxml</text>
+<view class="container">
+
+  <view class="detail" wx:for="{{commentSkuList}}" wx:for-item="pro" wx:key='index'>
+    <view
+      class="tags-container"
+      bind:tap="switchSelected"
+      data-index='{{index}}'
+    >
+      <image
+        src="{{pro.nowIsSelect?selected:unSelected}}"
+      />
+    </view>
+    <image src="{{pro.skuPicUrl}}" />
+    <view>
+      <view>{{pro.productName}}</view>
+      <view>{{pro.skuName}}</view>
+      <view class="weight-font">￥{{pro.totalPrice}}</view>
+    </view>
+    <view>x {{pro.amount}}</view>
+
+  </view>
+
+  <van-field
+    value="{{ comment }}"
+    label="评价商品"
+    type="textarea"
+    maxlength='150'
+    autosize
+    clearable
+    auto-focus
+    show-word-limit
+  />
+
+  <view class="bottom-btn-container">
+    <van-button size='large' color='#FFCBA1' bind:tap="handleRefund">发表</van-button>
+  </view>
+
+</view>

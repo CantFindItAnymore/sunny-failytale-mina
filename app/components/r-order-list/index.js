@@ -87,6 +87,7 @@ Component({
       })
     },
     handleComment(e) {
+      wx.setStorageSync('commentSkuList', e.currentTarget.dataset.skuList)
       wx.navigateTo({
         url: '/pages/comment/index?orderId=' + e.currentTarget.dataset.id
       })

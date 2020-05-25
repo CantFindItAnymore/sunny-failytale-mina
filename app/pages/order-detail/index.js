@@ -1,18 +1,26 @@
-// pages/order-detail/index.js
+import { OrderModel } from '../../api/models/order'
+const Order = new OrderModel()
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    detail: {},
+    status: ['待付款', '待发货', '待收货', '已完成', '已取消']
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    Order.getOrderDetail(options.orderId)
+      .then(res => {
+        this.setData({
+          detail: res
+        })
+      })
   },
 
   /**

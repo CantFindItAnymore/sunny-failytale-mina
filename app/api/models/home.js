@@ -4,13 +4,13 @@ import {
 
 class HomeModel extends HTTP {
 
-  getHome() {
+  getImgs() {
     return this.request({
-      url: 'miniapp/marketer/initialize',
-      method: 'POST',
-      data: {}
+      url: 'system-index/front'
     })
   }
+
+
 
 }
 

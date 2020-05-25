@@ -118,15 +118,27 @@ class ShopModel extends HTTP {
       url: 'order/returns/apply',
       method: 'POST',
       data: {
-        agree,
-        expressCode,
-        expressCompanyName,
-        id,
         orderId,
         reason,
-        rejectReason,
-        returnsPrice,
         type
+      }
+    })
+  }
+
+  comment({
+    orderId,
+    comment,
+    productId,
+    skuId
+  }) {
+    return this.request({
+      url: 'order/comment',
+      method: 'POST',
+      data: {
+        orderId,
+        comment,
+        productId,
+        skuId
       }
     })
   }
