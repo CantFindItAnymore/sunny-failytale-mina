@@ -40,7 +40,7 @@ Page({
     if(is) {
       const delIds = []
       this.data.likeList.map(item => {
-        if (item.productId === cid) {
+        if (item.id === cid) {
           delIds.push(item.id)
         }
       })
@@ -63,7 +63,7 @@ Page({
       .then(res => {
         let likedIdList = []
         res && res.all && res.all.map(item => {
-          likedIdList.push(item.productId)
+          likedIdList.push(item.id)
         })
 
         res && res.all && this.setData({

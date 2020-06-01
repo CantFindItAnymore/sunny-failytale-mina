@@ -51,11 +51,11 @@ Page({
         })
 
         // if (res && !res.nowAllPrice) {
-          res.nowAllPrice = {
+          res && (res.nowAllPrice = {
             all: 0,
             depreciates: 0,
             failures: 0
-          }
+          })
         // }
 
         this.setData({

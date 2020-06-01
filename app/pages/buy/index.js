@@ -14,6 +14,7 @@ Page({
     buyList: [],
     remark: '',
     orderNo: null,
+    orderId: null,
     totalFee: 0,
     selectedCard: null
   },
@@ -100,16 +101,17 @@ Page({
         phone: this.data.address.phoneNumber
       },
       carriage: '10.00',
-      couponPrice: this.data.selectedCard.couponPrice || null,
-      couponUserId: this.data.selectedCard.id || null,
+      couponPrice: this.data.selectedCard?this.data.selectedCard.couponPrice:null,
+      couponUserId: this.data.selectedCard?this.data.selectedCard.id:null,
       leaveWord: this.data.remark,
-      realPrice: this.data.totalFee + 10 - this.data.selectedCard.couponPrice,
+      realPrice: this.data.totalFee + 10 - (this.data.selectedCard?this.data.selectedCard.couponPrice:0),
       skuList,
       totalPrice: this.data.totalFee + 10
     })
       .then(res => {
         this.setData({
-          orderNo: res.code
+          orderNo: res.code,
+          orderId: res.id
         })
         // 清除优惠券&buyList
         wx.removeStorageSync('selectedCard')
@@ -117,8 +119,8 @@ Page({
         return Shop.pay({
           orderNo: res.code,
           orderId: res.id,
-          // totalFee: (this.data.totalFee + 10) * 100 - (this.data.selectedCard.couponPrice || 0) * 100
-          totalFee: (this.data.totalFee) * 100 - (this.data.selectedCard.couponPrice || 0) * 100
+          // totalFee: (this.data.totalFee + 10) * 100 - (this.data.selectedCard?this.data.selectedCard.couponPrice:0) * 100
+          totalFee: (this.data.totalFee) * 100 - (this.data.selectedCard?this.data.selectedCard.couponPrice:0) * 100
         })
       })
       .then(res => {
@@ -136,7 +138,7 @@ Page({
                 .then(() => {
                   clearTimeout(timer)
                   wx.redirectTo({
-                    url: '/pages/buy-suc/index'
+                    url: '/pages/buy-suc/index?oid='+_this.data.orderId
                   })
                 })
             }, 1000)

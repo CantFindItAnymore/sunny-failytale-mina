@@ -158,6 +158,7 @@ Page({
         skuInfo.price = item.price
         skuInfo.skuId = item.id
         skuInfo.selectedSkuName = selectedSkuName
+        skuInfo.url = item.picUrl
         this.setData({
           skuInfo
         })
@@ -220,6 +221,12 @@ Page({
     if (this.data.activeBuyType === 'buy') {
 
       let buyList = []
+      let productType = ''
+      this.data.detail.productType.map(item => {
+        productType += `${item.id},`
+      })
+      productType = productType.substring(0, productType.length-1)
+
       buyList.push({
         id: this.data.detail.id,
         productId: this.data.gid,
@@ -230,7 +237,7 @@ Page({
           productId: this.data.gid,
           code: this.data.detail.code,
           name: this.data.detail.name,
-          productType: this.data.detail.productType,
+          productType,
           mainPicUrl: this.data.detail.mainPicUrl,
           // onsale: this.data.gid,
           skuId: this.data.skuInfo.skuId,

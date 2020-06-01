@@ -30,7 +30,6 @@
     title="{{activeIndex>0?'编辑':'新增'}}地址"
     show="{{ dialogShow }}"
     show-cancel-button
-    close-on-click-overlay
     bind:close="onClose"
     bind:confirm='onConfirm'
     bind:cancel='onClose'

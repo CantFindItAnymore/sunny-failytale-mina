@@ -18,14 +18,14 @@ Page({
   },
 
   toShop() {
-    wx.navigateTo({
+    wx.reLaunch({
       url: '/pages/shop/index'
     })
   },
 
   toOrder() {
-    wx.navigateTo({
-      url: '/pages/order-detail/index?oid='+ this.data.oid
+    wx.reLaunch({
+      url: '/pages/order-detail/index?orderId=' + this.data.oid
     })
   }
 })

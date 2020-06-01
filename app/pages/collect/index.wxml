@@ -4,19 +4,19 @@
     <van-tab title="收藏" name='all'>
       <view class="list">
         <view class="list-item" wx:for='{{likeList}}' wx:key="index">
-          <image src="{{item.mainPicUrl}}" bind:tap="toShopDetail" data-gid='{{item.id}}' />
+          <image src="{{item.innerProductVo.mainPicUrl}}" bind:tap="toShopDetail" data-gid='{{item.id}}' />
           <view class="list-item-desc">
             <view bind:tap="toShopDetail" data-gid='{{item.id}}'>
-              {{item.productType[0].description}}
+              {{item.innerProductVo.productType[0].description}}
             </view>
             <view class="list-item-desc-footer">
               <view class="amount">
                 <text class="weight-font">￥</text>
-                {{item.minPrice}}
-                <block  wx:if="{{item.minPrice !== item.maxPrice}}">
+                {{item.innerProductVo.minPrice}}
+                <block  wx:if="{{item.innerProductVo.minPrice !== item.innerProductVo.maxPrice}}">
                   <text class="weight-font">~</text>
                   <text class="weight-font">￥</text>
-                  {{item.maxPrice}}
+                  {{item.innerProductVo.maxPrice}}
                 </block>
               </view>
               <image src="{{tool.isLike(item.id, likedIdList)?like:unLike}}" data-cid='{{item.id}}' data-is='{{tool.isLike(item.id, likedIdList)}}' bind:tap="switchCollect" />
@@ -31,19 +31,19 @@
     <van-tab title="已失效" name='failures'>
       <view class="list">
         <view class="list-item" wx:for='{{failuresList}}' wx:key="index">
-          <image src="{{item.mainPicUrl}}" data-gid='{{item.id}}' />
+          <image src="{{item.innerProductVo.mainPicUrl}}" data-gid='{{item.id}}' />
           <view class="list-item-desc">
             <view data-gid='{{item.id}}'>
-              {{item.productType[0].description}}
+              {{item.innerProductVo.productType[0].description}}
             </view>
             <view class="list-item-desc-footer">
               <view class="amount">
                 <text class="weight-font">￥</text>
-                {{item.minPrice}}
-                <block  wx:if="{{item.minPrice !== item.maxPrice}}">
+                {{item.innerProductVo.minPrice}}
+                <block  wx:if="{{item.innerProductVo.minPrice !== item.innerProductVo.maxPrice}}">
                   <text class="weight-font">~</text>
                   <text class="weight-font">￥</text>
-                  {{item.maxPrice}}
+                  {{item.innerProductVo.maxPrice}}
                 </block>
               </view>
               <image src="{{tool.isLike(item.id, likedIdList)?like:unLike}}" />
@@ -60,10 +60,14 @@
 
 <wxs module="tool">
   var isLike = function(id, list){
+    console.log(id, list)
     if(list.indexOf(id) !== -1) {
+      console.log(1)
       return true
+    } else {
+      console.log(0)
+      return false
     }
-    return false
   }
   module.exports = {
     isLike: isLike
