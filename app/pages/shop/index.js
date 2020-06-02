@@ -5,6 +5,9 @@ const Shop = new ShopModel()
 import {CollectionModel} from '../../api/models/collection'
 const Collection = new CollectionModel()
 
+import { HomeModel } from '../../api/models/home'
+const Home = new HomeModel()
+
 Page({
 
   /**
@@ -16,20 +19,62 @@ Page({
     likeList: [],
     likedIdList: [],
     like: '/imgs/like.png',
-    unLike: '/imgs/unLike.png'
+    unLike: '/imgs/unLike.png',
+
+    pid: null,
+    key: '',
+    type: ''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let { pid, key, type } = options
+
+    this.setData({
+      type
+    })
+
+    if (pid && !Array.isArray(pid)) {
+      pid = pid.split(',')
+    } else {
+      pid = []
+    }
+
+    this.setData({
+      pid
+    })
+
+    if (key && key !== 'undefined') {
+      this.setData({
+        key
+      })
+    }
+
+    // 新品||热销
+    let descs = []
+    type === 'new' && (descs.push('on_sale_time'))
+    type === 'hot' && (descs.push('sales_volume'))
     Shop.getShop({
-      productType: options.pid?[options.pid]:[],
-      keyword: options.key
+      productType: pid,
+      keyword: this.data.key,
+      descs
     })
       .then(res => {
-        this.setData({
-          list: res
+        res.data.map((item, index) => {
+          Home.getUrl([
+            {
+              name: index,
+              url: item.mainPicUrl
+            }
+          ])
+            .then(oo => {
+              item.mainPicUrl = oo[0].url
+              this.setData({
+                list: res
+              })
+            })
         })
       })
 
@@ -53,10 +98,14 @@ Page({
       return
     }
 
+    let descs = []
+    type === 'new' && (descs.push('on_sale_time'))
+    type === 'hot' && (descs.push('sales_volume'))
     Shop.getShop({
-      productType: options.pid?[options.pid]:[],
-      keyword: options.key,
-      page: this.data.list.current+1
+      productType: this.data.pid,
+      keyword: this.data.key,
+      page: this.data.list.current+1,
+      descs
     })
       .then(res => {
         res.data = [...this.data.list.data, ...res.data]

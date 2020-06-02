@@ -17,7 +17,8 @@
     "pages/refund/index",
     "pages/comment/index",
     "pages/log/index",
-    "pages/order-detail/index"
+    "pages/order-detail/index",
+    "pages/gift/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

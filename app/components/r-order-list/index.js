@@ -41,8 +41,8 @@ Component({
       Shop.pay({
         orderNo: e.currentTarget.dataset.code,
         orderId: e.currentTarget.dataset.id,
-        // totalFee: (this.data.totalFee + 10)*100
-        totalFee: '1'
+        // totalFee: (this.data.totalFee)*100
+        totalFee: '2'
       })
         .then(res => {
           const _this = this

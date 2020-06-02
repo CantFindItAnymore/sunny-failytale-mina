@@ -1,4 +1,4 @@
-image {
+.suc-icon {
   height: 250rpx;
   width: 250rpx;
   margin: 200rpx 0 100rpx 0;

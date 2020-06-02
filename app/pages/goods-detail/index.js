@@ -6,6 +6,9 @@ const Shop = new ShopModel()
 import {CollectionModel} from '../../api/models/collection'
 const Collection = new CollectionModel()
 
+import { HomeModel } from '../../api/models/home'
+const Home = new HomeModel()
+
 Page({
 
   /**
@@ -39,13 +42,54 @@ Page({
   onLoad: function (options) {
     const {gid} = options
     console.log(gid)
+    this.setData({
+      gid
+    })
     Shop.getDetail(gid)
       .then(res => {
-        console.log(res)
-        this.setData({
-          detail: res,
-          gid
+        Home.getUrl([
+          {
+            name: 'main',
+            url: res.mainPicUrl
+          }
+        ])
+          .then(oo => {
+            res.mainPicUrl = oo[0].url
+            this.setData({
+              detail: res
+            })
+          })
+
+        res.carouselPics.map((item, index) => {
+          Home.getUrl([
+            {
+              name: index,
+              url: item.url
+            }
+          ])
+            .then(oo => {
+              item.url = oo[0].url
+              this.setData({
+                detail: res
+              })
+            })
         })
+
+        res.detailPics.map((item, index) => {
+          Home.getUrl([
+            {
+              name: index,
+              url: item.url
+            }
+          ])
+            .then(oo => {
+              item.url = oo[0].url
+              this.setData({
+                detail: res
+              })
+            })
+        })
+
       })
 
     // 收藏
@@ -158,10 +202,16 @@ Page({
         skuInfo.price = item.price
         skuInfo.skuId = item.id
         skuInfo.selectedSkuName = selectedSkuName
-        skuInfo.url = item.picUrl
-        this.setData({
-          skuInfo
-        })
+        Home.getUrl([{
+          name: 'x',
+          url: item.picUrl
+        }])
+          .then(res => {
+            skuInfo.url = res[0].url
+            this.setData({
+              skuInfo
+            })
+          })
       }
     })
   },

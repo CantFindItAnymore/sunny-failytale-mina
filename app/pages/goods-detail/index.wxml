@@ -78,7 +78,7 @@
     <text class="weight-font">商品详情</text>
     <view class="detail-detail">
       <block wx:for="{{detail.detailPics}}" wx:key="index">
-        <image src="{{item.url}}" />
+        <image src="{{item.url}}" mode='widthFix' />
       </block>
     </view>
   </view>

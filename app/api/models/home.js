@@ -10,6 +10,27 @@ class HomeModel extends HTTP {
     })
   }
 
+  getUrl(files) {
+    return this.request({
+      url: 'oss/get',
+      method: 'POST',
+      type: 'json',
+      data: files
+    })
+  }
+
+  getStory() {
+    return this.request({
+      url: 'system-index/brand'
+    })
+  }
+
+  getSale() {
+    return this.request({
+      url: 'system-index/sale'
+    })
+  }
+
 
 
 }

@@ -3,7 +3,7 @@
     <view class="status">{{status[item.status]}}</view>
 
     <view class="detail" wx:for="{{item.skuList}}" wx:for-item="pro" wx:key='index'>
-      <image src="{{pro.skuPicUrl}}" bind:tap="toDetail" data-id="{{pro.productId}}" />
+      <image src="{{pro.currentPic}}" bind:tap="toDetail" data-id="{{pro.productId}}" />
       <view>
         <view>{{pro.productName}}</view>
         <view>{{pro.skuName}}</view>

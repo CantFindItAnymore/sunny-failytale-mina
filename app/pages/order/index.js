@@ -1,6 +1,9 @@
 import { OrderModel } from '../../api/models/order'
 const Order = new OrderModel()
 
+import { HomeModel } from '../../api/models/home'
+const Home = new HomeModel()
+
 Page({
 
   /**
@@ -22,13 +25,33 @@ Page({
   onShow: function (options) {
     Order.getOrder()
       .then(res => {
-        this.setData({
-          allList: res.all,
-          payList: res.pay,
-          deliveryList: res.delivery,
-          receiptList: res.receipt,
-          finishList: res.finish,
-          cancelList: res.cancel,
+
+        ['all', 'pay', 'delivery', 'receipt', 'finish', 'cancel'].map(type => {
+          res && res[type] && res[type].map(item => {
+
+            item.skuList.map((oo, num) => {
+
+              Home.getUrl([
+                {
+                  name: num,
+                  url: oo.productMainPicUrl
+                }
+              ])
+                .then(rr => {
+                  oo.currentPic = rr[0].url
+  
+                  this.setData({
+                    allList: res.all,
+                    payList: res.pay,
+                    deliveryList: res.delivery,
+                    receiptList: res.receipt,
+                    finishList: res.finish,
+                    cancelList: res.cancel,
+                  })
+                })
+            })
+            
+          })
         })
       })
   },

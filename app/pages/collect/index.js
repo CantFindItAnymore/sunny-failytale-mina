@@ -5,6 +5,10 @@ const Shop = new ShopModel()
 import {CollectionModel} from '../../api/models/collection'
 const Collection = new CollectionModel()
 
+
+import { HomeModel } from '../../api/models/home'
+const Home = new HomeModel()
+
 Page({
 
   /**
@@ -65,18 +69,42 @@ Page({
         res && res.all && res.all.map(item => {
           likedIdList.push(item.id)
         })
-
-        res && res.all && this.setData({
-          likeList: res.all
-        })
-
-        res && res.failures && this.setData({
-          failuresList: res.failures
-        })
-
         this.setData({
           likedIdList
         })
+
+
+        res && res.all && res.all.map((item, index) => {
+          Home.getUrl([
+            {
+              name: index,
+              url: item.innerProductVo.mainPicUrl
+            }
+          ])
+            .then(oo => {
+              item.innerProductVo.mainPicUrl = oo[0].url
+              this.setData({
+                likeList: res.all
+              })
+            })
+        })
+
+        res && res.failures && res.failures.map((item, index) => {
+          Home.getUrl([
+            {
+              name: index,
+              url: item.innerProductVo.mainPicUrl
+            }
+          ])
+            .then(oo => {
+              item.innerProductVo.mainPicUrl = oo[0].url
+              this.setData({
+                failuresList: res.failures
+              })
+            })
+        })
+
+        
       })
   }
 })

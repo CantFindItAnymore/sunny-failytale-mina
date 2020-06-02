@@ -71,6 +71,11 @@
   width: 100%;
 }
 
+.girl1 image {
+  height: 520rpx;
+  width: 100%;
+}
+
 .boy1 {
   height: 230rpx;
   width: 100%;
@@ -79,6 +84,7 @@
 .new-and-hot {
   height: 546rpx;
   width: 100%;
+  margin-top: 80rpx;
   display: flex;
 }
 
@@ -114,8 +120,7 @@
 }
 
 .story {
-  height: 358rpx;
-  padding: 36rpx 0 140rpx 0;
+  padding-bottom: 80rpx;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -285,14 +290,12 @@
   position: relative;
 }
 
-.outfit>view:nth-child(1)>image,
-.outfit>view:nth-child(4)>image {
+.outfit .big {
   height: 100%;
   width: 100%;
 }
 
-.outfit>view:nth-child(2)>image,
-.outfit>view:nth-child(3)>image {
+.outfit .small {
   height: 380rpx;
   width: 260rpx;
   position: absolute;
@@ -315,27 +318,8 @@
   width: 100%;
 }
 
-.brand {
-  height: 360rpx;
-  width: 100%;
-  padding-right: 26rpx;
-  box-sizing: border-box;
+.video {
   margin-bottom: 80rpx;
-  position: relative;
-}
-
-.brand>image:nth-child(1) {
-  height: 100%;
-  width: 100%;
-}
-
-.brand>image:nth-child(2) {
-  height: 66rpx;
-  width: 426rpx;
-  position: absolute;
-  top: 50%;
-  left: 50rpx;
-  transform: translateY(-50%);
 }
 
 .footer-title {

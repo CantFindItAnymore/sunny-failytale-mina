@@ -92,7 +92,9 @@ swiper-item
   padding: 30rpx;
 }
 
-.detail-detail,
+.detail-detail {
+  margin-top: 20rpx;
+}
 .detail-detail>image {
   width: 100%;
 }

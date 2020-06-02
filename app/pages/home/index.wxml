@@ -17,46 +17,61 @@
       <image src="/imgs/logo.png" />
     </view>
     <image class="ss-new" src="/imgs/20ss_new.png" />
-    <image class="girl1" src="https://tva2.sinaimg.cn/large/006lIpJvgy1gejqpt2vlmj30ku0egjzv.jpg" />
+    <!-- <image class="girl1" src="https://tva2.sinaimg.cn/large/006lIpJvgy1gejqpt2vlmj30ku0egjzv.jpg" /> -->
     <!-- 轮播 -->
+    <swiper class="girl1" indicator-dots="{{true}}" autoplay="{{true}}" interval="{{3000}}">
+      <block wx:for="{{carouselPics}}" wx:key="index">
+        <swiper-item>
+          <image src="{{item.pic.url}}" bind:tap='toShop' data-typeids='{{item.typeIds}}' data-keyword='{{item.keyword}}' />
+        </swiper-item>
+      </block>
+    </swiper>
     
 
-    <image class="boy1" src="/imgs/boy1.png" />
+    <!-- <image class="boy1" src="/imgs/boy1.png" /> -->
     <view class="new-and-hot">
       <view class="new">
-        <image src="https://tvax4.sinaimg.cn/large/006lIpJvgy1gejqq28utyj30af0f60za.jpg" />
-        <image src="/imgs/new_btn.png" />
+        <image src="{{newProductsDisplayPic}}" />
+        <image src="/imgs/new_btn.png" bind:tap='toShop' data-type='new' />
       </view>
       <view class="hot">
-        <image src="https://tvax4.sinaimg.cn/large/006lIpJvgy1gejqqd1d5lj30af0f647r.jpg" />
-        <image src="/imgs/hot_btn.png" />
+        <image src="{{hotProductsDisplayPic}}" />
+        <image src="/imgs/hot_btn.png" bind:tap='toShop' data-type='hot' />
       </view>
     </view>
 
     <image class="ss-new ss-new2" src="/imgs/20ss_new.png" />
 
-    <image class="fly" src="https://tvax1.sinaimg.cn/large/006lIpJvgy1gejqqvmm2tj30ku0by4da.jpg" />
+    <!-- <image class="fly" src="{{brandStoryDisplayPic}}" /> -->
+    <video
+      class="video"
+      src="{{videoUrl}}"
+      show-fullscreen-btn
+      vslide-gesture-in-fullscreen
+    />
     <view class="story">
       <view>
         <text>ENK SHANGHAI   2019   VOL.3</text>
         <text>往期视频请关注抖音官方账号</text>
       </view>
-      <image src="/imgs/story_btn.png" />
+      <!-- <image src="/imgs/story_btn.png" /> -->
     </view>
-    <view class="sale">
+    <!-- <view class="sale">
       <image src="https://tva3.sinaimg.cn/large/006lIpJvgy1gejqrjgwrej30ku0byjud.jpg" />
       <image src="/imgs/sale_btn.png" />
-    </view>
+    </view> -->
     <view class="calssify">
       <view
-        wx:for="{{classifyList}}"
+        wx:for="{{typePics}}"
         wx:key="index"
+        bind:tap='toShop'
+        data-typeids='{{item.typeId}}'
       >
-        <image src="{{item.src}}" />
-        <text>{{item.name}}</text>
+        <image src="{{item.pic.url}}" />
+        <text>{{item.typeName}}</text>
       </view>
     </view>
-    <view class="rainbow">
+    <!-- <view class="rainbow">
       <view
         wx:for="{{rainbowList}}"
         wx:key="index"
@@ -67,16 +82,16 @@
           <text wx:if="{{item.desc}}">{{item.desc}}</text>
         </view>
       </view>
-    </view>
+    </view> -->
 
     <view class="coupon-and-blueprint">
       <view class="coupon">
-        <image src="https://tvax1.sinaimg.cn/large/006lIpJvgy1gejqqnuda0j30au0f0n4o.jpg" />
-        <image src="/imgs/coupon_btn.png" />
+        <image src="{{couponDisplayPic}}" />
+        <image src="/imgs/coupon_btn.png" bind:tap='toCard' />
       </view>
       <view class="blueprint">
-        <image src="https://tvax2.sinaimg.cn/large/006lIpJvgy1gejqr88cc7j30a507iwhd.jpg" />
-        <image src="/imgs/blueprint_btn.png" />
+        <image src="{{saleDisplayPic}}" />
+        <image src="/imgs/blueprint_btn.png" bind:tap='toGift' />
       </view>
     </view>
 
@@ -84,21 +99,21 @@
 
     <view class="outfit">
       <view
-        wx:for="{{outfitList}}"
+        wx:for="{{indexProducts}}"
         wx:key="index"
       >
-        <image src="{{item.src}}" />
+        <image src="{{item.mainPicUrl}}" class="{{(index%4===3 || index%4===0)?'big':'small'}}" bind:tap="toGoods" data-id='{{item.id}}' />
       </view>
     </view>
 
-    <image class="outfit5" src="https://tvax2.sinaimg.cn/large/006lIpJvgy1gejquwdek6j30ku0krn6s.jpg" />
+    <image class="outfit5" src="{{brandStoryDisplayPic}}" />
 
-    <image class="brand-btn" src="/imgs/brand_btn.png" />
+    <image class="brand-btn" src="/imgs/brand_btn.png" bind:tap="toStory" />
 
-    <view class="brand">
+    <!-- <view class="brand">
       <image src="/imgs/brand.png" />
       <image src="/imgs/logo.png" />
-    </view>
+    </view> -->
 
     <view class="footer-title" bind:tap='goShop'>全部商品 go shopping......</view>
   </view>

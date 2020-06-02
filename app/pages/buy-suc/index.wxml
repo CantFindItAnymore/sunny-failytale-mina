@@ -1,5 +1,5 @@
 <view class="container">
-  <image src="/imgs/buy_suc.png" />
+  <image class="suc-icon" src="/imgs/buy_suc.png" />
   <text class="weight-font" style="color: #26C18E">购买成功</text>
   <view class="btn-container">
     <van-button type='primary' round size='large' custom-class='btn' bind:tap="toOrder">查看订单</van-button>

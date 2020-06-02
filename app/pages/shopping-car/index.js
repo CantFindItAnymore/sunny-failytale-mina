@@ -1,6 +1,11 @@
 import { MyModel } from '../../api/models/my'
 const My = new MyModel()
 
+
+import { HomeModel } from '../../api/models/home'
+const Home = new HomeModel()
+
+
 Page({
 
   /**
@@ -66,9 +71,52 @@ Page({
           }
         })
 
-        res && this.setData({
-          catList: res
-        });
+        if (res) {
+          res.all && res.all.map((item, index) => {
+            Home.getUrl([
+              {
+                name: index,
+                url: item.productSkuVo.picUrl
+              }
+            ])
+              .then(oo => {
+                item.productSkuVo.picUrl = oo[0].url
+                this.setData({
+                  catList: res
+                })
+              })
+          })
+
+          res.depreciates && res.depreciates.map((item, index) => {
+            Home.getUrl([
+              {
+                name: index,
+                url: item.productSkuVo.picUrl
+              }
+            ])
+              .then(oo => {
+                item.productSkuVo.picUrl = oo[0].url
+                this.setData({
+                  catList: res
+                })
+              })
+          })
+
+          res.failures && res.failures.map((item, index) => {
+            Home.getUrl([
+              {
+                name: index,
+                url: item.productSkuVo.picUrl
+              }
+            ])
+              .then(oo => {
+                item.productSkuVo.picUrl = oo[0].url
+                this.setData({
+                  catList: res
+                })
+              })
+          })
+        }
 
       })
   },
