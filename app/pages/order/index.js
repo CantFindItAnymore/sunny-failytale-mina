@@ -19,10 +19,16 @@ Page({
     cancelList: [],
   },
 
+  onLoad(options) {
+    options.type && this.setData({
+      active: options.type
+    })
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
-  onShow: function (options) {
+  onShow: function () {
     Order.getOrder()
       .then(res => {
 

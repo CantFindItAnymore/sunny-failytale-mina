@@ -41,7 +41,6 @@
         label="姓名"
         input-align="right"
         hold-keyboard
-        auto-focus
         data-type='name'
         bind:change='onChange'
       />

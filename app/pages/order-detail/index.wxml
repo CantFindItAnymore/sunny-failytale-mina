@@ -13,7 +13,7 @@
   </view>
 
   <view class="detail" wx:for="{{detail.skuList}}" wx:for-item="pro" wx:key='index'>
-    <image src="{{pro.skuPicUrl}}" bind:tap="toDetail" data-id="{{pro.productId}}" />
+    <image src="{{pro.skuPicUrl}}" bind:tap="toDetail" data-gid="{{pro.productId}}" />
     <view>
       <view>{{pro.productName}}</view>
       <view>{{pro.skuName}}</view>

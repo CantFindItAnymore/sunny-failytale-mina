@@ -66,8 +66,10 @@ Page({
   },
 
   toShop(e) {
-    const { typeids, keyword, type } = e.currentTarget.dataset
+    const { typeids, keyword, type, classify } = e.currentTarget.dataset
     console.log(e)
+
+    classify && wx.setStorageSync('classify', classify)
 
     wx.navigateTo({
       url: `/pages/shop/index?pid=${typeids}&key=${keyword}&type=${type}`

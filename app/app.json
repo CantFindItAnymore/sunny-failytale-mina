@@ -18,7 +18,8 @@
     "pages/comment/index",
     "pages/log/index",
     "pages/order-detail/index",
-    "pages/gift/index"
+    "pages/gift/index",
+    "pages/story/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

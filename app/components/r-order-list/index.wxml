@@ -15,7 +15,7 @@
     <view class="rate weight-font">共{{item.skuList.length}}件商品，合计：￥{{item.realPrice}}（含运费）</view>
     <view class="menu" bind:tap='handleDetail' data-id='{{item.id}}'>
       <view wx:if="{{item.status === 0}}" class="menu-item">
-        <van-button color='#FFCBA1' size='small' round type="info" catch:tap="handleBuyNow" data-id='{{item.id}}' data-code='{{item.code}}' data-realPrice='{{item.realPrice}}'>立即购买</van-button>
+        <van-button color='#FFCBA1' size='small' round type="info" catch:tap="handleBuyNow" data-id='{{item.id}}' data-code='{{item.code}}' data-realprice='{{item.realPrice}}'>立即购买</van-button>
       </view>
       <view wx:if="{{item.status === 1}}" class="menu-item">
         <van-button color='#FFCBA1' size='small' round type="info" catch:tap="handleCancel"  data-index='{{index}}' data-id='{{item.id}}'>取消订单</van-button>

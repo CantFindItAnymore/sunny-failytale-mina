@@ -66,6 +66,7 @@
         wx:key="index"
         bind:tap='toShop'
         data-typeids='{{item.typeId}}'
+        data-classify='{{item.typeName}}'
       >
         <image src="{{item.pic.url}}" />
         <text>{{item.typeName}}</text>

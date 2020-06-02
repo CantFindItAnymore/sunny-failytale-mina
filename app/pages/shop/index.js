@@ -36,7 +36,7 @@ Page({
       type
     })
 
-    if (pid && !Array.isArray(pid)) {
+    if (pid && pid !== 'undefined' && !Array.isArray(pid)) {
       pid = pid.split(',')
     } else {
       pid = []
@@ -49,6 +49,22 @@ Page({
     if (key && key !== 'undefined') {
       this.setData({
         key
+      })
+    }
+
+    if (type === 'new') {
+      this.setData({
+        classify: '新品上新'
+      })
+    }
+    else if (type === 'hot') {
+      this.setData({
+        classify: '热销榜单'
+      })
+    }
+    else {
+      this.setData({
+        classify: wx.getStorageSync('classify')
       })
     }
 
@@ -80,9 +96,7 @@ Page({
 
     this._getCollection()
 
-    this.setData({
-      classify: wx.getStorageSync('classify')
-    })
+    
   },
 
   /**

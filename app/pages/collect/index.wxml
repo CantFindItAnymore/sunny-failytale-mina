@@ -4,9 +4,9 @@
     <van-tab title="收藏" name='all'>
       <view class="list">
         <view class="list-item" wx:for='{{likeList}}' wx:key="index">
-          <image src="{{item.innerProductVo.mainPicUrl}}" bind:tap="toShopDetail" data-gid='{{item.id}}' />
+          <image src="{{item.innerProductVo.mainPicUrl}}" bind:tap="toShopDetail" data-gid='{{item.productId}}' />
           <view class="list-item-desc">
-            <view bind:tap="toShopDetail" data-gid='{{item.id}}'>
+            <view bind:tap="toShopDetail" data-gid='{{item.productId}}'>
               {{item.innerProductVo.productType[0].description}}
             </view>
             <view class="list-item-desc-footer">

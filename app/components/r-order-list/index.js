@@ -41,8 +41,8 @@ Component({
       Shop.pay({
         orderNo: e.currentTarget.dataset.code,
         orderId: e.currentTarget.dataset.id,
-        // totalFee: (this.data.totalFee)*100
-        totalFee: '2'
+        totalFee: (e.currentTarget.dataset.realprice)*100
+        // totalFee: '2'
       })
         .then(res => {
           const _this = this
@@ -58,7 +58,7 @@ Component({
                   .then(() => {
                     clearTimeout(timer)
                     wx.redirectTo({
-                      url: '/pages/buy-suc/index'
+                      url: '/pages/buy-suc/index?oid=' + e.currentTarget.dataset.id
                     })
                   })
               }, 1000)
