@@ -1,5 +1,9 @@
-.container {
+.component {
+  width: 750rpx;
+  padding: 0 30rpx;
+  box-sizing: border-box;
   display: flex;
+  justify-content: space-between;
   flex-wrap: wrap;
 }
 

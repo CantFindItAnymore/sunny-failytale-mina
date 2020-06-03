@@ -331,3 +331,7 @@
   color: skyblue;
   border-bottom: 1rpx solid skyblue;
 }
+
+.video {
+  width: 700rpx;
+}

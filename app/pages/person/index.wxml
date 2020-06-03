@@ -1,7 +1,7 @@
 <view class="container">
   <van-cell-group>
 
-    <van-divider contentPosition="center" customStyle="color: #1989fa;border-color: #1989fa;">家长信息</van-divider>
+    <van-divider contentPosition="center" customStyle="color: #FFCBA1;border-color: #FFCBA1;">家长信息</van-divider>
 
     <van-field
       label="姓名"
@@ -10,7 +10,6 @@
       data-type='name'
       input-align="right"
       hold-keyboard
-      auto-focus
     />
     <van-field
       label="手机号"
@@ -21,7 +20,6 @@
       input-align="right"
       maxlength='11'
       hold-keyboard
-      auto-focus
       required
     />
     <van-cell
@@ -92,7 +90,7 @@
     />
 
 
-    <van-divider contentPosition="center" customStyle="color: #1989fa;border-color: #1989fa;">宝宝信息</van-divider>
+    <van-divider contentPosition="center" customStyle="color: #FFCBA1;border-color: #FFCBA1;">宝宝信息</van-divider>
 
 
     <!-- 宝宝信息 -->
@@ -103,7 +101,6 @@
       data-type='name'
       input-align="right"
       hold-keyboard
-      auto-focus
     />
 
     <van-cell
@@ -150,7 +147,6 @@
       data-type='height'
       input-align="right"
       hold-keyboard
-      auto-focus
     />
 
   </van-cell-group>
@@ -160,6 +156,7 @@
     size='large'
     style="margin-top: 100rpx; width: 100%"
     bind:tap='handleConfirm'
+    color='#51E3BF'
   >
     认证 / 修改 / 补充
   </van-button>

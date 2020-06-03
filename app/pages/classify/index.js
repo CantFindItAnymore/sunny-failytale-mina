@@ -8,7 +8,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    activeName: '',
+    activeName: [],
     classifyList: []
   },
 
@@ -19,21 +19,27 @@ Page({
     Classify.getClassify()
       .then(res => {
         console.log(res)
+        let activeName = []
+        res.map(item => {
+          activeName.push(item.id)
+        })
+        
         this.setData({
-          classifyList: res
+          classifyList: res,
+          activeName
         })
       })
   },
 
-  onChange(event) {
-    this.setData({
-      activeName: event.detail
-    })
-  },
+  // onChange(event) {
+  //   this.setData({
+  //     activeName: event.detail
+  //   })
+  // },
 
   toShop (e) {
     e.currentTarget.dataset.classify && wx.setStorageSync('classify', e.currentTarget.dataset.classify)
-    const id = e.detail.id || ''
+    const id = e.detail.id || e.currentTarget.dataset.id || ''
 
     wx.navigateTo({
       url: '/pages/shop/index?pid=' + id

@@ -1,6 +1,6 @@
 <view class="container">
 
-  <van-collapse value="{{ activeName }}" bind:change="onChange" accordion>
+  <!-- <van-collapse value="{{ activeName }}" bind:change="onChange"> -->
     <van-cell
       title='全部商品'
       bind:tap='toShop'
@@ -8,17 +8,39 @@
       is-link
     />
 
-    <van-collapse-item
+    <block
+      wx:for="{{classifyList}}"
+      wx:key="index"
+    >
+      <van-cell
+        bind:tap='toShop'
+        data-classify='{{item.name}}'
+        is-link
+        title="{{item.name}}"
+        name="{{item.id}}"
+        data-id='{{item.id}}'
+      />
+      <r-classify
+        list='{{item.children}}'
+        bind:toShop='toShop'
+      />
+    </block>
+
+    
+
+    <!-- <van-collapse-item
       title="{{item.name}}"
       name="{{item.id}}"
       wx:for="{{classifyList}}"
       wx:key="index"
     >
+            
+      <van-icon name="arrow" slot='right-icon' />
       <r-classify
         list='{{item.children}}'
         bind:toShop='toShop'
       />
-    </van-collapse-item>
+    </van-collapse-item> -->
 
-  </van-collapse>
+  <!-- </van-collapse> -->
 </view>

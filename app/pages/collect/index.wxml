@@ -1,6 +1,6 @@
 <view class="container">
   
-  <van-tabs active="{{ active }}" animated sticky>
+  <van-tabs active="{{ active }}"  color='#51E3BF' animated sticky>
     <van-tab title="收藏" name='all'>
       <view class="list">
         <view class="list-item" wx:for='{{likeList}}' wx:key="index">
