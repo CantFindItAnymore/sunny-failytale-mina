@@ -57,7 +57,7 @@
 
   <view class="footer">
     <view>共{{buyList.length}}件商品</view>
-    <view>合计：<text class="weight-font" style="color: #FFCBA1">￥{{selectedCard?totalFee+10-selectedCard.couponPrice:totalFee+10}}</text></view>
+    <view class="price">合计：<text class="weight-font" style="color: #FFCBA1">￥{{selectedCard?totalFee+10-selectedCard.couponPrice:totalFee+10}}</text></view>
     <van-button color='#FFCBA1' round type='danger' size='small' bind:tap="onPay">
       支付
     </van-button>

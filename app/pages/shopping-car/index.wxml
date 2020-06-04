@@ -23,6 +23,7 @@
             title="{{item.productSkuVo.name}}"
             thumb="{{item.productSkuVo.picUrl || item.productSkuVo.mainPicUrl}}"
             thumb-link='/pages/goods-detail/index?gid={{item.productId}}'
+            price-class='price'
           >
             <view slot="footer" class="num-slot">
               <van-stepper max='{{item.productSkuVo.remainStoreNum}}' value="{{item.nowCount}}" bind:change="onCountChange" data-index='{{index}}'/>
@@ -56,6 +57,7 @@
             title="{{item.productSkuVo.name}}"
             thumb="{{item.productSkuVo.picUrl || item.productSkuVo.mainPicUrl}}"
             thumb-link='/pages/goods-detail/index?gid={{item.productId}}'
+            price-class='price'
           >
             <view slot="footer" class="num-slot">
               <van-stepper max='{{item.productSkuVo.remainStoreNum}}' value="{{item.nowCount}}" bind:change="onCountChange" data-index='{{index}}'/>
@@ -89,6 +91,7 @@
             title="{{item.productSkuVo.name}}"
             thumb="{{item.productSkuVo.picUrl || item.productSkuVo.mainPicUrl}}"
             thumb-link='/pages/goods-detail/index?gid={{item.productId}}'
+            price-class='price'
           >
             <view slot="footer" class="num-slot">
               <van-stepper max='{{item.productSkuVo.remainStoreNum}}' value="{{item.nowCount}}" bind:change="onCountChange" data-index='{{index}}'/>
@@ -106,6 +109,7 @@
     button-text="去结算"
     bind:submit="onBuy"
     button-class='btn-class'
+    price-class='price'
   >
     <view class="select-btn" bind:tap='switchSelectAll'>全选 <image src="{{selectedAll[activeTab]===2?selected:unSelected}}" /></view>
   </van-submit-bar>

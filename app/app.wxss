@@ -38,3 +38,7 @@ page>.container {
 .bottom-btn-container>van-button {
   width: 100%;
 }
+
+.price {
+  color: #51E3BF;
+}
