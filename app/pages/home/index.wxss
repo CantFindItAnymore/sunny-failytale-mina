@@ -67,12 +67,23 @@
 }
 
 .girl1 {
-  height: 520rpx;
+  height: 1000rpx;
   width: 100%;
 }
 
 .girl1 image {
-  height: 520rpx;
+  height: 1000rpx;
+  width: 100%;
+}
+
+.carousel2 {
+  height: 420rpx;
+  width: 100%;
+  margin-bottom: 40rpx;
+}
+
+.carousel2 image {
+  height: 420rpx;
   width: 100%;
 }
 

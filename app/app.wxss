@@ -40,5 +40,5 @@ page>.container {
 }
 
 .price {
-  color: #51E3BF;
+  color: #51E3BF !important;
 }

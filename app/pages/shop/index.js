@@ -62,6 +62,11 @@ Page({
         classify: '热销榜单'
       })
     }
+    else if (type === 'line' || type === 'carousel') {
+      this.setData({
+        classify: ''
+      })
+    }
     else {
       this.setData({
         classify: wx.getStorageSync('classify')

@@ -1,0 +1,7 @@
+<view class="container">
+
+  <view class="line" wx:for="{{storieslPics}}" wx:key="index">
+    <image src="{{item.pic.url}}"  bind:tap='toShop' data-typeids='{{item.typeIds}}' mode="widthFix" data-type='line' />
+  </view>
+
+</view>

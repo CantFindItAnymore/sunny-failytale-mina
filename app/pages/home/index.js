@@ -13,6 +13,7 @@ Page({
     //pic(9个)
     brandStoryDisplayPic: '', // 品牌故事
     carouselPics: [], // 轮播
+    carouselPics2: [], // 轮播2
     couponDisplayPic: '', // 优惠券
     hotProductsDisplayPic: '', // 热销
     indexProducts: [], // 首页商品
@@ -28,6 +29,7 @@ Page({
         this.setData({
           brandStoryDisplayPic: res.brandStoryDisplayPic,
           carouselPics: res.carouselPics,
+          carouselPics2: res.carouselPics2,
           couponDisplayPic: res.couponDisplayPic,
           hotProductsDisplayPic: res.hotProductsDisplayPic,
           indexProducts: res.indexProducts,
@@ -99,6 +101,12 @@ Page({
   toStory () {
     wx.navigateTo({
       url: `/pages/story/index`
+    })
+  },
+
+  toStoryLine () {
+    wx.navigateTo({
+      url: `/pages/story-line/index`
     })
   },
 
@@ -183,6 +191,24 @@ Page({
         })
         this.setData({
           carouselPics
+        })
+      })
+
+    let currentCarouselList2 = []
+    this.data.carouselPics2.map((item, index) => {
+      currentCarouselList2.push({
+        name: index,
+        url: item.pic.url
+      })
+    })
+    Home.getUrl(currentCarouselList2)
+      .then(res => {
+        let carouselPics2 = this.data.carouselPics2
+        res.map(item => {
+          carouselPics2[Number(item.name)].pic.url = item.url
+        })
+        this.setData({
+          carouselPics2
         })
       })
 

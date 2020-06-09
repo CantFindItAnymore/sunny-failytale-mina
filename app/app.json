@@ -19,7 +19,8 @@
     "pages/log/index",
     "pages/order-detail/index",
     "pages/gift/index",
-    "pages/story/index"
+    "pages/story/index",
+    "pages/story-line/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
