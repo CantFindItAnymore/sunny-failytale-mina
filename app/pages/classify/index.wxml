@@ -6,6 +6,7 @@
       bind:tap='toShop'
       data-classify='全部商品'
       is-link
+      title-class='classify-title'
     />
 
     <block
@@ -16,6 +17,7 @@
         bind:tap='toShop'
         data-classify='{{item.name}}'
         is-link
+        title-class='classify-title'
         title="{{item.name}}"
         name="{{item.id}}"
         data-id='{{item.id}}'

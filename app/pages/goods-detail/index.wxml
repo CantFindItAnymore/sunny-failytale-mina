@@ -99,13 +99,13 @@
       text="加入购物车"
       data-type='add'
       bind:click="openSku"
-      color='#FFCBA1'
+      color='#FF976A'
     />
     <van-goods-action-button
       text="立即购买"
       data-type='buy'
       bind:click="openSku"
-      color='#FFCBA1'
+      color='#FF976A'
     />
   </van-goods-action>
 

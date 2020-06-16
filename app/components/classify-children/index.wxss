@@ -8,12 +8,13 @@
 }
 
 .classify-child {
-  width: 300rpx;
-  margin: 10rpx 20rpx;
-  height: 90rpx;
+  width: 48%;
+  padding: 20rpx;
+  margin: 4rpx 1%;
   box-sizing: border-box;
-  text-align: center;
-  line-height: 90rpx;
-  background: #FFCBA1;
-  color: #fff;
+  background: #f0f0f5;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  font-size: 26rpx;
 }
