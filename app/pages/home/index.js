@@ -62,6 +62,7 @@ Page({
   },
 
   goShop() {
+    wx.setStorageSync('classify', '全部商品')
     wx.navigateTo({
       url: '/pages/shop/index'
     })
