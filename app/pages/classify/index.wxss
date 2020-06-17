@@ -6,3 +6,7 @@ van-cell {
   font-size: 30rpx;
   font-weight: 500;
 }
+
+.van-cell:after {
+  border: none !important;
+}

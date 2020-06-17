@@ -24,6 +24,8 @@ class UserModel extends HTTP {
     name,
     phoneNumber,
     sex,
+    channel,
+    pet
   }) {
     return this.request({
       url: 'user/details/save/certification',
@@ -42,6 +44,8 @@ class UserModel extends HTTP {
         name,
         phoneNumber,
         sex,
+        channel,
+        pet
       }
     })
   }

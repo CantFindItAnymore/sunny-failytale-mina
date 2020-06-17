@@ -22,7 +22,18 @@ Page({
       likeService: '',
       likeEnvironment: '',
       likeMethod: '',
-      job: ''
+      job: '',
+      where: '',
+      pet: ''
+    },
+    typeDesc: {
+      likeActivity: '喜欢的活动',
+      likeService: '喜欢的服务',
+      likeEnvironment: '喜欢的购物环境',
+      likeMethod: '喜欢的购物方式',
+      job: '工作',
+      where: '从哪里了解到我们',
+      pet: '宠物'
     },
     babyInfo: {
       name: '',
@@ -47,7 +58,11 @@ Page({
     // 上拉框
     sheetShow: false,
     actions: [],
-    activeSheetType: ''
+    activeSheetType: '',
+
+    // 其他
+    editShow: false,
+    editContent: null
   },
 
   /**
@@ -67,7 +82,9 @@ Page({
           likeService: actionsList.likeService.filter(item => (item.value === res.favoriteService.toString()))[0] || '',
           likeEnvironment: actionsList.likeEnvironment.filter(item => (item.value === res.favoriteShopping.toString()))[0] || '',
           likeMethod: actionsList.likeMethod.filter(item => (item.value === res.favoriteShoppingWay.toString()))[0] || '',
-          job: actionsList.job.filter(item => (item.value === res.job.toString()))[0] || ''
+          job: actionsList.job.filter(item => (item.value === res.job.toString()))[0] || '',
+          where: actionsList.channel.filter(item => (item.value === res.channel.toString()))[0] || '',
+          pet: actionsList.pet.filter(item => (item.value === res.pet.toString()))[0] || ''
         }
 
         let babyInfo = {
@@ -135,11 +152,20 @@ Page({
   },
 
   selectedSheet(e) {
-    console.log(this.data.activeSheetType, e.detail)
-    this._changeUserInfo(this.data.activeSheetType, e.detail)
-    this.setData({
-      sheetShow: false
-    })
+
+    if (e.detail.name === '其他') {
+      this.setData({
+        editShow: true,
+        editContent: null,
+        sheetShow: false
+      })
+    } else {
+      console.log(this.data.activeSheetType, e.detail)
+      this._changeUserInfo(this.data.activeSheetType, e.detail)
+      this.setData({
+        sheetShow: false
+      })
+    }
   },
 
   confirmDatePicker(e) {
@@ -166,14 +192,16 @@ Page({
       babyName: this.data.babyInfo.name,
       babySex: this.data.babyInfo.sex==='男'?0:(this.data.babyInfo.sex==='女'?1:null),
       birthday: this.data.userInfo.birthday,
-      favoriteActivity: this.data.userInfo.likeActivity.value || null,
-      favoriteService: this.data.userInfo.likeService.value || null,
-      favoriteShopping: this.data.userInfo.likeEnvironment.value || null,
-      favoriteShoppingWay: this.data.userInfo.likeMethod.value || null,
-      job: this.data.userInfo.job.value || null,
+      favoriteActivity: this.data.userInfo.likeActivity.name || null,
+      favoriteService: this.data.userInfo.likeService.name || null,
+      favoriteShopping: this.data.userInfo.likeEnvironment.name || null,
+      favoriteShoppingWay: this.data.userInfo.likeMethod.name || null,
+      job: this.data.userInfo.job.name || null,
       name: this.data.userInfo.name,
       phoneNumber: this.data.userInfo.mobile,
       sex: this.data.userInfo.sex==='男'?0:(this.data.userInfo.sex==='女'?1:null),
+      channel: this.data.userInfo.where.name || null,
+      pet: this.data.userInfo.pet.name || null,
     })
       .then(() => {
         wx.showToast({
@@ -188,6 +216,24 @@ Page({
           })
         }, 1000)
       })
+  },
+
+  onEditCancel () {
+    this.setData({
+      editShow: false
+    })
+  },
+
+  onEditChange(e) {
+    this.setData({
+      editContent: {
+        name: e.detail
+      }
+    })
+  },
+
+  onEditConfirm (e) {
+    this._changeUserInfo(this.data.activeSheetType, this.data.editContent)
   },
 
   _changeUserInfo(field, changedField) {

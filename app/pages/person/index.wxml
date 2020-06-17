@@ -89,6 +89,20 @@
       data-type='job'
     />
 
+    <van-cell
+      title="从哪里了解到我们"
+      value="{{ userInfo.where.name }}"
+      bind:tap="openSheet"
+      data-type='where'
+    />
+
+    <van-cell
+      title="是否有宠物"
+      value="{{ userInfo.pet.name }}"
+      bind:tap="openSheet"
+      data-type='pet'
+    />
+
 
     <van-divider contentPosition="center" customStyle="color: #FFCBA1;border-color: #FFCBA1;">宝宝信息</van-divider>
 
@@ -183,3 +197,18 @@
     cancel-text="取消"
   />
 </view>
+
+<van-dialog
+  use-slot
+  title="{{typeDesc[activeSheetType]}}"
+  show="{{ editShow }}"
+  show-cancel-button
+  bind:cancel="onEditCancel"
+  bind:confirm="onEditConfirm"
+>
+  <van-field
+    value="{{ userInfo[activeSheetType].name }}"
+    data-type='name'
+    bind:change="onEditChange"
+  />
+</van-dialog>
