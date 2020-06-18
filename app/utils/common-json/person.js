@@ -31,10 +31,6 @@ const actionsList = {
     },
     {
       name: '其他',
-      value: '8'
-    },
-    {
-      name: '其他',
     }
   ],
   // 1-干洗 2-维修保养 3-生日节日礼物
