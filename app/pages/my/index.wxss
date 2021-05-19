@@ -6,7 +6,7 @@
   height: 260rpx;
   width: 100%;
   border-radius: 0 0 5% 5%;
-  background: #FFCBA1;
+  background: #414141;
 }
 
 .detail {
@@ -30,7 +30,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1rpx solid #FFCBA1;
+  border-bottom: 1rpx solid #414141;
 }
 
 .my {
@@ -59,7 +59,7 @@
   height: 100rpx;
   width: 100rpx;
   border-radius: 50%;
-  border: 1rpx solid orange;
+  border: 1rpx solid #414141;
   background: none;
   padding: 0;
   margin: 0;

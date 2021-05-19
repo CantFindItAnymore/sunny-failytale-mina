@@ -2,12 +2,12 @@
 
   <!-- 头部 -->
   <view class="header-container">
-    <image src="/imgs/menu.png" bind:tap="openMenu" />
+    <image src="/imgs/v2/menu.png" bind:tap="openMenu" />
     <view class="header-input" bind:tap="goSearch">
       <image src="/imgs/search.png" />
       <text>输入关键词搜索</text>
     </view>
-    <image src="/imgs/shopping_car_icon.png" bind:tap="toShopCar" />
+    <image src="/imgs/v2/shopping_car_icon.png" bind:tap="toShopCar" />
   </view>
 
   <!-- 图片 -->
@@ -16,7 +16,7 @@
       <image src="/imgs/logo_bac.png" />
       <image src="/imgs/logo.png" />
     </view>
-    <image class="ss-new" src="/imgs/20ss_new.png" />
+    <!-- <image class="ss-new" src="/imgs/20ss_new.png" /> -->
     <!-- <image class="girl1" src="https://tva2.sinaimg.cn/large/006lIpJvgy1gejqpt2vlmj30ku0egjzv.jpg" /> -->
     <!-- 轮播 -->
     <swiper class="girl1" indicator-dots="{{true}}" autoplay="{{true}}" interval="{{3000}}">

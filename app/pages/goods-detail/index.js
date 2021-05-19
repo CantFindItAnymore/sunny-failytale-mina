@@ -98,6 +98,11 @@ Page({
     Shop.gwtShopSKU(gid)
       .then(res => {
         console.log(res)
+
+        res.skuProps.map(item => {
+          item.smartName = item.name.replace(/[\d\.]+$/, '')
+        })
+
         this.setData({
           sku: res
         })

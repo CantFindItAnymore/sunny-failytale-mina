@@ -1,0 +1,72 @@
+{
+    "setting": {},
+    "condition": {
+        "plugin": {
+            "list": []
+        },
+        "game": {
+            "list": []
+        },
+        "gamePlugin": {
+            "list": []
+        },
+        "miniprogram": {
+            "list": [
+                {
+                    "name": "pages/shop/index",
+                    "pathName": "pages/shop/index",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "pages/address/index",
+                    "pathName": "pages/address/index",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "pages/order/index",
+                    "pathName": "pages/order/index",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "pages/shopping-car/index",
+                    "pathName": "pages/shopping-car/index",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "pages/buy/index",
+                    "pathName": "pages/buy/index",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "pages/goods-detail/index",
+                    "pathName": "pages/goods-detail/index",
+                    "query": "gid=11",
+                    "scene": null
+                },
+                {
+                    "name": "pages/collect/index",
+                    "pathName": "pages/collect/index",
+                    "query": "gid=11",
+                    "scene": null
+                },
+                {
+                    "name": "pages/my/index",
+                    "pathName": "pages/my/index",
+                    "query": "gid=11",
+                    "scene": null
+                },
+                {
+                    "name": "pages/person/index",
+                    "pathName": "pages/person/index",
+                    "query": "gid=11",
+                    "scene": null
+                }
+            ]
+        }
+    }
+}

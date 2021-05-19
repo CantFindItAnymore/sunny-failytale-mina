@@ -1,14 +1,15 @@
 <view class="container">
   
-  <van-tabs active="{{ active }}"  color='#51E3BF' animated sticky>
+  <van-tabs active="{{ active }}"  color='#414141' animated sticky>
     <van-tab title="收藏" name='all'>
       <view class="list">
         <view class="list-item" wx:for='{{likeList}}' wx:key="index">
           <image src="{{item.innerProductVo.mainPicUrl}}" bind:tap="toShopDetail" data-gid='{{item.productId}}' />
+          <view  class="list-item-name">{{item.innerProductVo.name}}</view>
           <view class="list-item-desc">
-            <view bind:tap="toShopDetail" data-gid='{{item.productId}}'>
+            <!-- <view bind:tap="toShopDetail" data-gid='{{item.productId}}'>
               {{item.innerProductVo.productType[0].description}}
-            </view>
+            </view> -->
             <view class="list-item-desc-footer">
               <view class="amount">
                 <text class="weight-font">￥</text>
@@ -32,10 +33,12 @@
       <view class="list">
         <view class="list-item" wx:for='{{failuresList}}' wx:key="index">
           <image src="{{item.innerProductVo.mainPicUrl}}" data-gid='{{item.id}}' />
+          
+          <view  class="list-item-name">{{item.innerProductVo.name}}</view>
           <view class="list-item-desc">
-            <view data-gid='{{item.id}}'>
+            <!-- <view data-gid='{{item.id}}'>
               {{item.innerProductVo.productType[0].description}}
-            </view>
+            </view> -->
             <view class="list-item-desc-footer">
               <view class="amount">
                 <text class="weight-font">￥</text>

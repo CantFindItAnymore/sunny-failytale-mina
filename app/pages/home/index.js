@@ -23,7 +23,7 @@ Page({
     videoUrl: '', // 视频
   },
 
-  onLoad: function () {
+  onShow: function () {
     Home.getImgs()
       .then(res => {
         this.setData({

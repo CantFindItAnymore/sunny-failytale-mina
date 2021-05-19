@@ -1,5 +1,5 @@
 <view class="container">
-  <van-tabs active="{{ activeTab }}" color='#51E3BF' bind:change="onTabChange">
+  <van-tabs active="{{ activeTab }}" color='#414141' bind:change="onTabChange">
     <van-tab title="全部" name='all'>
       <view class="list-container">
         <van-swipe-cell

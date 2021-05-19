@@ -18,8 +18,8 @@ Page({
     list: [],
     likeList: [],
     likedIdList: [],
-    like: '/imgs/like.png',
-    unLike: '/imgs/unLike.png',
+    like: '/imgs/v2/like.png',
+    unLike: '/imgs/v2/unLike.png',
 
     pid: null,
     key: '',
@@ -92,6 +92,7 @@ Page({
           ])
             .then(oo => {
               item.mainPicUrl = oo[0].url
+              console.log(66, res)
               this.setData({
                 list: res
               })

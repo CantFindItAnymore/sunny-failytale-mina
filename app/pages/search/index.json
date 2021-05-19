@@ -1,8 +1,8 @@
 {
   "usingComponents": {
-    "van-field": "/@vant/weapp/field/index",
-    "van-button": "/@vant/weapp/button/index",
-    "van-icon": "/@vant/weapp/icon/index",
-    "van-tag": "/@vant/weapp/tag/index"
+    "van-field": "/miniprogram_npm/@vant/weapp/field/index",
+    "van-button": "/miniprogram_npm/@vant/weapp/button/index",
+    "van-icon": "/miniprogram_npm/@vant/weapp/icon/index",
+    "van-tag": "/miniprogram_npm/@vant/weapp/tag/index"
   }
 }

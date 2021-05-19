@@ -1,6 +1,6 @@
 <view class="container">
 
-  <van-tabs active="{{ active || 'ok' }}" sticky  color='#51E3BF' bind:click="onClickTab">
+  <van-tabs active="{{ active || 'ok' }}" sticky  color='#414141' bind:click="onClickTab">
     <van-tab title="未使用" name='ok'>
       <view class="wrapper">
         <view wx:for="{{okList}}" class="item" wx:key="index" bind:tap="handleSelectCard" data-index='{{index}}'>

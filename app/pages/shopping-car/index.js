@@ -12,8 +12,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    selected: '/imgs/selected.png',
-    unSelected: '/imgs/unSelected.png',
+    selected: '/imgs/v2/selected.png',
+    unSelected: '/imgs/v2/unSelected.png',
     selectedAll: {
       all: 0,
       depreciates: 0,

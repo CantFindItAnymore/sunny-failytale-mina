@@ -19,8 +19,8 @@ Page({
     likeList: [],
     failuresList: [],
     likedIdList: [],
-    like: '/imgs/like.png',
-    unLike: '/imgs/unLike.png'
+    like: '/imgs/v2/like.png',
+    unLike: '/imgs/v2/unLike.png'
   },
 
   /**

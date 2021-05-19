@@ -23,7 +23,7 @@
     <view slot="right" class="del-container" data-id='{{item.id}}' bind:tap="handleDelAddress">删除</view>
   </van-swipe-cell>
 
-  <van-button size='large' color='#51E3BF' bind:tap="openDialog" data-index='-1'>新增地址</van-button>
+  <van-button size='large' color='#414141' bind:tap="openDialog" data-index='-1'>新增地址</van-button>
 
   <van-dialog
     use-slot

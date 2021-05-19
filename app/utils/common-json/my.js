@@ -7,12 +7,12 @@ const list = [
   {
     name: '地址管理',
     goal: 'address',
-    src: '/imgs/address.png'
+    src: '/imgs/v2/address.png'
   },
   {
     name: '个人资料',
     goal: 'person',
-    src: '/imgs/person.png'
+    src: '/imgs/v2/person.png'
   },
   // {
   //   name: '直播链接',
@@ -24,17 +24,17 @@ const list = [
 const my = [
   {
     name: '订单',
-    src: '/imgs/order.png',
+    src: '/imgs/v2/order.png',
     goal: 'order',
   },
   {
     name: '卡包',
-    src: '/imgs/card.png',
+    src: '/imgs/v2/card.png',
     goal: 'card',
   },
   {
     name: '我的收藏',
-    src: '/imgs/collect.png',
+    src: '/imgs/v2/collect.png',
     goal: 'collect',
   }
 ]

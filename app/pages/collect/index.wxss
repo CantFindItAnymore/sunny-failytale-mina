@@ -20,14 +20,14 @@
 }
 
 .list-item {
-  height: 500rpx;
+  /* height: 500rpx; */
   width: 330rpx;
   margin: 23.5rpx;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
 
-  box-shadow: rgba(0,0,0,.2) 0 1rpx 5rpx 0rpx;
+  /* box-shadow: rgba(0,0,0,.2) 0 1rpx 5rpx 0rpx; */
 }
 
 .list-item > image {
@@ -35,13 +35,23 @@
   width: 330rpx;
 }
 
+
+.list-item-name {
+  padding: 20rpx;
+  font-size: 28rpx;
+  /* margin: 30rpx 10rpx; */
+  color: #414141;
+  height: 100rpx;
+  overflow: hidden;
+}
+
 .list-item-desc {
-  padding: 18rpx;
+  padding: 20rpx;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
-
+/* 
 .list-item-desc>view:nth-child(1) {
   height: 100rpx;
   width: 100%;
@@ -52,12 +62,12 @@
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
-  -webkit-line-clamp: 3; /*截取3行*/
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
-}
+} */
 
-.list-item-desc>view:nth-child(2) {
-  height: 70rpx;
+.list-item-desc>view:nth-child(1) {
+  /* height: 70rpx; */
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -69,8 +79,8 @@
 }
 
 .list-item-desc-footer > image {
-  height: 30rpx;
-  width: 30rpx;
+  height: 40rpx;
+  width: 40rpx;
 }
 
 van-icon {

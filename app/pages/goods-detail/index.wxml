@@ -7,7 +7,7 @@
       interval="3000"
       duration="500"
       indicator-color='#999'
-      indicator-active-color='#FFCBA1'
+      indicator-active-color='#c6c6c6'
     >
       <block wx:for="{{detail.carouselPics}}" wx:key="index">
         <swiper-item>
@@ -38,7 +38,7 @@
   <view class="saleInfo">
     <view>
       快递费:￥10
-      <van-tag type="warning">下单7天内发货</van-tag>
+      <van-tag color='#c6c6c6'>下单7天内发货</van-tag>
     </view>
     <view>
       销量：{{detail.salesVolume}}
@@ -99,13 +99,13 @@
       text="加入购物车"
       data-type='add'
       bind:click="openSku"
-      color='#FF976A'
+      color='#c6c6c6'
     />
     <van-goods-action-button
       text="立即购买"
       data-type='buy'
       bind:click="openSku"
-      color='#FF976A'
+      color='#414141'
     />
   </van-goods-action>
 
@@ -127,7 +127,7 @@
       </view>
       <scroll-view scroll-y class="sku-content">
         <view class="sku-item" wx:for="{{sku.skuProps}}" wx:key="index">
-          <view>{{item.name}}</view>
+          <view>{{item.smartName}}</view>
           <view class="sku-option">
             <van-tag
               data-skuprop='{{options.propName}}'

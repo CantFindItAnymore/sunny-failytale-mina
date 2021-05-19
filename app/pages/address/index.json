@@ -1,13 +1,13 @@
 {
   "usingComponents": {
-    "van-button": "/@vant/weapp/button/index",
-    "van-dialog": "/@vant/weapp/dialog/index",
-    "van-field": "/@vant/weapp/field/index",
-    "van-cell": "/@vant/weapp/cell/index",
-    "van-cell-group": "/@vant/weapp/cell-group/index",
-    "van-tag": "/@vant/weapp/tag/index",
-    "van-swipe-cell": "/@vant/weapp/swipe-cell/index",
-    "van-area": "/@vant/weapp/area/index",
-    "van-popup": "/@vant/weapp/popup/index"
+    "van-button": "/miniprogram_npm/@vant/weapp/button/index",
+    "van-dialog": "/miniprogram_npm/@vant/weapp/dialog/index",
+    "van-field": "/miniprogram_npm/@vant/weapp/field/index",
+    "van-cell": "/miniprogram_npm/@vant/weapp/cell/index",
+    "van-cell-group": "/miniprogram_npm/@vant/weapp/cell-group/index",
+    "van-tag": "/miniprogram_npm/@vant/weapp/tag/index",
+    "van-swipe-cell": "/miniprogram_npm/@vant/weapp/swipe-cell/index",
+    "van-area": "/miniprogram_npm/@vant/weapp/area/index",
+    "van-popup": "/miniprogram_npm/@vant/weapp/popup/index"
   }
 }
