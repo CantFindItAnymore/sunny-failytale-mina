@@ -30,7 +30,7 @@ swiper-item
 }
 
 .title>view:nth-child(1) {
-  font-size: 34rpx;
+  font-size: 30rpx;
   width: 550rpx;
 }
 

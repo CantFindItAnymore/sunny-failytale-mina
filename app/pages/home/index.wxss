@@ -12,8 +12,8 @@
 }
 
 .header-container>image {
-  height: 40rpx;
-  width: 40rpx;
+  height: 60rpx;
+  width: 60rpx;
 }
 
 .header-container>.header-input {
