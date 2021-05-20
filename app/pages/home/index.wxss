@@ -140,14 +140,14 @@
   font-size: 30rpx;
 }
 
-.story>view:nth-child(1) {
+/* .story>view:nth-child(1) {
   height: 90rpx;
   display: flex;
   flex-direction: column;
   align-items: center;
-}
+} */
 
-.story>image:nth-child(2) {
+.story>image:nth-child(1) {
   height: 52rpx;
   width: 250rpx;
 }
@@ -282,8 +282,8 @@
 }
 
 .recommend {
-  height: 230rpx;
-  width: 100%;
+  height: 130rpx;
+  /* width: 100%; */
   margin-bottom: 40rpx;
 }
 

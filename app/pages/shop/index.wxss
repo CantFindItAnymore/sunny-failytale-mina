@@ -1,7 +1,7 @@
 .header {
   height: 50rpx;
   width: 100%;
-  background: #ccc;
+  background: #414141;
   display: flex;
   justify-content: center;
   align-items: center;

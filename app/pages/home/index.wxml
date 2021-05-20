@@ -13,8 +13,8 @@
   <!-- 图片 -->
   <view class="images-container">
     <view class="logo-container">
-      <image src="/imgs/logo_bac.png" />
-      <image src="/imgs/logo.png" />
+      <image src="/imgs/v2/logo_bac.jpg" />
+      <!-- <image src="/imgs/logo.png" /> -->
     </view>
     <!-- <image class="ss-new" src="/imgs/20ss_new.png" /> -->
     <!-- <image class="girl1" src="https://tva2.sinaimg.cn/large/006lIpJvgy1gejqpt2vlmj30ku0egjzv.jpg" /> -->
@@ -40,7 +40,7 @@
       </view>
     </view>
 
-    <image class="ss-new ss-new2" src="/imgs/20ss_new.png" />
+    <image class="ss-new ss-new2" src="/imgs/v2/folks.jpg" />
 
     <!-- <image class="fly" src="{{brandStoryDisplayPic}}" /> -->
     <video
@@ -50,11 +50,11 @@
       vslide-gesture-in-fullscreen
     />
     <view class="story">
-      <view>
+      <!-- <view>
         <text>ENK SHANGHAI   2019   VOL.3</text>
         <text>往期视频请关注抖音官方账号</text>
-      </view>
-      <image src="/imgs/story_btn.png" bind:tap='toStoryLine' />
+      </view> -->
+      <image src="/imgs/v2/story_btn.png" bind:tap='toStoryLine' />
     </view>
     <!-- <view class="sale">
       <image src="https://tva3.sinaimg.cn/large/006lIpJvgy1gejqrjgwrej30ku0byjud.jpg" />
@@ -105,7 +105,7 @@
       </view>
     </view>
 
-    <image class="recommend" src="/imgs/recommend.png" />
+    <image class="recommend" src="/imgs/v2/recommend.jpg" />
 
     <view class="outfit">
       <view
@@ -125,7 +125,7 @@
       <image src="/imgs/logo.png" />
     </view> -->
 
-    <view class="footer-title" bind:tap='goShop'>全部商品 go shopping......</view>
+    <!-- <view class="footer-title" bind:tap='goShop'>全部商品 go shopping......</view> -->
   </view>
 
 </view>

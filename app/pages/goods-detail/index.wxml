@@ -133,7 +133,7 @@
               data-skuprop='{{options.propName}}'
               data-skuname='{{options.optionValue}}'
               data-skuid='{{options.id}}'
-              color="{{options.optionValue===skuInfo.props[options.propName]['skuName']?'#FFCBA1':'#999'}}"
+              color="{{options.optionValue===skuInfo.props[options.propName]['skuName']?'#414141':'#c6c6c6'}}"
               bind:tap='handleSelectSku'
               size="medium"
               wx:for="{{item.optionVos}}"
@@ -151,7 +151,7 @@
         </view>
       </scroll-view>
       <view class="sku-btn">
-        <van-button type="warning" bind:tap='addOrBuy'>确定</van-button>
+        <van-button color='#414141' bind:tap='addOrBuy'>确定</van-button>
       </view>
     </view>
   </van-popup>
