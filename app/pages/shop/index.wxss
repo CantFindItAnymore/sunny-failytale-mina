@@ -22,8 +22,8 @@
 .list-item {
   /* height: 500rpx; */
   /* overflow: hidden; */
-  width: 330rpx;
-  margin: 23.5rpx;
+  width: 350rpx;
+  margin: 12rpx;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -32,7 +32,7 @@
 }
 
 .list-item-img {
-  height: 330rpx;
+  height: 350rpx;
   width: 100%;
 }
 
@@ -97,6 +97,8 @@
 van-icon {
   position: absolute;
   right: 50rpx;
+  top: 0;
+  bottom: 0;
 }
 
 .list-no-result {

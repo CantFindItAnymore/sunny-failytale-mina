@@ -1,7 +1,7 @@
 <view class="container">
   <van-cell-group>
 
-    <van-divider contentPosition="center" customStyle="color: #414141;border-color: #414141;">家长信息</van-divider>
+    <van-divider contentPosition="center" customStyle="color: #414141;border-color: #414141;">基本信息</van-divider>
 
     <van-field
       label="姓名"
