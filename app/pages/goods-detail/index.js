@@ -32,7 +32,9 @@ Page({
       remainStoreNum: 0,
       count: 1,
       skuId: null,
-      props: {}
+      props: {
+        propId: ''
+      }
     }
   },
 
@@ -186,27 +188,32 @@ Page({
       skuInfo
     })
 
+
+    console.log(9, skuInfo)
+
     // 全部选中后匹配sku
-    let selectedSkuName = []
+    let selectedSkuIds = []
+    console.log(10, this.data.skuInfo.props)
     for (const key in this.data.skuInfo.props) {
-      if (this.data.skuInfo.props[key].skuName) {
-        selectedSkuName.push(`${key}:${this.data.skuInfo.props[key].skuName}`)
+      console.log(10.5, this.data.skuInfo.props[key])
+      if (this.data.skuInfo.props[key].skuId) {
+        selectedSkuIds.push(`${this.data.skuInfo.props[key].skuId}`)
       }
     }
 
-    selectedSkuName = selectedSkuName.join(' ')
+    selectedSkuIds = selectedSkuIds.sort().join(',')
 
-    console.log(selectedSkuName)
+    console.log(11, selectedSkuIds, this.data.sku.skuOptGroup)
 
     this.data.sku.skuOptGroup.map(item => {
-      if (item.skuName === selectedSkuName) {
+      if (item.skuProps === selectedSkuIds) {
         console.log('匹配到sku了')
         let skuInfo = this.data.skuInfo
         // 限制最大购买量
         skuInfo.remainStoreNum = item.remainStoreNum
         skuInfo.price = item.price
         skuInfo.skuId = item.id
-        skuInfo.selectedSkuName = selectedSkuName
+        skuInfo.selectedSkuIds = selectedSkuIds
         Home.getUrl([{
           name: 'x',
           url: item.picUrl

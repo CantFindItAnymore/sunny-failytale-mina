@@ -132,7 +132,7 @@
             <van-tag
               data-skuprop='{{options.propName}}'
               data-skuname='{{options.optionValue}}'
-              data-skuid='{{options.id}}'
+              data-skuid='{{options.propId}}'
               color="{{options.optionValue===skuInfo.props[options.propName]['skuName']?'#414141':'#c6c6c6'}}"
               bind:tap='handleSelectSku'
               size="medium"
