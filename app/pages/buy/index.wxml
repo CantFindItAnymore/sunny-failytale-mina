@@ -28,7 +28,7 @@
       </van-panel>
       <van-cell
         title='运费'
-        value='￥10'
+        value='￥0'
       />
     </van-cell-group>
   </view>

@@ -84,61 +84,74 @@ const http = class HTTP {
     wx.showLoading({
       mask: true
     })
-    // 无token
-    wx.getSetting({
-			success: (data) => {
-				if (data.authSetting['scope.userInfo']) {
-          this._showErr('账号过期，正在重新登录')
-          // 1. token丢失(静默重新获取token)
-          wx.login({
-            success(res) {
-              if (res.code) {
-                wx.setStorageSync('jsCode', res.code)
-                wx.request({
-                  url: config.baseUrl + 'user/auth/login/',
-                  header: {
-                    'content-type': 'application/json'
-                  },
-                  data: {
-                    jsCode: res.code,
-                    nickName: wx.getStorageSync('nickName')
-                  },
-                  success (res) {
-                    wx.setStorageSync('token', res.data.data.token)
-                    wx.showToast({
-                      title: '登录成功',
-                      icon: 'none',
-                      duration: 2000
-                    })
-                    wx.switchTab({
-                      url: '/pages/home/index'
-                    })
-                  }
-                })
-              }
-            },
+    // 2. 新用户未登录
+    wx.showModal({
+      title: '提示',
+      content: '请点击头像登录后再进行该操作',
+      success (res) {
+        if (res.confirm) {
+          wx.switchTab({
+            url: '/pages/my/index'
           })
+        } else if (res.cancel) {
         }
-        else {
-          // 2. 新用户未登录
-          wx.showModal({
-            title: '提示',
-            content: '请点击头像登录后再进行该操作',
-            success (res) {
-              if (res.confirm) {
-                wx.switchTab({
-                  url: '/pages/my/index'
-                })
-              } else if (res.cancel) {
-              }
-            }
-          })
-        }
-			},
-			complete() {
-				wx.hideLoading()
       }
     })
+    // 无token
+    // wx.getSetting({
+		// 	success: (data) => {
+		// 		if (data.authSetting['scope.userInfo']) {
+    //       this._showErr('账号过期，正在重新登录')
+    //       // 1. token丢失(静默重新获取token)
+    //       wx.login({
+    //         success(res) {
+    //           if (res.code) {
+    //             wx.setStorageSync('jsCode', res.code)
+    //             wx.request({
+    //               url: config.baseUrl + 'user/auth/login/',
+    //               header: {
+    //                 'content-type': 'application/json'
+    //               },
+    //               data: {
+    //                 jsCode: res.code,
+    //                 nickName: wx.getStorageSync('nickName')
+    //               },
+    //               success (res) {
+    //                 wx.setStorageSync('token', res.data.data.token)
+    //                 wx.showToast({
+    //                   title: '登录成功',
+    //                   icon: 'none',
+    //                   duration: 2000
+    //                 })
+    //                 wx.switchTab({
+    //                   url: '/pages/home/index'
+    //                 })
+    //               }
+    //             })
+    //           }
+    //         },
+    //       })
+    //     }
+    //     else {
+    //       // 2. 新用户未登录
+    //       wx.showModal({
+    //         title: '提示',
+    //         content: '请点击头像登录后再进行该操作',
+    //         success (res) {
+    //           if (res.confirm) {
+    //             wx.switchTab({
+    //               url: '/pages/my/index'
+    //             })
+    //           } else if (res.cancel) {
+    //           }
+    //         }
+    //       })
+    //     }
+		// 	},
+		// 	complete() {
+		// 		wx.hideLoading()
+    //   }
+    // })
   }
 
   _unAuth () {
@@ -149,7 +162,7 @@ const http = class HTTP {
       content: '请认证后再进行该操作',
       success (res) {
         if (res.confirm) {
-          wx.switchTab({
+          wx.redirectTo({
             url: '/pages/person/index'
           })
         } else if (res.cancel) {

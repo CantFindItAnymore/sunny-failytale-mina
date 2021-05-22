@@ -100,13 +100,13 @@ Page({
         detailedAddress: this.data.address.address,
         phone: this.data.address.phoneNumber
       },
-      carriage: '10.00',
+      carriage: '0.00',
       couponPrice: this.data.selectedCard?this.data.selectedCard.couponPrice:null,
       couponUserId: this.data.selectedCard?this.data.selectedCard.id:null,
       leaveWord: this.data.remark,
-      realPrice: this.data.totalFee + 10 - (this.data.selectedCard?this.data.selectedCard.couponPrice:0),
+      realPrice: this.data.totalFee - (this.data.selectedCard?this.data.selectedCard.couponPrice:0),
       skuList,
-      totalPrice: this.data.totalFee + 10
+      totalPrice: this.data.totalFee
     })
       .then(res => {
         this.setData({
@@ -119,7 +119,7 @@ Page({
         return Shop.pay({
           orderNo: res.code,
           orderId: res.id,
-          totalFee: (this.data.totalFee + 10.00) * 1000 / 10 - (this.data.selectedCard?this.data.selectedCard.couponPrice:0.00) * 100 / 10
+          totalFee: (this.data.totalFee) * 1000 / 10 - (this.data.selectedCard?this.data.selectedCard.couponPrice:0.00) * 100 / 10
           // totalFee: (this.data.totalFee) * 100 - (this.data.selectedCard?this.data.selectedCard.couponPrice:0) * 100
         })
       })

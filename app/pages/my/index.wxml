@@ -6,8 +6,7 @@
         {{userInfo.nickName}}
       </view>
       <button
-        open-type='getUserInfo'
-        bind:getuserinfo='handleGetUserInfo'
+        bind:tap='handleGetUserInfo'
       >
         <image src="{{userInfo.avatarUrl || defaultHead}}"/>
       </button>

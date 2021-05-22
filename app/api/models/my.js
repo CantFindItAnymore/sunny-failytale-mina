@@ -13,6 +13,12 @@ class MyModel extends HTTP {
     })
   }
 
+  getUserInfo() {
+    return this.request({
+      url: 'user/admin/info'
+    })
+  }
+
   isAuthed() {
     return this.request({
       url: 'user/check/certification'

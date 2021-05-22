@@ -118,20 +118,32 @@
       input-align="right"
       hold-keyboard
     />
-
-    <van-cell
-      title="体重"
-      value="{{ babyInfo.sex }}"
-      data-role='baby'
+    <van-field
+      label="体重"
+      type='digit'
+      placeholder='kg'
+      value="{{ babyInfo.weight }}"
+      bind:change="onBabyInfoChange"
+      data-type='weight'
+      input-align="right"
+      hold-keyboard
     />
-
-    <van-cell
-      title="内衣尺码"
-      data-role='baby'
+    <van-field
+      label="内衣尺码"
+      value="{{ babyInfo.underwearSize }}"
+      bind:change="onBabyInfoChange"
+      data-type='underwearSize'
+      input-align="right"
+      hold-keyboard
     />
-    <van-cell
-      title="日常鞋码"
-      data-role='baby'
+    <van-field
+      label="日常鞋码"
+      type='digit'
+      value="{{ babyInfo.shoesSize }}"
+      bind:change="onBabyInfoChange"
+      data-type='shoesSize'
+      input-align="right"
+      hold-keyboard
     />
 
 

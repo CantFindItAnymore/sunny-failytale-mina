@@ -27,13 +27,16 @@
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  background: #fff;
+  padding: 10px;
 
-  /* box-shadow: rgba(0,0,0,.2) 0 1rpx 5rpx 0rpx; */
+  box-shadow: rgba(0,0,0,.2) 0 1rpx 5rpx 0rpx;
 }
 
 .list-item-img {
-  height: 350rpx;
-  width: 100%;
+  height: 440rpx;
+  width: 330rpx;
 }
 
 .list-item-name {
