@@ -70,6 +70,7 @@ van-swipe-cell {
 } */
 
 .btn-class {
-  background: #c6c6c6 !important;
+  background: #414141 !important;
   border: none !important;
+  font-size: 38rpx !important;
 }

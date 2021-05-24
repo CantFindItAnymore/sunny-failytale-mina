@@ -201,12 +201,12 @@ Page({
       }
     }
 
-    selectedSkuIds = selectedSkuIds.sort().join(',')
+    // selectedSkuIds = selectedSkuIds.sort().join(',')
 
     console.log(11, selectedSkuIds, this.data.sku.skuOptGroup)
 
     this.data.sku.skuOptGroup.map(item => {
-      if (item.skuProps === selectedSkuIds) {
+      if (this._isSameArr(item.skuProps.split(','),selectedSkuIds)) {
         console.log('匹配到sku了')
         let skuInfo = this.data.skuInfo
         // 限制最大购买量
@@ -226,6 +226,21 @@ Page({
           })
       }
     })
+  },
+
+  _isSameArr(arr1, arr2){
+    let isSame = true
+    if (arr1.length!==arr2.length) {
+      isSame = false
+    }
+    isSame && arr1.map(item1 => {
+      if (!arr2.includes(item1)) {
+        isSame = false
+      }
+    })
+
+    return isSame
+
   },
 
   onCountChange(e) {

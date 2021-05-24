@@ -30,13 +30,13 @@ swiper-item
 }
 
 .title>view:nth-child(1) {
-  font-size: 30rpx;
+  font-size: 36rpx;
   width: 550rpx;
 }
 
 .title>image {
-  height: 30rpx;
-  width: 30rpx;
+  height: 50rpx;
+  width: 50rpx;
   margin-left: 55rpx;
 }
 
@@ -106,6 +106,9 @@ swiper-item
   display: flex;
   flex-direction: column;
   height: 100%;
+  overflow: hidden;
+  padding-top: 10px;
+  box-sizing: border-box;
   /* background: #ff976a; */
 }
 
