@@ -84,7 +84,7 @@
 
 .footer {
   background: #fff;
-  height: 100rpx;
+  height: 150rpx;
   width: 100%;
   padding: 0 30rpx;
   box-sizing: border-box;
@@ -96,5 +96,9 @@
 }
 
 .footer>view {
-  padding-right: 40rpx;
+  margin-right: 40rpx;
+}
+
+.footer .btn-class {
+  font-size: 38rpx !important;
 }

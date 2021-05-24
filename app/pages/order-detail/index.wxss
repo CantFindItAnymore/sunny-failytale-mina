@@ -4,7 +4,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #FFCBA1;
+  background: #414141;
   color: #fff;
   font-size: 30rpx;
   font-weight: bolder;

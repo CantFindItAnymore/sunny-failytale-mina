@@ -11,7 +11,7 @@
 
 .list {
   width: 100%;
-  background: #F2F2F2;
+  background: rgb(246, 246, 246);
   padding-top: 70rpx;
   padding-bottom: 30rpx;
   box-sizing: border-box;
@@ -88,12 +88,13 @@
 }
 
 .amount {
-  font-size: 28rpx;
+  font-size: 36rpx;
+  font-weight: bolder;
   color:#000;
 }
 
 .smaller {
-  font-size: 14rpx;
+  font-size: 18rpx;
 }
 
 .list-item-desc-footer > image {

@@ -12,7 +12,7 @@
   />
 
   <view class="bottom-btn-container">
-    <van-button size='large' color='#FFCBA1' bind:tap="handleRefund">申请{{typeText[type]}}</van-button>
+    <van-button size='large' color='#414141' bind:tap="handleRefund">申请{{typeText[type]}}</van-button>
   </view>
 
 </view>

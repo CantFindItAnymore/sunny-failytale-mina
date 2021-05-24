@@ -4,6 +4,6 @@
     steps="{{ steps }}"
     active="{{ active }}"
     direction="vertical"
-    active-color="#FFCBA1"
+    active-color="#414141"
   />
 </view>

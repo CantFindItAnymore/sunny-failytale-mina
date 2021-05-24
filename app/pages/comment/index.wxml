@@ -32,7 +32,7 @@
   />
 
   <view class="bottom-btn-container">
-    <van-button size='large' color='#FFCBA1' bind:tap="handleRefund">发表</van-button>
+    <van-button size='large' color='#414141' bind:tap="handleRefund">发表</van-button>
   </view>
 
 </view>

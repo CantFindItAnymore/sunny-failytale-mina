@@ -10,7 +10,6 @@
     </view>
     <view>〉</view>
   </view>
-
   <view class="detail">
     <van-cell-group>
       <van-panel style="margin-bottom: 20rpx">
@@ -26,44 +25,26 @@
           </view>
         </view>
       </van-panel>
-      <van-cell
-        title='运费'
-        value='￥0'
-      />
+      <van-cell title='运费' value='￥0' />
     </van-cell-group>
   </view>
-
   <view class="card">
     <van-cell-group>
-      <van-cell
-        title='优惠券'
-        value='减￥{{selectedCard.couponPrice || 0}}'
-        bind:tap="toCard"
-      />
-      <van-field
-        value="{{ remark }}"
-        label="留言"
-        input-align="right"
-        hold-keyboard
-        type="textarea"
-        autosize
-        bind:change='onChange'
-        maxlength='100'
-        clearable
-        show-word-limit
-      />
+      <van-cell title='优惠券' value='减￥{{selectedCard.couponPrice || 0}}' bind:tap="toCard" />
+      <van-field value="{{ remark }}" label="留言" input-align="right" hold-keyboard type="textarea" autosize bind:change='onChange' maxlength='100' clearable show-word-limit />
     </van-cell-group>
   </view>
-
   <view class="footer">
     <view>共{{buyList.length}}件商品</view>
-    <view class="price">合计：<text class="weight-font" style="color: #FFCBA1">￥{{selectedCard?totalFee+10-selectedCard.couponPrice:totalFee+10}}</text></view>
-    <van-button color='#FFCBA1' round type='danger' size='small' bind:tap="onPay">
+    <view class="price">
+      合计：<text class="weight-font" style="color: #414141">￥{{selectedCard?totalFee+10-selectedCard.couponPrice:totalFee+10}}
+      </text>
+    </view>
+    <van-button color='#414141' round type='danger' size='normal' bind:tap="onPay" custom-class='btn-class'>
       支付
     </van-button>
   </view>
 </view>
-
 <wxs module="tool">
   var fixedT = function(fee){
     return (fee/100).toFixed(2)
