@@ -121,7 +121,7 @@
         <image src="{{skuInfo.url || detail.mainPicUrl}}" />
         <view>
           <view style='margin-bottom: 20rpx; color: #414141' wx:if="{{skuInfo.price}}">￥ <text class="weight-font" style='font-size: 38rpx'>{{skuInfo.price}}</text></view>
-          <view wx:if="{{skuInfo.selectedSkuName}}">已选：{{skuInfo.selectedSkuName}}</view>
+          <view wx:if="{{skuInfo.smartSelectedSkuInfo}}">已选：{{skuInfo.smartSelectedSkuInfo}}</view>
           <view wx:else>请选择规格</view>
         </view>
       </view>

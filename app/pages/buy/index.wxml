@@ -41,7 +41,7 @@
       </text>
     </view>
     <van-button color='#414141' round type='danger' size='normal' bind:tap="onPay" custom-class='btn-class'>
-      支付
+      提交订单
     </van-button>
   </view>
 </view>

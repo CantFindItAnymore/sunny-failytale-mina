@@ -19,7 +19,7 @@
 
           <van-card
             price="{{item.productSkuVo.price}}"
-            desc="{{item.productSkuVo.skuName}}"
+            desc="{{item.productSkuVo.smartName}}"
             title="{{item.productSkuVo.name}}"
             thumb="{{item.productSkuVo.picUrl || item.productSkuVo.mainPicUrl}}"
             thumb-link='/pages/goods-detail/index?gid={{item.productId}}'
@@ -53,7 +53,7 @@
 
           <van-card
             price="{{item.productSkuVo.price}}"
-            desc="{{item.productSkuVo.skuName}}"
+            desc="{{item.productSkuVo.smartName}}"
             title="{{item.productSkuVo.name}}"
             thumb="{{item.productSkuVo.picUrl || item.productSkuVo.mainPicUrl}}"
             thumb-link='/pages/goods-detail/index?gid={{item.productId}}'
@@ -87,7 +87,7 @@
 
           <van-card
             price="{{item.productSkuVo.price}}"
-            desc="{{item.productSkuVo.skuName}}"
+            desc="{{item.productSkuVo.smartName}}"
             title="{{item.productSkuVo.name}}"
             thumb="{{item.productSkuVo.picUrl || item.productSkuVo.mainPicUrl}}"
             thumb-link='/pages/goods-detail/index?gid={{item.productId}}'

@@ -84,7 +84,7 @@
 
 .footer {
   background: #fff;
-  height: 150rpx;
+  height: 200rpx;
   width: 100%;
   padding: 0 30rpx;
   box-sizing: border-box;

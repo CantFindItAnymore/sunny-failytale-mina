@@ -344,5 +344,6 @@
 }
 
 .video {
-  width: 700rpx;
+  width: 750rpx;
+  height: 1000rpx;
 }

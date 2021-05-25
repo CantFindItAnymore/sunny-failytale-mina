@@ -65,6 +65,17 @@
                     "pathName": "pages/person/index",
                     "query": "gid=11",
                     "scene": null
+                },
+                {
+                    "name": "pages/buy-suc/index",
+                    "pathName": "pages/buy-suc/index",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "pages/shopping-car/index",
+                    "pathName": "pages/shopping-car/index",
+                    "scene": null
                 }
             ]
         }

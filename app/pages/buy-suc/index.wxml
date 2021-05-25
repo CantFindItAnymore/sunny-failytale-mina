@@ -1,8 +1,8 @@
 <view class="container">
-  <image class="suc-icon" src="/imgs/buy_suc.png" />
-  <text class="weight-font" style="color: #26C18E">购买成功</text>
+  <image class="suc-icon" src="/imgs/v2/buy_suc.png" />
+  <text class="weight-font" style="color: #414141">购买成功!</text>
   <view class="btn-container">
-    <van-button type='primary' round size='large' custom-class='btn' bind:tap="toOrder">查看订单</van-button>
-    <van-button type='primary' round size='large' custom-class='btn' bind:tap="toShop">再来一单</van-button>
+    <van-button color='#414141' round size='large' custom-class='btn' bind:tap="toOrder">查看订单</van-button>
+    <van-button color='#414141' round size='large' custom-class='btn' bind:tap="toShop">再来一单</van-button>
   </view>
 </view>

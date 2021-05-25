@@ -39,9 +39,10 @@ Page({
   onShow: function () {
     const buyList = wx.getStorageSync('buyList')
     let totalFee = 0
-    buyList && buyList.map(item => {
+    buyList?.length>0 && buyList.map(item => {
       totalFee += (item.productSkuVo.price*100)*item.nowCount
     })
+
     totalFee = totalFee/100
     this.setData({
       buyList,

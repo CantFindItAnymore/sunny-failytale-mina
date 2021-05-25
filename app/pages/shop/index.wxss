@@ -12,10 +12,10 @@
 .list {
   width: 100%;
   background: rgb(246, 246, 246);
-  padding-top: 70rpx;
-  padding-bottom: 30rpx;
+  padding: 70rpx 10rpx 30rpx 10rpx;
   box-sizing: border-box;
   display: flex;
+  justify-content: space-between;
   flex-wrap: wrap;
   min-height: 100vh;
 }
@@ -23,13 +23,13 @@
 .list-item {
   /* height: 500rpx; */
   /* overflow: hidden; */
-  width: 355rpx;
-  margin: 10rpx;
+  width: 360rpx;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   align-items: center;
   background: #fff;
+  margin-bottom: 10rpx;
   padding: 10px;
 
   /* box-shadow: rgba(0,0,0,.2) 0 1rpx 5rpx 0rpx; */

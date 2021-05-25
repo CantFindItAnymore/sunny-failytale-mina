@@ -26,6 +26,7 @@ Page({
 			url: '',
 			price: null,
 			selectedSkuName: '',
+			smartSelectedSkuInfo: '',
 			// 库存
 			remainStoreNum: 0,
 			count: 1,
@@ -91,11 +92,13 @@ Page({
 		this._getCollection()
 		// sku
 		Shop.gwtShopSKU(gid).then(res => {
-			console.log(res)
+			console.log(1, res)
 
 			res.skuProps.map(item => {
 				item.smartName = item.name.replace(/[\d\.]+$/, '')
 			})
+
+			console.log(2, res)
 
 			this.setData({
 				sku: res,
@@ -194,7 +197,15 @@ Page({
 			}
 		}
 
-    selectedSkuName = selectedSkuName.join(' ')
+		let smartSelectedSkuInfo = []
+		let skuName = JSON.parse(JSON.stringify(selectedSkuName))
+		skuName.map(item => {
+			smartSelectedSkuInfo.push(
+				item.split(':')[0].replace(/[\d\.]+$/, '') + ':' + item.split(':')[1]
+			)
+		})
+		smartSelectedSkuInfo = smartSelectedSkuInfo.join(' ')
+		selectedSkuName = selectedSkuName.join(' ')
 
 		// selectedSkuIds = selectedSkuIds.sort().join(',')
 
@@ -210,6 +221,7 @@ Page({
 				skuInfo.skuId = item.id
 				// skuInfo.selectedSkuIds = selectedSkuIds
 				skuInfo.selectedSkuName = selectedSkuName
+				skuInfo.smartSelectedSkuInfo = smartSelectedSkuInfo
 				Home.getUrl([
 					{
 						name: 'x',
@@ -314,7 +326,7 @@ Page({
 					mainPicUrl: this.data.detail.mainPicUrl,
 					// onsale: this.data.gid,
 					skuId: this.data.skuInfo.skuId,
-					skuName: this.data.skuInfo.selectedSkuName,
+					skuName: this.data.skuInfo.smartSelectedSkuInfo,
 					remainStoreNum: this.data.skuInfo.remainStoreNum,
 					price: this.data.skuInfo.price,
 					picUrl: this.data.skuInfo.url,

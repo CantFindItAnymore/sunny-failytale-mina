@@ -6,7 +6,7 @@
       <image src="{{pro.currentPic}}" bind:tap="toDetail" data-id="{{pro.productId}}" />
       <view>
         <view>{{pro.productName}}</view>
-        <view>{{pro.skuName}}</view>
+        <view>{{pro.smartName}}</view>
         <view class="weight-font">￥{{pro.totalPrice}}</view>
       </view>
       <view>x {{pro.amount}}</view>

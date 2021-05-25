@@ -1,280 +1,298 @@
 import { MyModel } from '../../api/models/my'
 const My = new MyModel()
 
-
 import { HomeModel } from '../../api/models/home'
 const Home = new HomeModel()
 
-
 Page({
+	/**
+	 * 页面的初始数据
+	 */
+	data: {
+		selected: '/imgs/v2/selected.png',
+		unSelected: '/imgs/v2/unSelected.png',
+		selectedAll: {
+			all: 0,
+			depreciates: 0,
+			failures: 0,
+		},
+		activeTab: 'all',
+		catList: {},
+		buyList: [],
+	},
 
-  /**
-   * 页面的初始数据
-   */
-  data: {
-    selected: '/imgs/v2/selected.png',
-    unSelected: '/imgs/v2/unSelected.png',
-    selectedAll: {
-      all: 0,
-      depreciates: 0,
-      failures: 0
-    },
-    activeTab: 'all',
-    catList: {},
-    buyList: []
-  },
+	/**
+	 * 生命周期函数--监听页面加载
+	 */
+	onShow: function (options) {
+		My.getMyCar().then(res => {
+			;['all', 'depreciates', 'failures'].map(item => {
+				res &&
+					res[item] &&
+					res[item].map((pro, index) => {
+						// 无值
+						if (!Object.keys(this.data.catList).length) {
+							pro.nowCount = pro.count
+							pro.nowIsSelect = false
+							console.log('没有 count')
+						} else {
+							// 有值
+							if (index > this.data.catList[item].length - 1) {
+								// （防止count被覆盖）
+								pro.nowCount = pro.count
+								pro.nowIsSelect = false
+								console.log('xinzhi', index)
+							} else {
+								pro.nowCount = this.data.catList[item][index].nowCount
+								// pro.nowIsSelect = this.data.catList[item][index].nowIsSelect
+								pro.nowIsSelect = false
+							}
+							console.log('有 count')
+						}
+					})
+			})
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onShow: function (options) {
-    My.getMyCar()
-      .then(res => {
+			// if (res && !res.nowAllPrice) {
+			res &&
+				(res.nowAllPrice = {
+					all: 0,
+					depreciates: 0,
+					failures: 0,
+				})
+			// }
 
-        ['all', 'depreciates', 'failures'].map(item => {
-          res && res[item] && res[item].map((pro, index) => {
-            // 无值
-            if (!Object.keys(this.data.catList).length) {
-              pro.nowCount = pro.count
-              pro.nowIsSelect = false
-              console.log('没有 count')
-            } else {
-              // 有值
-              if (index > this.data.catList[item].length-1) {
-                // （防止count被覆盖）
-                pro.nowCount = pro.count
-                pro.nowIsSelect = false
-                console.log('xinzhi', index)
-              } else {
-                pro.nowCount = this.data.catList[item][index].nowCount
-                // pro.nowIsSelect = this.data.catList[item][index].nowIsSelect
-                pro.nowIsSelect = false
-              }
-              console.log('有 count')
-            }
-          })
-        })
+			this.setData({
+				selectedAll: {
+					all: 0,
+					depreciates: 0,
+					failures: 0,
+				},
+			})
 
-        // if (res && !res.nowAllPrice) {
-          res && (res.nowAllPrice = {
-            all: 0,
-            depreciates: 0,
-            failures: 0
-          })
-        // }
+			if (res) {
+				res.all &&
+					res.all.map((item, index) => {
 
-        this.setData({
-          selectedAll: {
-            all: 0,
-            depreciates: 0,
-            failures: 0
-          }
-        })
+						let smartName = []
+						let temp = JSON.parse(JSON.stringify(
+              item.productSkuVo.skuName)).split(' ')
+						temp.map(child => {
+							smartName.push(
+								child.split(':')[0].replace(/[\d\.]+$/, '') +
+									':' +
+									child.split(':')[1]
+							)
+						})
+            console.log(1, smartName)
+						smartName = smartName.join(' ')
+            item.productSkuVo.smartName = smartName
+            
+						Home.getUrl([
+							{
+								name: index,
+								url: item.productSkuVo.picUrl,
+							},
+						]).then(oo => {
+							item.productSkuVo.picUrl = oo[0].url
+							this.setData({
+								catList: res,
+							})
+						})
+					})
 
-        if (res) {
-          res.all && res.all.map((item, index) => {
-            Home.getUrl([
-              {
-                name: index,
-                url: item.productSkuVo.picUrl
-              }
-            ])
-              .then(oo => {
-                item.productSkuVo.picUrl = oo[0].url
-                this.setData({
-                  catList: res
-                })
-              })
-          })
+				res.depreciates &&
+					res.depreciates.map((item, index) => {
+						Home.getUrl([
+							{
+								name: index,
+								url: item.productSkuVo.picUrl,
+							},
+						]).then(oo => {
+							item.productSkuVo.picUrl = oo[0].url
+							this.setData({
+								catList: res,
+							})
+						})
+					})
 
-          res.depreciates && res.depreciates.map((item, index) => {
-            Home.getUrl([
-              {
-                name: index,
-                url: item.productSkuVo.picUrl
-              }
-            ])
-              .then(oo => {
-                item.productSkuVo.picUrl = oo[0].url
-                this.setData({
-                  catList: res
-                })
-              })
-          })
+				res.failures &&
+					res.failures.map((item, index) => {
+						Home.getUrl([
+							{
+								name: index,
+								url: item.productSkuVo.picUrl,
+							},
+						]).then(oo => {
+							item.productSkuVo.picUrl = oo[0].url
+							this.setData({
+								catList: res,
+							})
+						})
+					})
+			}
+		})
+	},
 
-          res.failures && res.failures.map((item, index) => {
-            Home.getUrl([
-              {
-                name: index,
-                url: item.productSkuVo.picUrl
-              }
-            ])
-              .then(oo => {
-                item.productSkuVo.picUrl = oo[0].url
-                this.setData({
-                  catList: res
-                })
-              })
-          })
-        }
+	onTabChange(e) {
+		this.setData({
+			activeTab: e.detail.name,
+		})
+	},
 
-      })
-  },
+	onCountChange(e) {
+		let catList = this.data.catList
+		catList[this.data.activeTab][e.currentTarget.dataset.index].nowCount =
+			e.detail
 
-  onTabChange(e) {
-    this.setData({
-      activeTab: e.detail.name
-    })
-  },
+		this.setData({
+			catList,
+		})
+		this._computeAllPrice()
+	},
 
-  onCountChange(e) {
-    let catList = this.data.catList
-    catList[this.data.activeTab][e.currentTarget.dataset.index].nowCount = e.detail
+	switchSelected(e) {
+		let catList = this.data.catList
+		catList[this.data.activeTab][e.currentTarget.dataset.index].nowIsSelect =
+			!catList[this.data.activeTab][e.currentTarget.dataset.index].nowIsSelect
 
-    this.setData({
-      catList
-    })
-    this._computeAllPrice()
-  },
+		this.setData({
+			catList,
+		})
+		this._checckAllSelected()
+		this._computeAllPrice()
+	},
 
-  switchSelected(e) {
-    let catList = this.data.catList
-    catList[this.data.activeTab][e.currentTarget.dataset.index].nowIsSelect = !catList[this.data.activeTab][e.currentTarget.dataset.index].nowIsSelect
+	switchSelectAll() {
+		let selectedAll = this.data.selectedAll
+		let activeTab = this.data.activeTab
+		switch (selectedAll[activeTab]) {
+			case 0:
+				selectedAll[activeTab] = 2
+				this._allSelected()
+				break
+			case 1:
+				selectedAll[activeTab] = 2
+				this._allSelected()
+				break
+			case 2:
+				selectedAll[activeTab] = 0
+				this._allUnSelected()
+				break
+			default:
+				break
+		}
 
-    this.setData({
-      catList
-    })
-    this._checckAllSelected()
-    this._computeAllPrice()
-  },
+		this._computeAllPrice()
+		this.setData({
+			selectedAll,
+		})
+	},
 
-  switchSelectAll() {
-    let selectedAll = this.data.selectedAll
-    let activeTab = this.data.activeTab
-    switch (selectedAll[activeTab]) {
-      case 0:
-        selectedAll[activeTab] = 2
-        this._allSelected()
-        break;
-      case 1:
-        selectedAll[activeTab] = 2
-        this._allSelected()
-        break;
-      case 2:
-        selectedAll[activeTab] = 0
-        this._allUnSelected()
-        break;
-      default:
-        break;
-    }
+	handleDelShop(e) {
+		My.delCarShop([e.currentTarget.dataset.id]).then(() => {
+			this.onShow()
+		})
+	},
 
-    this._computeAllPrice()
-    this.setData({
-      selectedAll
-    })
-  },
+	onBuy() {
+		if (!this.data.selectedAll[this.data.activeTab]) {
+			wx.showToast({
+				title: '未选择商品',
+				icon: 'none',
+				duration: 2000,
+			})
+			return
+		}
 
-  handleDelShop(e) {
-    My.delCarShop([e.currentTarget.dataset.id])
-      .then(() => {
-        this.onShow()
-      })
-  },
+		if (this.data.activeTab === 'failures') {
+			wx.showToast({
+				title: '商品已失效',
+				icon: 'none',
+				duration: 2000,
+			})
+			return
+		}
 
-  onBuy() {
-    if (!this.data.selectedAll[this.data.activeTab]) {
-      wx.showToast({
-        title: '未选择商品',
-        icon: 'none',
-        duration: 2000
-      })
-      return
-    }
+		let buyList = []
+		this.data.catList.all &&
+			this.data.catList.all.map(item => {
+				if (item.nowIsSelect) {
+					buyList.push(item)
+				}
+			})
+		this.data.catList.depreciates &&
+			this.data.catList.depreciates.map(item => {
+				if (item.nowIsSelect) {
+					buyList.push(item)
+				}
+			})
 
-    if (this.data.activeTab === 'failures') {
-      wx.showToast({
-        title: '商品已失效',
-        icon: 'none',
-        duration: 2000
-      })
-      return
-    }
+		wx.setStorageSync('buyList', buyList)
 
-    let buyList = []
-    this.data.catList.all && this.data.catList.all.map(item => {
-      if (item.nowIsSelect) {
-        buyList.push(item)
-      }
-    })
-    this.data.catList.depreciates && this.data.catList.depreciates.map(item => {
-      if (item.nowIsSelect) {
-        buyList.push(item)
-      }
-    })
+		wx.navigateTo({
+			url: '/pages/buy/index',
+		})
+	},
 
-    wx.setStorageSync('buyList', buyList)
+	_allSelected() {
+		let catList = this.data.catList
+		catList[this.data.activeTab] &&
+			catList[this.data.activeTab].map(item => {
+				item.nowIsSelect = true
+			})
 
-    wx.navigateTo({
-      url: '/pages/buy/index'
-    })
-  },
+		this.setData({
+			catList,
+		})
+	},
+	_allUnSelected() {
+		let catList = this.data.catList
+		catList[this.data.activeTab] &&
+			catList[this.data.activeTab].map(item => {
+				item.nowIsSelect = false
+			})
 
+		this.setData({
+			catList,
+		})
+	},
+	_checckAllSelected() {
+		let catList = this.data.catList
+		let selectedAll = this.data.selectedAll
+		let activeTab = this.data.activeTab
+		let selected = 0
+		let unSelected = 0
+		catList[activeTab] &&
+			catList[activeTab].map(item => {
+				item.nowIsSelect && selected++
+				item.nowIsSelect || unSelected++
+			})
 
-  _allSelected() {
-    let catList = this.data.catList
-    catList[this.data.activeTab] && catList[this.data.activeTab].map(item => {
-      item.nowIsSelect = true
-    })
+		if (selected === 0) {
+			selectedAll[activeTab] = 0
+		} else if (unSelected === 0) {
+			selectedAll[activeTab] = 2
+		} else {
+			selectedAll[activeTab] = 1
+		}
 
-    this.setData({
-      catList
-    })
-  },
-  _allUnSelected() {
-    let catList = this.data.catList
-    catList[this.data.activeTab] && catList[this.data.activeTab].map(item => {
-      item.nowIsSelect = false
-    })
+		this.setData({
+			selectedAll,
+		})
+	},
+	_computeAllPrice() {
+		let catList = this.data.catList
+		let activeTab = this.data.activeTab
+		catList.nowAllPrice[activeTab] = 0
+		catList[activeTab] &&
+			catList[activeTab].map(item => {
+				item.nowIsSelect &&
+					(catList.nowAllPrice[activeTab] +=
+						(item.productSkuVo.price * 100 * item.nowCount) / 100)
+			})
 
-    this.setData({
-      catList
-    })
-  },
-  _checckAllSelected() {
-    let catList = this.data.catList
-    let selectedAll = this.data.selectedAll
-    let activeTab = this.data.activeTab
-    let selected = 0
-    let unSelected = 0
-    catList[activeTab] && catList[activeTab].map(item => {
-      item.nowIsSelect && selected++
-      item.nowIsSelect || unSelected++
-    })
-
-    if (selected === 0) {
-      selectedAll[activeTab] = 0
-    }
-    else if(unSelected === 0) {
-      selectedAll[activeTab] = 2
-    }
-    else {
-      selectedAll[activeTab] = 1
-    }
-
-    this.setData({
-      selectedAll
-    })
-  },
-  _computeAllPrice() {
-    let catList = this.data.catList
-    let activeTab = this.data.activeTab
-    catList.nowAllPrice[activeTab] = 0
-    catList[activeTab] && catList[activeTab].map(item => {
-      item.nowIsSelect && (catList.nowAllPrice[activeTab] += (item.productSkuVo.price * 100 * item.nowCount)/100)
-    })
-
-    this.setData({
-      catList
-    })
-  }
+		this.setData({
+			catList,
+		})
+	},
 })

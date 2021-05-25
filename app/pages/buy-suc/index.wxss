@@ -1,7 +1,7 @@
 .suc-icon {
-  height: 250rpx;
+  height: 300rpx;
   width: 250rpx;
-  margin: 200rpx 0 100rpx 0;
+  margin: 200rpx 0 150rpx 0;
 }
 
 .btn-container {
