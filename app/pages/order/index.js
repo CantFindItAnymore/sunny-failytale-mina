@@ -51,6 +51,8 @@ Page({
 							smartName = smartName.join(' ')
 							oo.smartName = smartName
 
+							// oo.currentPic = oo.productMainPicUrl
+
 							Home.getUrl([
 								{
 									name: num,
@@ -84,3 +86,4 @@ Page({
 		this.onShow()
 	},
 })
+

@@ -122,7 +122,7 @@
 }
 
 .ss-new2 {
-  margin: 160rpx 0 80rpx 0;
+  margin: 80rpx 0;
 }
 
 .fly {
@@ -179,7 +179,7 @@
 .calssify {
   /* height: 500rpx; */
   width: 100%;
-  padding: 50rpx;
+  padding: 80rpx 50rpx 50rpx;
   box-sizing: border-box;
   font-size: 24rpx;
   display: flex;
@@ -202,6 +202,7 @@
   width: 130rpx;
   border-radius: 50%;
 }
+
 
 .rainbow {
   width: 100%;
@@ -241,7 +242,7 @@
 
 .coupon-and-blueprint {
   width: 100%;
-  margin-bottom: 330rpx;
+  margin-bottom: 240rpx;
   display: flex;
 }
 
@@ -282,9 +283,9 @@
 }
 
 .recommend {
-  height: 130rpx;
+  /* height: 130rpx; */
   /* width: 100%; */
-  margin-bottom: 40rpx;
+  margin: -230rpx  0 -105rpx 0;
 }
 
 .outfit {

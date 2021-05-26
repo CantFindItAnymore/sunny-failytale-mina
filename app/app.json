@@ -41,7 +41,7 @@
       },
       {
         "pagePath": "pages/classify/index",
-        "text": "分类",
+        "text": "商品分类",
         "iconPath": "imgs/tab/classify.png",
         "selectedIconPath": "imgs/tab/classify_selected.png"
       },

@@ -37,7 +37,7 @@ Page({
 				Home.getUrl([
 					{
 						name: index,
-						url: item.skuPicUrl,
+						url: item.productMainPicUrl,
 					},
 				]).then(oo => {
 					item.skuPicUrl = oo[0].url

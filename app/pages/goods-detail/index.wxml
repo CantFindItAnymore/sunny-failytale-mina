@@ -113,12 +113,12 @@
   <van-popup
     show="{{ skuShow }}"
     position="bottom"
-    custom-style="height: 900rpx;"
+    custom-style="height: 1000rpx;"
     bind:close="closeSku"
   >
     <view class="sku">
       <view class="sku-title">
-        <image src="{{skuInfo.url || detail.mainPicUrl}}" />
+        <image src="{{skuInfo.url || detail.linMainPicUrl}}" />
         <view>
           <view style='margin-bottom: 20rpx; color: #414141' wx:if="{{skuInfo.price}}">￥ <text class="weight-font" style='font-size: 38rpx'>{{skuInfo.price}}</text></view>
           <view wx:if="{{skuInfo.smartSelectedSkuInfo}}">已选：{{skuInfo.smartSelectedSkuInfo}}</view>

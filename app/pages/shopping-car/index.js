@@ -72,10 +72,10 @@ Page({
 			if (res) {
 				res.all &&
 					res.all.map((item, index) => {
-
 						let smartName = []
-						let temp = JSON.parse(JSON.stringify(
-              item.productSkuVo.skuName)).split(' ')
+						let temp = JSON.parse(
+							JSON.stringify(item.productSkuVo.skuName)
+						).split(' ')
 						temp.map(child => {
 							smartName.push(
 								child.split(':')[0].replace(/[\d\.]+$/, '') +
@@ -83,10 +83,10 @@ Page({
 									child.split(':')[1]
 							)
 						})
-            console.log(1, smartName)
+						console.log(1, smartName)
 						smartName = smartName.join(' ')
-            item.productSkuVo.smartName = smartName
-            
+						item.productSkuVo.smartName = smartName
+
 						Home.getUrl([
 							{
 								name: index,
@@ -226,6 +226,10 @@ Page({
 					buyList.push(item)
 				}
 			})
+
+		buyList.map(item => {
+			item.productSkuVo.skuName = item.productSkuVo.smartName
+		})
 
 		wx.setStorageSync('buyList', buyList)
 

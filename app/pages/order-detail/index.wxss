@@ -41,7 +41,7 @@
 }
 
 .detail>image {
-  height: 170rpx;
+  height: 226.67rpx;
   width: 170rpx;
 }
 

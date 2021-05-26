@@ -81,6 +81,7 @@ Page({
   onPay() {
     let skuList = []
     this.data.buyList.map(item => {
+      console.log(111, item)
       skuList.push({
         amount: item.nowCount,
         price: item.addPrice,

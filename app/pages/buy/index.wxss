@@ -1,6 +1,6 @@
 .container {
   background: #F2F2F2;
-  padding: 30rpx;
+  padding: 30rpx 30rpx 200rpx;
   box-sizing: border-box;
 }
 
@@ -55,7 +55,7 @@
 }
 
 .sku>image:nth-child(1) {
-  height: 170rpx;
+  height: 242.86rpx;
   width: 170rpx;
 }
 

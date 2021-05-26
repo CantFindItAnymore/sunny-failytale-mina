@@ -22,6 +22,8 @@
             desc="{{item.productSkuVo.smartName}}"
             title="{{item.productSkuVo.name}}"
             thumb="{{item.productSkuVo.picUrl || item.productSkuVo.mainPicUrl}}"
+            thumb-class='thumb-class'
+            thumb-mode='scaleToFill'
             thumb-link='/pages/goods-detail/index?gid={{item.productId}}'
             price-class='price'
           >
@@ -56,6 +58,8 @@
             desc="{{item.productSkuVo.smartName}}"
             title="{{item.productSkuVo.name}}"
             thumb="{{item.productSkuVo.picUrl || item.productSkuVo.mainPicUrl}}"
+            thumb-class='thumb-class'
+            thumb-mode='scaleToFill'
             thumb-link='/pages/goods-detail/index?gid={{item.productId}}'
             price-class='price'
           >
@@ -90,6 +94,8 @@
             desc="{{item.productSkuVo.smartName}}"
             title="{{item.productSkuVo.name}}"
             thumb="{{item.productSkuVo.picUrl || item.productSkuVo.mainPicUrl}}"
+            thumb-class='thumb-class'
+            thumb-mode='scaleToFill'
             thumb-link='/pages/goods-detail/index?gid={{item.productId}}'
             price-class='price'
           >

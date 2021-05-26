@@ -74,3 +74,9 @@ van-swipe-cell {
   border: none !important;
   font-size: 38rpx !important;
 }
+
+.thumb-class {
+  width: 170rpx !important;
+  height: 242.86rpx !important;
+  border-radius: 0 !important;
+}

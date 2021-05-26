@@ -48,6 +48,7 @@
       src="{{videoUrl}}"
       show-fullscreen-btn
       vslide-gesture-in-fullscreen
+      object-fit='cover'
     />
     <view class="story">
       <!-- <view>
@@ -60,7 +61,7 @@
       <image src="https://tva3.sinaimg.cn/large/006lIpJvgy1gejqrjgwrej30ku0byjud.jpg" />
       <image src="/imgs/sale_btn.png" />
     </view> -->
-    <image src='/imgs/v2/category.png' style="width: 750rpx;height:138.4rpx" />
+    <image src='/imgs/v2/category.png' mode='aspectFit' style='margin: -180rpx 0' />
     <view class="calssify">
       <view
         wx:for="{{typePics}}"
@@ -106,7 +107,7 @@
       </view>
     </view>
 
-    <image class="recommend" src="/imgs/v2/recommend.png" />
+    <image class="recommend" src="/imgs/v2/recommend.png" mode='aspectFit' />
 
     <view class="outfit">
       <view

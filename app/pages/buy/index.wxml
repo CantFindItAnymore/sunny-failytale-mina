@@ -14,7 +14,7 @@
     <van-cell-group>
       <van-panel style="margin-bottom: 20rpx">
         <view class="sku" wx:for="{{buyList}}" wx:key="index">
-          <image src="{{item.productSkuVo.mainPicUrl}}" />
+          <image src="{{item.productSkuVo.picUrl}}" />
           <view class="sku-detail">
             <view class="sku-name">{{item.productSkuVo.name}}</view>
             <view class="sku-size">{{item.productSkuVo.skuName}}</view>
@@ -37,7 +37,7 @@
   <view class="footer">
     <view>共{{buyList.length}}件商品</view>
     <view class="price">
-      合计：<text class="weight-font" style="color: #414141">￥{{selectedCard?totalFee+10-selectedCard.couponPrice:totalFee+10}}
+      合计：<text class="weight-font" style="color: #414141">￥{{selectedCard?totalFee+10-selectedCard.couponPrice:totalFee}}
       </text>
     </view>
     <van-button color='#414141' round type='danger' size='normal' bind:tap="onPay" custom-class='btn-class'>

@@ -53,7 +53,7 @@ Page({
 					url: res.mainPicUrl,
 				},
 			]).then(oo => {
-				res.mainPicUrl = oo[0].url
+				res.linMainPicUrl = oo[0].url
 				this.setData({
 					detail: res,
 				})
