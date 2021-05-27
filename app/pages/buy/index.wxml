@@ -11,7 +11,7 @@
       </view>
       <view>〉</view>
     </block>
-    <view wx:else style="color: #ccc; width: 100%; text-align: center; font-size: 32rpx">点我选择地址</view>
+    <view wx:else class="addAddressContainer" ><van-icon name="plus" /> 添加收货地址</view>
   </view>
   <view class="detail">
     <van-cell-group>
