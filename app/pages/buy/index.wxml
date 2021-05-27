@@ -1,14 +1,17 @@
 <view class="container">
   <view class="address" bind:tap="changeAddress">
-    <image src="/imgs/address_icon.png" />
-    <view>
-      <view style="margin-bottom: 10rpx; display: flex;">
-        <view class="name weight-font">{{address.userName}}</view>
-        <view class="mobile">{{address.phoneNumber}}</view>
+    <block wx:if="{{address.userName}}">
+      <image src="/imgs/address_icon.png" />
+      <view>
+        <view style="margin-bottom: 10rpx; display: flex;">
+          <view class="name weight-font">{{address.userName}}</view>
+          <view class="mobile">{{address.phoneNumber}}</view>
+        </view>
+        <view class="address-item">{{address.areaAddress}}{{address.address}}</view>
       </view>
-      <view class="address-item">{{address.areaAddress}}{{address.address}}</view>
-    </view>
-    <view>〉</view>
+      <view>〉</view>
+    </block>
+    <view wx:else style="color: #ccc; width: 100%; text-align: center; font-size: 32rpx">点我选择地址</view>
   </view>
   <view class="detail">
     <van-cell-group>
@@ -37,8 +40,7 @@
   <view class="footer">
     <view>共{{buyList.length}}件商品</view>
     <view class="price">
-      合计：<text class="weight-font" style="color: #414141">￥{{selectedCard?totalFee+10-selectedCard.couponPrice:totalFee}}
-      </text>
+      合计： <text class="weight-font" style="color: #414141">￥{{selectedCard?totalFee-selectedCard.couponPrice:totalFee}}</text>
     </view>
     <van-button color='#414141' round type='danger' size='normal' bind:tap="onPay" custom-class='btn-class'>
       提交订单
