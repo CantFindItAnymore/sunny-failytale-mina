@@ -19,7 +19,7 @@
     <!-- <image class="ss-new" src="/imgs/20ss_new.png" /> -->
     <!-- <image class="girl1" src="https://tva2.sinaimg.cn/large/006lIpJvgy1gejqpt2vlmj30ku0egjzv.jpg" /> -->
     <!-- 轮播 -->
-    <swiper class="girl1" indicator-dots="{{true}}" autoplay="{{true}}" interval="{{3000}}">
+    <swiper class="girl1" indicator-dots="{{true}}" autoplay="{{true}}" interval="{{4000}}">
       <block wx:for="{{carouselPics}}" wx:key="index">
         <swiper-item>
           <image src="{{item.pic.url}}" bind:tap='toShop' data-typeids='{{item.typeIds}}' data-keyword='{{item.keyword}}' data-type='carousel' />
@@ -76,7 +76,7 @@
     </view>
 
     <!-- 轮播2 -->
-    <swiper class="carousel2" indicator-dots="{{true}}" autoplay="{{true}}" interval="{{3000}}">
+    <swiper class="carousel2" indicator-dots="{{true}}" autoplay="{{true}}" interval="{{4000}}">
       <block wx:for="{{carouselPics2}}" wx:key="index">
         <swiper-item>
           <image src="{{item.pic.url}}" />

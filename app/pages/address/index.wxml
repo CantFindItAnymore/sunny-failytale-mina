@@ -13,7 +13,7 @@
         <view class="weight-font">{{item.userName}}</view>
         <view>{{item.phoneNumber}}</view>
         <van-tag type="warning" wx:if="{{item.isDefault}}">默认地址</van-tag>
-        <van-tag type="primary" wx:if="{{!item.isDefault}}" data-id='{{item.id}}' catch:tap="setDefault">设置为默认地址</van-tag>
+        <van-tag type="primary" wx:if="{{!item.isDefault}}" data-id='{{item.id}}' catch:tap="setDefault">点击设置默认地址</van-tag>
       </view>
       <view>
         <view>{{item.areaAddress}} {{item.address}}</view>

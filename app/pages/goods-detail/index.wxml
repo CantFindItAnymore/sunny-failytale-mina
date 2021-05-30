@@ -4,7 +4,7 @@
     <swiper
       indicator-dots
       autoplay
-      interval="3000"
+      interval="4000"
       duration="500"
       indicator-color='#999'
       indicator-active-color='#c6c6c6'
@@ -37,7 +37,7 @@
   <!-- 快递费/销量 -->
   <view class="saleInfo">
     <view>
-      快递费:￥10
+      快递费:￥0
       <van-tag color='#c6c6c6'>下单7天内发货</van-tag>
     </view>
     <view>

@@ -50,6 +50,15 @@ Page({
 							console.log('有 count')
 						}
 					})
+				res|| this.setData({
+					selectedAll: {
+						all: 0,
+						depreciates: 0,
+						failures: 0,
+					},
+					catList: {},
+					buyList: [],
+				})
 			})
 
 			// if (res && !res.nowAllPrice) {

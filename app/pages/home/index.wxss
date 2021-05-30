@@ -269,7 +269,7 @@
 }
 
 .coupon-and-blueprint>view:nth-child(2)>image:nth-child(1) {
-  height: 270rpx;
+  height: 540rpx;
   width: 100%;
 }
 
