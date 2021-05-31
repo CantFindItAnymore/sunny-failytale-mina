@@ -317,7 +317,7 @@
 }
 
 .outfit5 {
-  height: 750rpx;
+  height: 1071.43rpx;
   width: 100%;
   margin-top: 36rpx;
 }

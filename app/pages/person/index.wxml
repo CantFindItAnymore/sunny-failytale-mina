@@ -147,7 +147,6 @@
       data-type='height'
       input-align="right"
       hold-keyboard
-      placeholder='点击此处填写'
     />
     <van-field
       label="体重"
@@ -158,7 +157,6 @@
       data-type='weight'
       input-align="right"
       hold-keyboard
-      placeholder='点击此处填写'
     />
     <van-field
       label="内衣尺码"

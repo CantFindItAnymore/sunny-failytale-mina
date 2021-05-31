@@ -212,8 +212,9 @@ Page({
 		console.log(11, selectedSkuIds, this.data.sku.skuOptGroup)
 
 		this.data.sku.skuOptGroup.map(item => {
-			if (this._isSameArr(item.skuProps.split(','), selectedSkuIds)) {
-				console.log('匹配到sku了')
+			console.log(-1, item.skuPropOpts.split(','))
+			if (this._isSameArr(item.skuPropOpts.split(','), selectedSkuIds)) {
+				console.log('匹配到sku了', item.skuPropOpts.split(','), selectedSkuIds)
 				let skuInfo = this.data.skuInfo
 				// 限制最大购买量
 				skuInfo.remainStoreNum = item.remainStoreNum
