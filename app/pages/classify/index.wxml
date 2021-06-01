@@ -20,7 +20,7 @@
         title-class='classify-title'
         title="{{item.name}}"
         name="{{item.id}}"
-        data-id='{{item.id}}'
+        data-id='{{item.cids}}'
       />
       <r-classify
         list='{{item.children}}'

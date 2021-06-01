@@ -50,13 +50,9 @@
       vslide-gesture-in-fullscreen
       object-fit='cover'
     />
-    <view class="story">
-      <!-- <view>
-        <text>ENK SHANGHAI   2019   VOL.3</text>
-        <text>往期视频请关注抖音官方账号</text>
-      </view> -->
+    <!-- <view class="story">
       <image src="/imgs/v2/story_btn.png" bind:tap='toStoryLine' />
-    </view>
+    </view> -->
     <!-- <view class="sale">
       <image src="https://tva3.sinaimg.cn/large/006lIpJvgy1gejqrjgwrej30ku0byjud.jpg" />
       <image src="/imgs/sale_btn.png" />

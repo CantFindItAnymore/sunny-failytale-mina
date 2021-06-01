@@ -22,6 +22,11 @@ Page({
         let activeName = []
         res.map(item => {
           activeName.push(item.id)
+          let temp = []
+          item.children.map(child=>{
+            temp.push(child.id)
+          })
+          item.cids = temp.join(',')
         })
         
         this.setData({
