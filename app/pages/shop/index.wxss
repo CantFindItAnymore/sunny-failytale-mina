@@ -21,7 +21,7 @@
 }
 
 .list-item {
-  /* height: 500rpx; */
+  height: 700rpx;
   /* overflow: hidden; */
   width: 360rpx;
   box-sizing: border-box;

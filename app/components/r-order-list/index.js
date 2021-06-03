@@ -86,6 +86,20 @@ Component({
         url: '/pages/log/index?orderId=' + e.currentTarget.dataset.id
       })
     },
+
+    handleSureGot(e) {
+      Order.sureGotOrder(e.currentTarget.dataset.id)
+        .then(() => {
+          wx.showToast({
+            title: '确认收货成功',
+            icon: 'none',
+            duration: 2000
+          })
+
+          this.triggerEvent('refresh', {}, {})
+        })
+    },
+
     handleComment(e) {
       wx.setStorageSync('commentSkuList', e.currentTarget.dataset.skuList)
       wx.navigateTo({

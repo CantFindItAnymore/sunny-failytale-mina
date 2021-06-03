@@ -296,9 +296,9 @@
 }
 
 .outfit>view {
-  height: 540rpx;
-  width: 370rpx;
-  margin-bottom: 14rpx;
+  height: 500rpx;
+  width: 375rpx;
+  /* margin-bottom: 14rpx; */
   position: relative;
 }
 
@@ -314,6 +314,11 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.outfit>view>image {
+  height: 100%;
+  width: 100%;
 }
 
 .outfit5 {

@@ -59,8 +59,13 @@
   text-align: right;
 }
 
+.menu {
+  display: flex;
+  justify-content: flex-end;
+}
+
 .menu-item {
-  width: 100%;
+  /* width: 100%; */
   padding: 30rpx;
   box-sizing: border-box;
   text-align: right;

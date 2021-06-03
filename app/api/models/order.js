@@ -16,6 +16,12 @@ class OrderModel extends HTTP {
     })
   }
 
+  sureGotOrder(id) {
+    return this.request({
+      url: 'order/receipt/' + id
+    })
+  }
+
   getOrderDetail(id) {
     return this.request({
       url: 'order/details/' + id

@@ -1,36 +1,11 @@
 <view class="container">
-
   <!-- <van-collapse value="{{ activeName }}" bind:change="onChange"> -->
-    <van-cell
-      title='全部商品'
-      bind:tap='toShop'
-      data-classify='全部商品'
-      is-link
-      title-class='classify-title'
-    />
-
-    <block
-      wx:for="{{classifyList}}"
-      wx:key="index"
-    >
-      <van-cell
-        bind:tap='toShop'
-        data-classify='{{item.name}}'
-        is-link
-        title-class='classify-title'
-        title="{{item.name}}"
-        name="{{item.id}}"
-        data-id='{{item.cids}}'
-      />
-      <r-classify
-        list='{{item.children}}'
-        bind:toShop='toShop'
-      />
-    </block>
-
-    
-
-    <!-- <van-collapse-item
+  <van-cell title='全部商品' bind:tap='toShop' data-classify='全部商品' is-link title-class='classify-title' />
+  <block wx:for="{{classifyList}}" wx:key="index">
+    <van-cell bind:tap='toShop' data-classify='{{item.name}}' is-link title-class='classify-title' title="{{item.name}}" name="{{item.id}}" data-id='{{item.cids.length>0?item.cids : item.id}}' />
+    <r-classify list='{{item.children}}' bind:toShop='toShop' />
+  </block>
+  <!-- <van-collapse-item
       title="{{item.name}}"
       name="{{item.id}}"
       wx:for="{{classifyList}}"
@@ -43,6 +18,5 @@
         bind:toShop='toShop'
       />
     </van-collapse-item> -->
-
   <!-- </van-collapse> -->
 </view>

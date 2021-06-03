@@ -110,7 +110,7 @@
         wx:for="{{indexProducts}}"
         wx:key="index"
       >
-        <image src="{{item.mainPicUrl}}" class="{{(index%4===3 || index%4===0)?'big':'small'}}" bind:tap="toGoods" data-id='{{item.id}}' />
+        <image src="{{item.mainPicUrl}}" bind:tap="toGoods" data-id='{{item.id}}' />
       </view>
     </view>
 
