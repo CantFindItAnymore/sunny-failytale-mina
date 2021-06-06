@@ -21,7 +21,8 @@ Page({
     active: '',
  
     // buyPage来的
-    from: null
+    from: null,
+    selectedCard: null
   },
 
   /**
@@ -45,11 +46,20 @@ Page({
   },
 
   handleSelectCard(e) {
-    if (this.data.from === 'buyPage' && this.data.okList[e.currentTarget.dataset.index].flag) {
-      wx.setStorageSync('selectedCard', this.data.okList[e.currentTarget.dataset.index])
-      wx.navigateBack({
-        delta: 1
+    console.log(11, e.currentTarget.dataset.index)
+    console.log(12,this.data.from, this.data.okList[e.currentTarget.dataset.index].flag)
+    if (this.data.from === 'buyPage' 
+    // && this.data.okList[e.currentTarget.dataset.index].flag
+    ) {
+      this.setData({
+        selectedCard: e.currentTarget.dataset.index
       })
+      wx.setStorageSync('selectedCard', this.data.okList[e.currentTarget.dataset.index])
+      setTimeout(() => {
+        wx.navigateBack({
+          delta: 1
+        })
+      }, 500);
     }
   },
 

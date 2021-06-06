@@ -81,6 +81,18 @@
                 {
                     "name": "pages/story/index",
                     "pathName": "pages/story/index",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "pages/log/index",
+                    "pathName": "pages/log/index",
+                    "query": "expressCode=123123&expressCompanyName=三代人访问",
+                    "scene": null
+                },
+                {
+                    "name": "pages/search/index",
+                    "pathName": "pages/search/index",
                     "scene": null
                 }
             ]

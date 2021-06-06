@@ -5,5 +5,6 @@
     active="{{ active }}"
     direction="vertical"
     active-color="#414141"
+    desc-class='desc'
   />
 </view>

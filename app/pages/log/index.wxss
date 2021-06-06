@@ -1,3 +1,7 @@
 van-steps {
   width: 100%;
 }
+
+.desc {
+  font-size: 20rpx;
+}

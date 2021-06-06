@@ -14,7 +14,7 @@
       input-class='input-style'
       bind:change='onKeyChange'
     >
-      <van-button slot="button" size="small"  color="linear-gradient(to right, #4bb0ff, #6149f6)" bind:tap="handleSearch">搜索</van-button>
+      <van-button slot="button" size="small"  color="#414141" bind:tap="handleSearch">搜索</van-button>
     </van-field>
   </view>
 
@@ -32,8 +32,7 @@
     </van-tag>
 
     <van-tag
-      plain
-      type="danger"
+      type="primary"
       bind:tap="handleDelKey"
     >
       删除记录

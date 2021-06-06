@@ -28,6 +28,13 @@ Page({
     })
   },
 
+  handleInput(e) {
+    console.log(e.detail)
+    this.setData({
+      reason:e.detail
+    })
+  },
+
   handleRefund() {
     Shop.refundOrExchange({
       orderId: this.data.orderId,

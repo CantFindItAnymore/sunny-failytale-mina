@@ -2,6 +2,7 @@
 
   <van-field
     value="{{ reason }}"
+    bind:change='handleInput'
     label="{{typeText[type]}}原因"
     type="textarea"
     maxlength='150'

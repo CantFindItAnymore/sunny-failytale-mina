@@ -4,14 +4,15 @@ import {
 
 class ShopModel extends HTTP {
 
-  getShop({ productType = null, keyword = '', descs=[] }) {
+  getShop({ productType = null, keyword = '', descs=[], current=1 }) {
     return this.request({
       url: 'product/page',
       method: 'POST',
       data: {
         productType,
         keyword,
-        descs
+        descs,
+        current
       }
     })
   }

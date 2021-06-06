@@ -15,7 +15,8 @@
               <view>{{tool.getFullTime(item.validTime)}}至{{tool.getFullTime(item.invalidTime)}}</view>
             </view>
             <view class="status">
-              <image src="{{unSelected}}" />
+              <image wx:if="{{index !== selectedCard}}" src="{{unSelected}}" />
+              <image wx:else src="{{selected}}" />
             </view>
           </view>
 

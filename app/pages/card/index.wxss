@@ -20,7 +20,7 @@
   padding-right: 30rpx;
   box-sizing: border-box;
   border-right: 1rpx solid #B3B3B3;
-  color: #51E3BF;
+  color: #414141;
   font-size: 50rpx;
 }
 

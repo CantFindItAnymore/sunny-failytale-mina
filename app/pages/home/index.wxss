@@ -285,7 +285,7 @@
 .recommend {
   /* height: 130rpx; */
   /* width: 100%; */
-  margin: -230rpx  0 -105rpx 0;
+  margin: -210rpx  0 -85rpx 0;
 }
 
 .outfit {
@@ -324,7 +324,7 @@
 .outfit5 {
   height: 1071.43rpx;
   width: 100%;
-  margin-top: 36rpx;
+  margin-top: 106rpx;
 }
 
 .brand-btn {
