@@ -17,19 +17,11 @@ Page({
   onLoad: function (options) {
     Home.getStory()
       .then(res => {
-        res.map(item => {
-          Home.getUrl([{
-            name: item.sort,
-            url: item.url
-          }])
-            .then(oo => {
-              if (oo[0].name == item.sort) {
-                item.url = oo[0].url
-              }
-              this.setData({
-                list: res
-              })
-            })
+        return Home.getUrl(res)
+      })
+      .then(res1=>{
+        this.setData({
+          list: res1
         })
       })
   }

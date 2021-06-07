@@ -85,18 +85,34 @@ Page({
 			keyword: this.data.key,
 			descs,
 		}).then(res => {
+			console.log(989, res.data)
+			const temp = []
+
 			res.data.map((item, index) => {
-				Home.getUrl([
-					{
-						name: index,
-						url: item.mainPicUrl,
-					},
-				]).then(oo => {
-					item.mainPicUrl = oo[0].url
-					console.log(66, res)
-					this.setData({
-						list: res,
-					})
+				temp.push({
+					name: index,
+					url: item.mainPicUrl,
+				})
+				// Home.getUrl([
+				// 	{
+				// 		name: index,
+				// 		url: item.mainPicUrl,
+				// 	},
+				// ]).then(oo => {
+				// 	item.mainPicUrl = oo[0].url
+				// 	console.log(66, res)
+				// 	this.setData({
+				// 		list: res,
+				// 	})
+				// })
+			})
+
+			Home.getUrl(temp).then(res1 => {
+				res1.map(item => {
+					res.data[item.name].mainPicUrl = item.url
+				})
+				this.setData({
+					list: res,
 				})
 			})
 		})
@@ -119,38 +135,75 @@ Page({
 
 		let descs = []
 		let tempPid = ''
-		if (type === 'new') {
+		if (this.data.type === 'new') {
 			descs.push('on_sale_time')
 			tempPid = ['35']
 		}
-		if (type === 'hot') {
+		if (this.data.type === 'hot') {
 			descs.push('sales_volume')
 			tempPid = ['34']
 		}
 		Shop.getShop({
-			productType: type === 'new' || type === 'hot' ? tempPid : this.data.pid,
+			productType:
+				this.data.type === 'new' || this.data.type === 'hot'
+					? tempPid
+					: this.data.pid,
 			keyword: this.data.key,
 			current: this.data.list.current + 1,
 			descs,
 		}).then(res => {
-			res.data.map((item, index) => {
-				Home.getUrl([
-					{
-						name: index,
-						url: item.mainPicUrl,
-					},
-				]).then(oo => {
-					item.mainPicUrl = oo[0].url
-					if (index === res.data.length - 1) {
-						res.data = [...this.data.list.data, ...res.data]
-						this.setData({
-							list: res,
-						})
 
-						this._getCollection()
-					}
+			const temp = []
+
+			res.data.map((item, index) => {
+				temp.push({
+					name: index,
+					url: item.mainPicUrl,
+				})
+				// Home.getUrl([
+				// 	{
+				// 		name: index,
+				// 		url: item.mainPicUrl,
+				// 	},
+				// ]).then(oo => {
+				// 	item.mainPicUrl = oo[0].url
+				// 	console.log(66, res)
+				// 	this.setData({
+				// 		list: res,
+				// 	})
+				// })
+			})
+
+			Home.getUrl(temp).then(res1 => {
+				res1.map(item => {
+					res.data[item.name].mainPicUrl = item.url
+				})
+				res.data = [...this.data.list.data, ...res.data]
+				this.setData({
+					list: res,
 				})
 			})
+
+			// res.data.map((item, index) => {
+			// 	Home.getUrl([
+			// 		{
+			// 			name: index,
+			// 			url: item.mainPicUrl,
+			// 		},
+			// 	]).then(oo => {
+			// 		item.mainPicUrl = oo[0].url
+			// 		if (index === res.data.length - 1) {
+			// 			res.data = [...this.data.list.data, ...res.data]
+			// 			this.setData({
+			// 				list: res,
+			// 			})
+
+			// 			this._getCollection()
+			// 		}
+			// 	})
+			// })
+
+
 		})
 	},
 

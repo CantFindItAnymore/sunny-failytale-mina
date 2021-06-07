@@ -83,7 +83,7 @@ Component({
     },
     handleLook(e) {
       wx.navigateTo({
-        url: '/pages/log/index?expressCode=' + e.currentTarget.dataset.expressCode
+        url: '/pages/log/index?expressCode=' + e.currentTarget.dataset.expresscode
       })
     },
 

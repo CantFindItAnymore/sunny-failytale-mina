@@ -30,16 +30,15 @@ Page({
 	 */
 	onShow: function () {
 		Order.getOrder().then(res => {
+			const temp123 = []
+
 			;['all', 'pay', 'delivery', 'receipt', 'finish', 'cancel'].map(type => {
 				res &&
 					res[type] &&
-					res[type].map(item => {
+					res[type].map((item, index) => {
 						item.skuList.map((oo, num) => {
-
 							let smartName = []
-							let temp = JSON.parse(
-								JSON.stringify(oo.skuName)
-							).split(' ')
+							let temp = JSON.parse(JSON.stringify(oo.skuName)).split(' ')
 							temp.map(child => {
 								smartName.push(
 									child.split(':')[0].replace(/[\d\.]+$/, '') +
@@ -47,31 +46,39 @@ Page({
 										child.split(':')[1]
 								)
 							})
-							console.log(1, smartName)
 							smartName = smartName.join(' ')
 							oo.smartName = smartName
 
 							// oo.currentPic = oo.productMainPicUrl
 
-							Home.getUrl([
-								{
-									name: num,
-									url: oo.productMainPicUrl,
-								},
-							]).then(rr => {
-								oo.currentPic = rr[0].url
-
-								this.setData({
-									allList: res.all,
-									payList: res.pay,
-									deliveryList: res.delivery,
-									receiptList: res.receipt,
-									finishList: res.finish,
-									cancelList: res.cancel,
-								})
+							temp123.push({
+								url: oo.productMainPicUrl,
+								name: `${type}@${index}`,
 							})
 						})
 					})
+			})
+
+			console.log('temp', temp123)
+
+			Home.getUrl(temp123).then(rr => {
+
+				console.log('rr', rr)
+
+				rr.map(item => {
+					const type = item.name.split('@')[0]
+					const index = item.name.split('@')[1]
+
+					res[type][index].skuList[0].currentPic = item.url
+				})
+				this.setData({
+					allList: res.all,
+					payList: res.pay,
+					deliveryList: res.delivery,
+					receiptList: res.receipt,
+					finishList: res.finish,
+					cancelList: res.cancel,
+				})
 			})
 		})
 	},
@@ -86,4 +93,3 @@ Page({
 		this.onShow()
 	},
 })
-

@@ -21,7 +21,7 @@
         <van-button color='#414141' size='small' round type="info" catch:tap="handleCancel"  data-index='{{index}}' data-id='{{item.id}}'>取消订单</van-button>
       </view>
       <view wx:if="{{item.status === 2}}" class="menu-item">
-        <van-button color='#414141' size='small' round type="info" catch:tap="handleLook" data-expressCode='{{item.expressCode}}'>查看物流</van-button>
+        <van-button color='#414141' size='small' round type="info" catch:tap="handleLook" data-expresscode='{{item.expressCode}}'>查看物流</van-button>
         <van-button color='#414141' size='small' round type="info" catch:tap="handleSureGot" data-id='{{item.id}}'>确认收货</van-button>
       </view>
       <view wx:if="{{item.status === 3}}" class="menu-item">

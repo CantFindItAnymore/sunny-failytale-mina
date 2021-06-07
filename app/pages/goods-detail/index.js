@@ -47,43 +47,46 @@ Page({
 			gid,
 		})
 		Shop.getDetail(gid).then(res => {
-			Home.getUrl([
+			console.log('getDetail', res)
+
+			const temp = [
 				{
-					name: 'main',
+					name: 'mainPicUrl',
 					url: res.mainPicUrl,
 				},
-			]).then(oo => {
-				res.linMainPicUrl = oo[0].url
+			]
+
+			res.carouselPics.map(item => {
+				temp.push({
+					name: 'carouselPics',
+					url: item.url,
+				})
+			})
+
+			res.detailPics.map(item => {
+				temp.push({
+					name: 'detailPics',
+					url: item.url,
+				})
+			})
+
+			const a = []
+			const b = []
+
+			Home.getUrl(temp).then(res1 => {
+				res1.map(item => {
+					if (item.name === 'mainPicUrl') {
+						res.linMainPicUrl = item
+					} else if (item.name === 'carouselPics') {
+						a.push(item)
+					} else if (item.name === 'detailPics') {
+						b.push(item)
+					}
+				})
+				res.carouselPics = a
+				res.detailPics = b
 				this.setData({
 					detail: res,
-				})
-			})
-
-			res.carouselPics.map((item, index) => {
-				Home.getUrl([
-					{
-						name: index,
-						url: item.url,
-					},
-				]).then(oo => {
-					item.url = oo[0].url
-					this.setData({
-						detail: res,
-					})
-				})
-			})
-
-			res.detailPics.map((item, index) => {
-				Home.getUrl([
-					{
-						name: index,
-						url: item.url,
-					},
-				]).then(oo => {
-					item.url = oo[0].url
-					this.setData({
-						detail: res,
-					})
 				})
 			})
 		})

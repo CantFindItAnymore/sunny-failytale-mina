@@ -336,6 +336,8 @@
 }
 
 .video {
+  width: 750rpx;
+  height: 1076.4rpx;
   margin-bottom: 80rpx;
 }
 
@@ -347,9 +349,4 @@
 .footer-title:active {
   color: skyblue;
   border-bottom: 1rpx solid skyblue;
-}
-
-.video {
-  width: 750rpx;
-  height: 1000rpx;
 }

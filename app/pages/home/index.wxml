@@ -48,7 +48,7 @@
       src="{{videoUrl}}"
       show-fullscreen-btn
       vslide-gesture-in-fullscreen
-      object-fit='cover'
+      object-fit='scale-down'
     />
     <!-- <view class="story">
       <image src="/imgs/v2/story_btn.png" bind:tap='toStoryLine' />
