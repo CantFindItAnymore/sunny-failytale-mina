@@ -39,9 +39,4 @@
       <text>{{typeText[refundInfo.type]}}已完成</text>
     </view>
   </block>
-
-  <!-- 只能是退换货其一 -->
-  <view  wx:if="{{refundInfo.id && Number(type) !== Number(refundInfo.type)}}" class="info">
-    <text>该订单正处于{{typeText[refundInfo.type]}}状态</text>
-  </view>
 </view>

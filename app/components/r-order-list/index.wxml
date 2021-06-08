@@ -21,7 +21,7 @@
         <van-button color='#414141' size='small' round type="info" catch:tap="handleCancel"  data-index='{{index}}' data-id='{{item.id}}'>取消订单</van-button>
       </view>
       <view wx:if="{{item.status === 2}}" class="menu-item">
-        <van-button color='#414141' size='small' round type="info" catch:tap="handleLook" data-expresscode='{{item.expressCode}}'>查看物流</van-button>
+        <van-button color='#414141' size='small' round type="info" catch:tap="handleLook" data-expresscode='{{item.expressCode}}' data-expresscompanyname='{{item.expressCompanyName}}'>查看物流</van-button>
         <van-button color='#414141' size='small' round type="info" catch:tap="handleSureGot" data-id='{{item.id}}'>确认收货</van-button>
       </view>
       <view wx:if="{{item.status === 3}}" class="menu-item">
@@ -30,6 +30,10 @@
         <van-button color='#414141' size='small' round type="info" catch:tap="handleExchange" data-id='{{item.id}}' data-type='1'>换货</van-button>
       </view>
       <view wx:if="{{item.status === 4}}" class="menu-item">
+      </view>
+      
+      <view wx:if="{{item.status === 5 && item.returnState === 1}}" class="menu-item">
+        <van-button color='#414141' size='small' round type="info" catch:tap="handleExpress" data-id='{{item.id}}'>填写单号</van-button>
       </view>
     </view>
   </view>

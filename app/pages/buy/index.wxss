@@ -64,7 +64,7 @@
 }
 
 .sku>image:nth-child(1) {
-  height: 242.86rpx;
+  height: 226.67rpx;
   width: 170rpx;
 }
 

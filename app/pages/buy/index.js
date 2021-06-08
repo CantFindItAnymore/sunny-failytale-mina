@@ -123,8 +123,10 @@ Page({
           orderId: res.id
         })
         // 清除优惠券&buyList
-        wx.removeStorageSync('selectedCard')
-        wx.removeStorageSync('buyList')
+        
+        wx.setStorageSync('selectedCard', null)
+        wx.setStorageSync('buyList', null)
+    
         return Shop.pay({
           orderNo: res.code,
           orderId: res.id,

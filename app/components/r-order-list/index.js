@@ -17,7 +17,7 @@ Component({
    * 组件的初始数据
    */
   data: {
-    status: ['待付款', '待发货',  '待收货', '已完成', '已取消']
+    status: ['待付款', '待发货',  '待收货', '已完成', '已取消', '退换中']
   },
 
   /**
@@ -83,7 +83,7 @@ Component({
     },
     handleLook(e) {
       wx.navigateTo({
-        url: '/pages/log/index?expressCode=' + e.currentTarget.dataset.expresscode
+        url: '/pages/log/index?expressCode=' + e.currentTarget.dataset.expresscode + '&expressCompanyName='+ e.currentTarget.dataset.expresscompanyname
       })
     },
 
@@ -113,6 +113,11 @@ Component({
       })
     },
     handleExchange(e) {
+      wx.navigateTo({
+        url: `/pages/refund/index?type=${e.currentTarget.dataset.type}&orderId=${e.currentTarget.dataset.id}`
+      })
+    },
+    handleExpress(e) {
       wx.navigateTo({
         url: `/pages/refund/index?type=${e.currentTarget.dataset.type}&orderId=${e.currentTarget.dataset.id}`
       })

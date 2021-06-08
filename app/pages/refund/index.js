@@ -90,7 +90,7 @@ Page({
     })
       .then(() => {
         wx.showToast({
-          title: `申请${typeText[this.data.type]}成功`,
+          title: `申请${this.data.typeText[this.data.type]}成功`,
           icon: 'none',
           duration: 2000
         })

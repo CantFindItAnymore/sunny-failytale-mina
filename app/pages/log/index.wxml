@@ -1,5 +1,10 @@
 <view class="container">
 
+  <view style="width:100%;margin-bottom: 50rpx">
+    <van-cell title="快递单号" value="{{expressCode}}" border="{{ false }}" />
+    <van-cell title="快递公司" value="{{expressCompanyName}}" border="{{ false }}" />
+  </view>
+
   <van-steps
     steps="{{ steps }}"
     active="{{ active }}"

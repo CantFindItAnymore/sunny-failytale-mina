@@ -32,7 +32,7 @@ Page({
 		Order.getOrder().then(res => {
 			const temp123 = []
 
-			;['all', 'pay', 'delivery', 'receipt', 'finish', 'cancel'].map(type => {
+			;['all', 'pay', 'delivery', 'receipt', 'finish', 'cancel', 'doApply'].map(type => {
 				res &&
 					res[type] &&
 					res[type].map((item, index) => {
@@ -78,6 +78,7 @@ Page({
 					receiptList: res.receipt,
 					finishList: res.finish,
 					cancelList: res.cancel,
+					doApplyList: res.doApply
 				})
 			})
 		})

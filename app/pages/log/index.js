@@ -6,7 +6,7 @@ Page({
 	 */
 	data: {
 		steps: [],
-
+		expresscompanyname: '',
 		active: 0,
 	},
 
@@ -14,7 +14,11 @@ Page({
 	 * 生命周期函数--监听页面加载
 	 */
 	onLoad: function (options) {
-		const { expressCode } = options
+		const { expressCode, expressCompanyName } = options
+		this.setData({
+			expressCode,
+			expressCompanyName
+		})
 		const _this = this
 		wx.request({
 			url: `https://www.kuaidi100.com/autonumber/auto?num=${expressCode}&key=TfsKmCDf5933`, //仅为示例，并非真实的接口地址

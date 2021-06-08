@@ -16,6 +16,9 @@
     <van-tab title="已完成" name='finished'>
       <r-order-list list='{{finishList}}' />
     </van-tab>
+    <van-tab title="退换中" name='doApply'>
+      <r-order-list list='{{doApplyList}}' />
+    </van-tab>
     <van-tab title="已取消" name='cancelled'>
       <r-order-list list='{{cancelList}}' />
     </van-tab>
