@@ -91,7 +91,7 @@ Page({
       console.log(111, item)
       skuList.push({
         amount: item.nowCount,
-        price: item.addPrice,
+        price: item.productSkuVo.price,
         productId: item.productId,
         productMainPicUrl: item.productSkuVo.mainPicUrl,
         productName: item.productSkuVo.name,

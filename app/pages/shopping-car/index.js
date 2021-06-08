@@ -80,11 +80,11 @@ Page({
 			})
 
 			if (res) {
-				const temp = []
+				const temp123 = []
 				const tempRes = JSON.parse(JSON.stringify(res))
 
-				res.all &&
-					res.all.map((item, index) => {
+				tempRes.all &&
+					tempRes.all.map((item, index) => {
 						let smartName = []
 						let temp = JSON.parse(
 							JSON.stringify(item.productSkuVo.skuName)
@@ -100,7 +100,7 @@ Page({
 						smartName = smartName.join(' ')
 						item.productSkuVo.smartName = smartName
 
-						temp.push({
+						temp123.push({
 							name: `all@${index}`,
 							url: item.productSkuVo.picUrl,
 						})
@@ -118,10 +118,24 @@ Page({
 						// })
 					})
 
-				res.depreciates &&
-					res.depreciates.map((item, index) => {
-						temp.push({
-							name: `all@${index}`,
+				tempRes.depreciates &&
+					tempRes.depreciates.map((item, index) => {
+						let smartName = []
+						let temp = JSON.parse(
+							JSON.stringify(item.productSkuVo.skuName)
+						).split(' ')
+						temp.map(child => {
+							smartName.push(
+								child.split(':')[0].replace(/[\d\.]+$/, '') +
+									':' +
+									child.split(':')[1]
+							)
+						})
+						console.log(1, smartName)
+						smartName = smartName.join(' ')
+						item.productSkuVo.smartName = smartName
+						temp123.push({
+							name: `depreciates@${index}`,
 							url: item.productSkuVo.picUrl,
 						})
 
@@ -138,10 +152,24 @@ Page({
 						// })
 					})
 
-				res.failures &&
-					res.failures.map((item, index) => {
-						temp.push({
-							name: `all@${index}`,
+				tempRes.failures &&
+					tempRes.failures.map((item, index) => {
+						let smartName = []
+						let temp = JSON.parse(
+							JSON.stringify(item.productSkuVo.skuName)
+						).split(' ')
+						temp.map(child => {
+							smartName.push(
+								child.split(':')[0].replace(/[\d\.]+$/, '') +
+									':' +
+									child.split(':')[1]
+							)
+						})
+						console.log(1, smartName)
+						smartName = smartName.join(' ')
+						item.productSkuVo.smartName = smartName
+						temp123.push({
+							name: `failures@${index}`,
 							url: item.productSkuVo.picUrl,
 						})
 
@@ -158,7 +186,9 @@ Page({
 						// })
 					})
 
-				Home.getUrl(temp).then(oo => {
+				console.log(55, tempRes)
+
+				Home.getUrl(temp123).then(oo => {
 					oo.map(item=>{
 						const type = item.name.split('@')[0]
 						const index = item.name.split('@')[1]
@@ -269,6 +299,8 @@ Page({
 		buyList.map(item => {
 			item.productSkuVo.skuName = item.productSkuVo.smartName
 		})
+
+
 
 		wx.setStorageSync('buyList', buyList)
 
