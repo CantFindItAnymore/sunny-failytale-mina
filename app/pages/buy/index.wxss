@@ -91,6 +91,11 @@
   box-sizing: border-box;
 }
 
+.remark-label {
+  width: 40rpx !important;
+  background: chartreuse;
+}
+
 .footer {
   background: #fff;
   height: 200rpx;

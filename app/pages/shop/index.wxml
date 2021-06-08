@@ -6,8 +6,8 @@
     </view>
   </van-sticky>
   <view class="list">
-    <view class="list-item" wx:for='{{list.data}}' wx:key="index">
-      <image class="list-item-img" src="{{item.mainPicUrl}}" bind:tap="toShopDetail" data-gid='{{item.id}}' />
+    <view class="list-item" wx:for='{{list.data}}' wx:key="index"  bind:tap="toShopDetail" data-gid='{{item.id}}'>
+      <image class="list-item-img" src="{{item.mainPicUrl}}" />
       <view  class="list-item-name">{{item.name}}</view>
       <view class="list-item-desc">
         <!-- <view bind:tap="toShopDetail" data-gid='{{item.id}}'>
@@ -23,7 +23,7 @@
               {{item.maxPrice}}
             </block>
           </view>
-          <image src="{{tool.isLike(item.id, likedIdList)?like:unLike}}" data-cid='{{item.id}}' data-is='{{tool.isLike(item.id, likedIdList)}}' bind:tap="switchCollect" />
+          <image src="{{tool.isLike(item.id, likedIdList)?like:unLike}}" data-cid='{{item.id}}' data-is='{{tool.isLike(item.id, likedIdList)}}' catch:tap="switchCollect" />
         </view>
       </view>
     </view>

@@ -87,7 +87,7 @@ Page({
             })
           })
 
-          res.data.map(item => {
+          res.data.map((item, index) => {
             Card.checkCard({
               invalidTime: item.invalidTime,
               productTypes: item.productTypeVos,
@@ -97,41 +97,44 @@ Page({
             })
               .then(end => {
                 item.flag = end.flag
+                if (index === res.data.length-1) {
+                  this.setData({
+                    cardList: res
+                  })
+          
+                  let okList = this.data.okList
+                  let usedList = this.data.usedList
+                  let losedList = this.data.losedList
+                  let rabishList = this.data.rabishList
+                  res.data.map(item => {
+                    if (item.status === 0) {
+                      okList.push(item)
+                    } else if (item.status === 1) {
+                      usedList.push(item)
+                    } else if (item.status === 2) {
+                      losedList.push(item)
+                    } else if (item.status === 3) {
+                      rabishList.push(item)
+                    }
+                  })
+          
+                  this.setData({
+                    okList,
+                    usedList,
+                    losedList,
+                    rabishList,
+                    current: this.data.current+1
+                  })
+          
+                  if (this.data.cardList.next) {
+                    this._getCard()
+                  }
+                }
               })
           })
         }
 
-        this.setData({
-          cardList: res
-        })
-
-        let okList = this.data.okList
-        let usedList = this.data.usedList
-        let losedList = this.data.losedList
-        let rabishList = this.data.rabishList
-        res.data.map(item => {
-          if (item.status === 0) {
-            okList.push(item)
-          } else if (item.status === 1) {
-            usedList.push(item)
-          } else if (item.status === 2) {
-            losedList.push(item)
-          } else if (item.status === 3) {
-            rabishList.push(item)
-          }
-        })
-
-        this.setData({
-          okList,
-          usedList,
-          losedList,
-          rabishList,
-          current: this.data.current+1
-        })
-
-        if (this.data.cardList.next) {
-          this._getCard()
-        }
+        
       })
   }
 })

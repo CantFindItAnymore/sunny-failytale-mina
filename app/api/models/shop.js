@@ -111,6 +111,29 @@ class ShopModel extends HTTP {
     })
   }
 
+  getRefundInfo(id) {
+    return this.request({
+      url: 'order/returns/last-one/'+id
+    })
+  }
+
+  refundSubmitExpress({
+    expressCode,
+    expressCompanyName,
+    returnId
+  }) {
+    return this.request({
+      url: 'order/returns/logistics/'+returnId,
+      method: 'POST',
+      data: {
+        expressCode,
+        expressCompanyName,
+      }
+    })
+  }
+
+
+
   refundOrExchange({
     orderId,
     reason,

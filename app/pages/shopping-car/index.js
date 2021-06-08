@@ -50,15 +50,16 @@ Page({
 							console.log('有 count')
 						}
 					})
-				res|| this.setData({
-					selectedAll: {
-						all: 0,
-						depreciates: 0,
-						failures: 0,
-					},
-					catList: {},
-					buyList: [],
-				})
+				res ||
+					this.setData({
+						selectedAll: {
+							all: 0,
+							depreciates: 0,
+							failures: 0,
+						},
+						catList: {},
+						buyList: [],
+					})
 			})
 
 			// if (res && !res.nowAllPrice) {
@@ -79,6 +80,9 @@ Page({
 			})
 
 			if (res) {
+				const temp = []
+				const tempRes = JSON.parse(JSON.stringify(res))
+
 				res.all &&
 					res.all.map((item, index) => {
 						let smartName = []
@@ -96,48 +100,74 @@ Page({
 						smartName = smartName.join(' ')
 						item.productSkuVo.smartName = smartName
 
-						Home.getUrl([
-							{
-								name: index,
-								url: item.productSkuVo.picUrl,
-							},
-						]).then(oo => {
-							item.productSkuVo.picUrl = oo[0].url
-							this.setData({
-								catList: res,
-							})
+						temp.push({
+							name: `all@${index}`,
+							url: item.productSkuVo.picUrl,
 						})
+
+						// Home.getUrl([
+						// 	{
+						// 		name: index,
+						// 		url: item.productSkuVo.picUrl,
+						// 	},
+						// ]).then(oo => {
+						// 	item.productSkuVo.picUrl = oo[0].url
+						// 	this.setData({
+						// 		catList: res,
+						// 	})
+						// })
 					})
 
 				res.depreciates &&
 					res.depreciates.map((item, index) => {
-						Home.getUrl([
-							{
-								name: index,
-								url: item.productSkuVo.picUrl,
-							},
-						]).then(oo => {
-							item.productSkuVo.picUrl = oo[0].url
-							this.setData({
-								catList: res,
-							})
+						temp.push({
+							name: `all@${index}`,
+							url: item.productSkuVo.picUrl,
 						})
+
+						// Home.getUrl([
+						// 	{
+						// 		name: index,
+						// 		url: item.productSkuVo.picUrl,
+						// 	},
+						// ]).then(oo => {
+						// 	item.productSkuVo.picUrl = oo[0].url
+						// 	this.setData({
+						// 		catList: res,
+						// 	})
+						// })
 					})
 
 				res.failures &&
 					res.failures.map((item, index) => {
-						Home.getUrl([
-							{
-								name: index,
-								url: item.productSkuVo.picUrl,
-							},
-						]).then(oo => {
-							item.productSkuVo.picUrl = oo[0].url
-							this.setData({
-								catList: res,
-							})
+						temp.push({
+							name: `all@${index}`,
+							url: item.productSkuVo.picUrl,
 						})
+
+						// Home.getUrl([
+						// 	{
+						// 		name: index,
+						// 		url: item.productSkuVo.picUrl,
+						// 	},
+						// ]).then(oo => {
+						// 	item.productSkuVo.picUrl = oo[0].url
+						// 	this.setData({
+						// 		catList: res,
+						// 	})
+						// })
 					})
+
+				Home.getUrl(temp).then(oo => {
+					oo.map(item=>{
+						const type = item.name.split('@')[0]
+						const index = item.name.split('@')[1]
+						tempRes[type][index].productSkuVo.picUrl = item.url
+					})
+					this.setData({
+						catList: tempRes,
+					})
+				})
 			}
 		})
 	},

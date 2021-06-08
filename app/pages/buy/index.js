@@ -72,6 +72,13 @@ Page({
     })
   },
 
+  handleCancelCoupon() {
+    wx.setStorageSync('selectedCard', null)
+    this.setData({
+      selectedCard:null
+    })
+  },
+
   onChange(e) {
     this.setData({
       remark: e.detail
@@ -121,7 +128,7 @@ Page({
         return Shop.pay({
           orderNo: res.code,
           orderId: res.id,
-          totalFee: (this.data.totalFee) * 1000 / 10 - (this.data.selectedCard?this.data.selectedCard.couponPrice:0.00) * 100 / 10
+          totalFee: (this.data.totalFee) * 1000 / 10 - (this.data.selectedCard?this.data.selectedCard.couponPrice:0.00) * 1000 / 10
           // totalFee: (this.data.totalFee) * 100 - (this.data.selectedCard?this.data.selectedCard.couponPrice:0) * 100
         })
       })

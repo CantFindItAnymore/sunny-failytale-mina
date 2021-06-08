@@ -101,7 +101,8 @@ Component({
     },
 
     handleComment(e) {
-      wx.setStorageSync('commentSkuList', e.currentTarget.dataset.skuList)
+      console.log(0, e.currentTarget.dataset.skulist)
+      wx.setStorageSync('commentSkuList', e.currentTarget.dataset.skulist)
       wx.navigateTo({
         url: '/pages/comment/index?orderId=' + e.currentTarget.dataset.id
       })

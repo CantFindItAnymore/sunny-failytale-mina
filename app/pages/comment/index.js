@@ -30,6 +30,10 @@ Page({
       commentSkuList.map(item => {
         item.nowIsSelect = true
       })
+      const activeSku = commentSkuList[0]
+      this.setData({
+        activeSku
+      })
     } else {
       commentSkuList.map(item => {
         item.nowIsSelect = false
@@ -37,6 +41,13 @@ Page({
     }
     this.setData({
       commentSkuList
+    })
+  },
+
+  handleInput(e) {
+    console.log(e.detail)
+    this.setData({
+      comment:e.detail
     })
   },
 

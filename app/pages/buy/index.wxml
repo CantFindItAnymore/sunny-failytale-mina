@@ -33,8 +33,10 @@
   </view>
   <view class="card">
     <van-cell-group>
-      <van-cell title='优惠券' value='减￥{{selectedCard.couponPrice || 0}}' bind:tap="toCard" />
-      <van-field value="{{ remark }}" label="留言" input-align="right" hold-keyboard type="textarea" autosize bind:change='onChange' maxlength='100' clearable show-word-limit />
+      <van-cell title='优惠券' value='减￥{{selectedCard.couponPrice || 0}}' bind:tap="toCard">
+        <van-button catch:tap='handleCancelCoupon' slot="right-icon" color='#414141' size="mini" style="margin-left: 20rpx">不使用</van-button>
+      </van-cell>
+      <van-field label-class='remark-label' placeholder='请填写备注' value="{{ remark }}" label="备注" input-align="left" hold-keyboard type="textarea" autosize bind:change='onChange' maxlength='100' clearable show-word-limit />
     </van-cell-group>
   </view>
   <view class="footer">

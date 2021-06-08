@@ -10,7 +10,7 @@
         src="{{pro.nowIsSelect?selected:unSelected}}"
       />
     </view>
-    <image src="{{pro.skuPicUrl}}" />
+    <image src="{{pro.currentPic}}" />
     <view>
       <view>{{pro.productName}}</view>
       <view>{{pro.skuName}}</view>
@@ -22,6 +22,7 @@
 
   <van-field
     value="{{ comment }}"
+    bind:change='handleInput'
     label="评价商品"
     type="textarea"
     maxlength='150'

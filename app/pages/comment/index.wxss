@@ -13,7 +13,7 @@ van-field {
 }
 
 .detail>image {
-  height: 170rpx;
+  height: 226.27rpx;
   width: 170rpx;
 }
 

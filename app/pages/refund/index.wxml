@@ -1,19 +1,47 @@
 <view class="container">
 
-  <van-field
-    value="{{ reason }}"
-    bind:change='handleInput'
-    label="{{typeText[type]}}原因"
-    type="textarea"
-    maxlength='150'
-    autosize
-    clearable
-    auto-focus
-    show-word-limit
-  />
-
-  <view class="bottom-btn-container">
-    <van-button size='large' color='#414141' bind:tap="handleRefund">申请{{typeText[type]}}</van-button>
+  <!-- 新订单 -->
+  <view wx:if="{{!refundInfo.id}}">
+    <van-field value="{{ reason }}" bind:change='handleInput' label="{{typeText[type]}}原因" type="textarea" maxlength='150' autosize clearable auto-focus show-word-limit />
+    <view class="bottom-btn-container">
+      <van-button size='large' color='#414141' bind:tap="handleRefund">
+        申请{{typeText[type]}}
+      </van-button>
+    </view>
   </view>
 
+  <!-- 在退换货的某个流程 -->
+  <block wx:if="{{refundInfo.id && Number(type) === Number(refundInfo.type)}}">
+    <view wx:if="{{refundInfo.state === 0}}"  class="info">
+      <text>{{typeText[refundInfo.type]}}申请中</text>
+    </view>
+    <view wx:if="{{refundInfo.state === 1 && !refundInfo.expressCode}}"  class="info">
+      <text>{{typeText[refundInfo.type]}}已同意，请填写快递信息</text>
+      <!-- 快递信息 -->
+      <view class="express-container">
+        <van-field value="{{ expressCompanyName }}" bind:change='handleExpressCompanyNameInput' label="快递公司" maxlength='20' auto-focus />
+        <van-field value="{{ expressCode }}" bind:change='handleExpressCodeInput' label="快递单号" maxlength='20' auto-focus />
+        <view class="bottom-btn-container">
+          <van-button size='large' color='#414141' bind:tap="handleSubmitExpress">
+            确定
+          </van-button>
+        </view>
+      </view>
+    </view>
+
+    <view wx:if="{{refundInfo.state === 1 && refundInfo.expressCode}}"  class="info">
+      <text>{{typeText[refundInfo.type]}}中 请等待</text>
+    </view>
+    <view wx:if="{{refundInfo.state === 2}}"  class="info">
+      <text>{{typeText[refundInfo.type]}}已被拒绝</text>
+    </view>
+    <view wx:if="{{refundInfo.state === 3}}"  class="info">
+      <text>{{typeText[refundInfo.type]}}已完成</text>
+    </view>
+  </block>
+
+  <!-- 只能是退换货其一 -->
+  <view  wx:if="{{refundInfo.id && Number(type) !== Number(refundInfo.type)}}" class="info">
+    <text>该订单正处于{{typeText[refundInfo.type]}}状态</text>
+  </view>
 </view>
