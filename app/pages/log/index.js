@@ -17,7 +17,7 @@ Page({
 		const { expressCode } = options
 		const _this = this
 		wx.request({
-			url: `http://www.kuaidi100.com/autonumber/auto?num=${expressCode}&key=TfsKmCDf5933`, //仅为示例，并非真实的接口地址
+			url: `https://www.kuaidi100.com/autonumber/auto?num=${expressCode}&key=TfsKmCDf5933`, //仅为示例，并非真实的接口地址
 
 			header: {
 				'content-type': 'application/x-www-form-urlencoded', // 默认值

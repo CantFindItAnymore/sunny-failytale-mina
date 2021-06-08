@@ -25,7 +25,7 @@
         <van-button color='#414141' size='small' round type="info" catch:tap="handleSureGot" data-id='{{item.id}}'>确认收货</van-button>
       </view>
       <view wx:if="{{item.status === 3}}" class="menu-item">
-        <van-button color='#414141' size='small' round type="info" catch:tap="handleComment"  data-index='{{index}}' data-id='{{item.id}}' data-skulist='{{item.skuList}}'>评价商品</van-button>
+        <!-- <van-button color='#414141' size='small' round type="info" catch:tap="handleComment"  data-index='{{index}}' data-id='{{item.id}}' data-skulist='{{item.skuList}}'>评价商品</van-button> -->
         <van-button color='#414141' size='small' round type="info" catch:tap="handleRefund" data-id='{{item.id}}' data-type='0'>退货</van-button>
         <van-button color='#414141' size='small' round type="info" catch:tap="handleExchange" data-id='{{item.id}}' data-type='1'>换货</van-button>
       </view>
