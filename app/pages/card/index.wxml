@@ -3,7 +3,7 @@
   <van-tabs active="{{ active || 'ok' }}" sticky  color='#414141' bind:click="onClickTab">
     <van-tab title="未使用" name='ok'>
       <view class="wrapper">
-        <view wx:for="{{okList}}" wx:if="{{item.flag}}"  class="item" wx:key="index" bind:tap="handleSelectCard" data-index='{{index}}'>
+        <view wx:for="{{okList}}" wx:if="{{item.flag || !from}}"  class="item" wx:key="index" bind:tap="handleSelectCard" data-index='{{index}}'>
           <view class="content">
             <view class="rate weight-font">
               ￥{{item.couponPrice}} 
