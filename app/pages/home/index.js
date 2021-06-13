@@ -25,6 +25,13 @@ Page({
 		saleDisplayPic: '', // 晒图有礼
 		typePics: [], // 分类图
 		videoUrl: '', // 视频
+
+		
+		// 分享
+		showShare: false,
+		shareResultShow: false,
+		painting: {},
+		shareImage: '',
 	},
 
 	onShow: function () {
@@ -57,6 +64,10 @@ Page({
 	},
 
 	onLoad: function () {
+		wx.showShareMenu({
+			withShareTicket: true,
+			menus: ['shareAppMessage', 'shareTimeline']
+		})
 		Home.getImgs().then(res => {
 			this.setData({
 				brandStoryDisplayPic: res.brandStoryDisplayPic,
@@ -74,6 +85,136 @@ Page({
 			this._getTrueUrl()
 		})
 	},
+
+	handleShare() {
+		console.log(33)
+		this.setData({
+			showShare: true
+		})
+	},
+
+	handleCreateBill() {
+		this.setData({
+			painting: {
+				width: 300,
+				height: 500,
+				clear: true,
+				views: [
+					{
+						type: 'rect',
+						top: 0,
+						left: 0,
+						width: 300,
+						height: 500,
+						background: '#fff'
+					},
+					{
+						type: 'image',
+						url: '/imgs/v2/商城分享封面-min.jpg',
+						top: 0,
+						left: 0,
+						width: 300,
+						height: 400
+					},
+					{
+						type: 'text',
+						content: '丽昂斯锦官方折扣商城',
+						// fontSize: 14,
+						color: '#000',
+						textAlign: 'left',
+						lineHeight: 30,
+						top: 445,
+						left: 20,
+						MaxLineNumber: 1,
+						breakWord: true,
+						width: 200
+					},
+					{
+						type: 'image',
+						url: '/imgs/v2/qrcode.jpg',
+						top: 425,
+						left: 220,
+						width: 60,
+						height: 60
+					},
+				]
+			},
+			showShare: false,
+			shareResultShow: true
+		})
+		wx.showLoading({
+			title: '生成海报中',
+			mask: true
+		})
+
+
+
+
+	},
+
+	onRSClose() {
+		this.setData({
+			shareResultShow: false,
+			painting: {}
+		})
+	},
+
+	eventSave() {
+		wx.saveImageToPhotosAlbum({
+			filePath: this.data.shareImage,
+			success(res) {
+				wx.showToast({
+					title: '保存图片成功',
+					icon: 'success',
+					duration: 2000
+				})
+			}
+		})
+	},
+	eventGetImage(event) {
+		console.log(event)
+		wx.hideLoading()
+		const {
+			tempFilePath,
+			errMsg
+		} = event.detail
+		if (errMsg === 'canvasdrawer:ok') {
+			this.setData({
+				shareImage: tempFilePath
+			})
+		} else {
+			console.log(55555)
+		}
+		wx.hideLoading()
+	},
+
+	saveBill() {
+			wx.saveImageToPhotosAlbum({
+				filePath: this.data.shareImage,
+				success (res) {
+					wx.showToast({
+						title: '保存图片成功',
+						icon: 'success',
+						duration: 2000
+					})
+				},
+				fail(){
+					wx.showToast({
+						title: '保存图片失败',
+						icon: 'error',
+						duration: 2000
+					})
+				}
+		})
+	},
+
+
+	onClose() {
+		this.setData({
+			showShare: false
+		})
+	},
+
 
 	goSearch() {
 		wx.navigateTo({

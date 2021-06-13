@@ -9,6 +9,7 @@
     "van-panel": "/miniprogram_npm/@vant/weapp/panel/index",
     "van-popup": "/miniprogram_npm/@vant/weapp/popup/index",
     "van-button": "/miniprogram_npm/@vant/weapp/button/index",
-    "van-stepper": "/miniprogram_npm/@vant/weapp/stepper/index"
+    "van-stepper": "/miniprogram_npm/@vant/weapp/stepper/index",
+    "canvasdrawer": "/components/canvasdrawer/canvasdrawer"
   }
 }

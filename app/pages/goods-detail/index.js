@@ -1,11 +1,17 @@
-import { ShopModel } from '../../api/models/shop'
+import {
+	ShopModel
+} from '../../api/models/shop'
 
 const Shop = new ShopModel()
 
-import { CollectionModel } from '../../api/models/collection'
+import {
+	CollectionModel
+} from '../../api/models/collection'
 const Collection = new CollectionModel()
 
-import { HomeModel } from '../../api/models/home'
+import {
+	HomeModel
+} from '../../api/models/home'
 const Home = new HomeModel()
 
 Page({
@@ -35,13 +41,24 @@ Page({
 				propId: '',
 			},
 		},
+		// 分享
+		showShare: false,
+		shareResultShow: false,
+		painting: {},
+		shareImage: ''
 	},
 
 	/**
 	 * 生命周期函数--监听页面加载
 	 */
 	onLoad: function (options) {
-		const { gid } = options
+		wx.showShareMenu({
+			withShareTicket: true,
+			menus: ['shareAppMessage', 'shareTimeline']
+		})
+		const {
+			gid
+		} = options
 		console.log(gid)
 		this.setData({
 			gid,
@@ -49,12 +66,10 @@ Page({
 		Shop.getDetail(gid).then(res => {
 			console.log('getDetail', res)
 
-			const temp = [
-				{
-					name: 'mainPicUrl',
-					url: res.mainPicUrl,
-				},
-			]
+			const temp = [{
+				name: 'mainPicUrl',
+				url: res.mainPicUrl,
+			}, ]
 
 			res.carouselPics.map(item => {
 				temp.push({
@@ -130,8 +145,162 @@ Page({
 		})
 	},
 
+	handleShare() {
+		this.setData({
+			showShare: true
+		})
+	},
+
+	handleCreateBill() {
+		const _this = this
+		const url = this.data.detail.carouselPics[1].url.replace('http:', 'https:')
+		wx.request({
+			url: 'https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wxf5149a656b2df210&secret=034d7ff25355ab100960182c26ec598d',
+			success (res) {
+				console.log(3213,res)
+				if (res.data.access_token) {
+					wx.request({
+						url: 'https://api.weixin.qq.com/wxa/getwxacode?access_token='+ res.data.access_token,
+						method:'POST',
+						data: {
+							path: 'pages/goods-detail/index?gid=11',
+							width: 20
+						},
+						success (res1){
+							console.log(22122, res1)
+							_this.setData({
+								painting: {
+									width: 300,
+									height: 500,
+									clear: true,
+									backGroundColor: '#fff',
+									views: [
+										{
+											type: 'rect',
+											top: 0,
+											left: 0,
+											width: 300,
+											height: 500,
+											background: '#fff'
+										},
+										{
+											type: 'image',
+											url: url,
+											top: 0,
+											left: 0,
+											width: 305,
+											height: 400
+										},
+										{
+											type: 'text',
+											content: _this.data.detail.name,
+											fontSize: 12,
+											color: '#000',
+											textAlign: 'left',
+											lineHeight: 30,
+											top: 432,
+											left: 20,
+											MaxLineNumber: 2,
+											breakWord: true,
+											width: 160
+										},
+										{
+											type: 'image',
+											url: '/imgs/v2/qrcode.jpg',
+											top: 425,
+											left: 220,
+											width: 60,
+											height: 60
+										},
+									]
+								},
+								showShare: false,
+								shareResultShow: true
+							})
+						}
+					})
+				}
+			}
+		})
+		
+		wx.showLoading({
+			title: '生成海报中',
+			mask: true
+		})
+
+
+
+
+	},
+
+	onRSClose() {
+		this.setData({
+			shareResultShow: false,
+			painting: {}
+		})
+	},
+
+	eventSave() {
+		wx.saveImageToPhotosAlbum({
+			filePath: this.data.shareImage,
+			success(res) {
+				wx.showToast({
+					title: '保存图片成功',
+					icon: 'success',
+					duration: 2000
+				})
+			}
+		})
+	},
+	eventGetImage(event) {
+		console.log(event)
+		wx.hideLoading()
+		const {
+			tempFilePath,
+			errMsg
+		} = event.detail
+		if (errMsg === 'canvasdrawer:ok') {
+			this.setData({
+				shareImage: tempFilePath
+			})
+		} else {
+			console.log(55555)
+		}
+		wx.hideLoading()
+	},
+
+	saveBill() {
+			wx.saveImageToPhotosAlbum({
+				filePath: this.data.shareImage,
+				success (res) {
+					wx.showToast({
+						title: '保存图片成功',
+						icon: 'success',
+						duration: 2000
+					})
+				},
+				fail(){
+					wx.showToast({
+						title: '保存图片失败',
+						icon: 'error',
+						duration: 2000
+					})
+				}
+		})
+	},
+
+
+	onClose() {
+		this.setData({
+			showShare: false
+		})
+	},
+
 	switchCollect(e) {
-		const { cid, is } = e.currentTarget.dataset
+		const {
+			cid,
+			is
+		} = e.currentTarget.dataset
 
 		console.log(is)
 
@@ -173,7 +342,11 @@ Page({
 	},
 
 	handleSelectSku(e) {
-		const { skuprop, skuname, skuid } = e.currentTarget.dataset
+		const {
+			skuprop,
+			skuname,
+			skuid
+		} = e.currentTarget.dataset
 		console.log(skuprop, skuname, skuid)
 
 		// 选中
@@ -226,12 +399,10 @@ Page({
 				// skuInfo.selectedSkuIds = selectedSkuIds
 				skuInfo.selectedSkuName = selectedSkuName
 				skuInfo.smartSelectedSkuInfo = smartSelectedSkuInfo
-				Home.getUrl([
-					{
-						name: 'x',
-						url: item.picUrl,
-					},
-				]).then(res => {
+				Home.getUrl([{
+					name: 'x',
+					url: item.picUrl,
+				}, ]).then(res => {
 					skuInfo.url = res[0].url
 					this.setData({
 						skuInfo,

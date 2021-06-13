@@ -350,3 +350,100 @@
   color: skyblue;
   border-bottom: 1rpx solid skyblue;
 }
+
+
+button::after {
+
+  display: none;
+
+}
+
+.share-container {
+  position: fixed;
+  right: 0;
+  bottom: 100rpx;
+  background: #fff;
+  z-index: 999;
+  height: 140rpx;
+  width: 50rpx;
+  padding: 20rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 10rpx 0 0 10rpx;
+}
+
+.share-container image,
+.share-container>button {
+  height: 50rpx;
+  width: 50rpx;
+  margin: 0;
+  padding: 0;
+}
+
+
+.share-container {
+  position: fixed;
+  right: 0;
+  bottom: 200rpx;
+  background: #fff;
+  z-index: 9;
+  height: 140rpx;
+  width: 50rpx;
+  padding: 20rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 10rpx 0 0 10rpx;
+}
+
+.share-container image,
+.share-container>button {
+  height: 50rpx;
+  width: 50rpx;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: none !important;
+  overflow: visible !important;
+}
+
+.share-popup {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.share-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.share-item  image,
+.share-item >button {
+  height: 100rpx;
+  width: 100rpx;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: none !important;
+  overflow: visible !important;
+}
+
+.share-item>text {
+  margin-top: 20rpx;
+}
+
+.van-share-sheet__options {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  z-index: 9999;
+}
+
+.share-image {
+  width: 600rpx;
+  height: 1000rpx;
+  border: 1rpx solid #c6c6c6;
+}

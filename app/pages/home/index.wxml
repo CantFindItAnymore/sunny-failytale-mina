@@ -1,5 +1,12 @@
 <view class="container">
 
+  <view class="share-container">
+    <image src="/imgs/v2/share.png" bind:tap='handleShare' />
+    <button open-type="contact">
+      <image src="/imgs/v2/service.png" />
+    </button>
+  </view>
+  
   <!-- 头部 -->
   <view class="header-container">
     <image src="/imgs/v2/menu.png" bind:tap="openMenu" />
@@ -126,4 +133,30 @@
     <!-- <view class="footer-title" bind:tap='goShop'>全部商品 go shopping......</view> -->
   </view>
 
+  <van-popup show="{{ showShare }}" position="bottom" custom-style="height: 300rpx;" bind:close="onClose"
+    custom-class='share-popup'>
+    <view class="share-item">
+      <button open-type="share">
+        <image src='/imgs/v2/微信.png' />
+      </button>
+      <text>发送给微信好友</text>
+    </view>
+
+    <view class="share-item">
+      <image src='/imgs/v2/朋友圈.png' bind:tap='handleCreateBill' />
+      <text>生成朋友圈海报</text>
+    </view>
+  </van-popup>
+
 </view>
+
+
+
+<!-- 海报 -->
+<van-popup show="{{ shareResultShow }}" position="top" custom-style="height: 1200rpx; display:flex; flex-direction:column;align-items:center;padding:0 20rpx" closeable bind:close="onRSClose">
+  <image src="{{shareImage}}" class="share-image"></image>
+  <van-button color='#414141' round  bind:tap='saveBill' style='margin-top:50rpx; width:600rpx' size="large">保存图片</van-button>
+</van-popup>
+
+
+<canvasdrawer painting="{{painting}}" bind:getImage="eventGetImage"/>
