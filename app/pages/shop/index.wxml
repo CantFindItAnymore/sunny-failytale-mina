@@ -1,10 +1,22 @@
 <view class="container">
-  <van-sticky>
-    <view class="header" wx:if="{{classify}}">
-      {{classify}}
-      <van-icon name="search" bind:tap='toSearch' size="30rpx"/>
+  <!-- <van-sticky> -->
+    <view class="sticky-container">
+      <view class="header" wx:if="{{classify}}">
+        {{classify}}
+        <van-icon name="search" bind:tap='toSearch' size="30rpx"/>
+      </view>
+      <view class="sort">
+        <view>默认</view>
+        <view>新品</view>
+        <view class="rate-sort">
+          价格
+          <image src="/imgs/v2/升序.png" />
+          <image src="/imgs/v2/降序.png" />
+        </view>
+        <view>销量</view>
+      </view>
     </view>
-  </van-sticky>
+  <!-- </van-sticky> -->
   <view class="list">
     <view class="list-item" wx:for='{{list.data}}' wx:key="index"  bind:tap="toShopDetail" data-gid='{{item.id}}'>
       <image class="list-item-img" src="{{item.mainPicUrl}}" />

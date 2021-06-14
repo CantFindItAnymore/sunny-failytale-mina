@@ -1,18 +1,63 @@
+.container {
+  width: 750rpx;
+}
+.sticky-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+}
 .header {
   height: 50rpx;
-  width: 100%;
+  width: 750rpx;
   background: #414141;
   display: flex;
   justify-content: center;
   align-items: center;
   color: #fff;
   position: absolute;
+  left: 0;
+  right: 0;
+}
+
+.sort {
+  height: 80rpx;
+  width: 750rpx;
+  background: #fff;
+  font-size: 26rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #000;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50rpx;
+  border-bottom: 1rpx solid #c6c6c6;
+}
+
+.sort> view {
+  width: 25%;
+  height: 80rpx;
+  line-height: 80rpx;
+  /* background: chartreuse; */
+  text-align: center;
+}
+
+.rate-sort {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.rate-sort > image {
+  height: 50rpx;
+  width: 50rpx;
 }
 
 .list {
   width: 100%;
   background: rgb(246, 246, 246);
-  padding: 70rpx 10rpx 30rpx 10rpx;
+  padding: 140rpx 10rpx 30rpx 10rpx;
   box-sizing: border-box;
   display: flex;
   justify-content: space-between;
