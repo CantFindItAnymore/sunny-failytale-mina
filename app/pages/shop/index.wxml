@@ -1,26 +1,30 @@
 <view class="container">
   <!-- <van-sticky> -->
-    <view class="sticky-container">
-      <view class="header" wx:if="{{classify}}">
-        {{classify}}
-        <van-icon name="search" bind:tap='toSearch' size="30rpx"/>
+  <view class="sticky-container">
+    <view class="header" wx:if="{{classify}}">
+      {{classify}}
+      <van-icon name="search" bind:tap='toSearch' size="30rpx" />
+    </view>
+    <view class="sort">
+      <view class="{{sortInfo ?'': 'selected-sort'}}" data-type='' bind:tap='handleSort'>默认</view>
+      <view class="{{sortInfo === 'new'?'selected-sort': ''}}" data-type='new' bind:tap='handleSort'>
+        新品
       </view>
-      <view class="sort">
-        <view>默认</view>
-        <view>新品</view>
-        <view class="rate-sort">
-          价格
-          <image src="/imgs/v2/升序.png" />
-          <image src="/imgs/v2/降序.png" />
-        </view>
-        <view>销量</view>
+      <view class="{{(sortInfo === 'rateUp' || sortInfo === 'rateDown') ?'selected-sort rate-sort': 'rate-sort'}}" data-type='rate' bind:tap='handleSort'>
+        价格
+        <image wx:if="{{sortInfo==='rateUp'}}" src="/imgs/v2/升序.png" />
+        <image wx:if="{{sortInfo==='rateDown'}}" src="/imgs/v2/降序.png" />
+      </view>
+      <view class="{{sortInfo === 'volume'?'selected-sort': ''}}" data-type='volume' bind:tap='handleSort'>
+        销量
       </view>
     </view>
+  </view>
   <!-- </van-sticky> -->
   <view class="list">
-    <view class="list-item" wx:for='{{list.data}}' wx:key="index"  bind:tap="toShopDetail" data-gid='{{item.id}}'>
+    <view class="list-item" wx:for='{{list.data}}' wx:key="index" bind:tap="toShopDetail" data-gid='{{item.id}}'>
       <image class="list-item-img" src="{{item.mainPicUrl}}" />
-      <view  class="list-item-name">{{item.name}}</view>
+      <view class="list-item-name">{{item.name}}</view>
       <view class="list-item-desc">
         <!-- <view bind:tap="toShopDetail" data-gid='{{item.id}}'>
           {{item.productType[0].description}}
@@ -29,7 +33,7 @@
           <view class="amount">
             <text class="weight-font smaller">￥</text>
             {{item.minPrice}}
-            <block  wx:if="{{item.minPrice !== item.maxPrice}}">
+            <block wx:if="{{item.minPrice !== item.maxPrice}}">
               <text class="weight-font">~</text>
               <text class="weight-font smaller">￥</text>
               {{item.maxPrice}}
@@ -39,9 +43,7 @@
         </view>
       </view>
     </view>
-    <view class="list-no-result" wx:if="{{!list.data.length}}">
-      暂无相关商品
-    </view>
+    <view class="list-no-result" wx:if="{{!list.data.length}}">暂无相关商品</view>
   </view>
 </view>
 <wxs module="tool">

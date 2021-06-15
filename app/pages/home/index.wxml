@@ -1,12 +1,14 @@
 <view class="container">
-
   <view class="share-container">
-    <image src="/imgs/v2/share.png" bind:tap='handleShare' />
-    <button open-type="contact">
-      <image src="/imgs/v2/service.png" />
-    </button>
+    <view class="share-btn">
+      <image src="/imgs/v2/share.png" bind:tap='handleShare' />
+    </view>
+    <view class="share-btn">
+      <button open-type="contact">
+        <image src="/imgs/v2/service.png" />
+      </button>
+    </view>
   </view>
-  
   <!-- 头部 -->
   <view class="header-container">
     <image src="/imgs/v2/menu.png" bind:tap="openMenu" />
@@ -16,7 +18,6 @@
     </view>
     <image src="/imgs/v2/shopping_car_icon.png" bind:tap="toShopCar" />
   </view>
-
   <!-- 图片 -->
   <view class="images-container">
     <view class="logo-container">
@@ -33,8 +34,6 @@
         </swiper-item>
       </block>
     </swiper>
-    
-
     <!-- <image class="boy1" src="/imgs/boy1.png" /> -->
     <view class="new-and-hot">
       <view class="new">
@@ -46,17 +45,9 @@
         <image src="/imgs/hot_btn.png" bind:tap='toShop' data-type='hot' />
       </view>
     </view>
-
     <image class="ss-new ss-new2" src="/imgs/v2/folks.jpg" />
-
     <!-- <image class="fly" src="{{brandStoryDisplayPic}}" /> -->
-    <video
-      class="video"
-      src="{{videoUrl}}"
-      show-fullscreen-btn
-      vslide-gesture-in-fullscreen
-      object-fit='scale-down'
-    />
+    <video class="video" src="{{videoUrl}}" show-fullscreen-btn vslide-gesture-in-fullscreen object-fit='scale-down' />
     <!-- <view class="story">
       <image src="/imgs/v2/story_btn.png" bind:tap='toStoryLine' />
     </view> -->
@@ -66,18 +57,11 @@
     </view> -->
     <image src='/imgs/v2/category.png' mode='aspectFit' style='margin: -180rpx 0' />
     <view class="calssify">
-      <view
-        wx:for="{{typePics}}"
-        wx:key="index"
-        bind:tap='toShop'
-        data-typeids='{{item.typeId}}'
-        data-classify='{{item.typeName}}'
-      >
+      <view wx:for="{{typePics}}" wx:key="index" bind:tap='toShop' data-typeids='{{item.typeId}}' data-classify='{{item.typeName}}'>
         <image src="{{item.pic.url}}" />
         <text>{{item.typeName}}</text>
       </view>
     </view>
-
     <!-- 轮播2 -->
     <swiper class="carousel2" indicator-dots="{{true}}" autoplay="{{true}}" interval="{{4000}}">
       <block wx:for="{{carouselPics2}}" wx:key="index">
@@ -98,7 +82,6 @@
         </view>
       </view>
     </view> -->
-
     <view class="coupon-and-blueprint">
       <view class="coupon">
         <image src="{{couponDisplayPic}}" />
@@ -109,54 +92,38 @@
         <image src="/imgs/blueprint_btn.png" bind:tap='toGift' />
       </view>
     </view>
-
     <image class="recommend" src="/imgs/v2/recommend.png" mode='aspectFit' />
-
     <view class="outfit">
-      <view
-        wx:for="{{indexProducts}}"
-        wx:key="index"
-      >
+      <view wx:for="{{indexProducts}}" wx:key="index">
         <image src="{{item.mainPicUrl}}" bind:tap="toGoods" data-id='{{item.id}}' />
       </view>
     </view>
-
     <image class="outfit5" src="{{brandStoryDisplayPic}}" />
-
     <image class="brand-btn" src="/imgs/brand_btn.png" bind:tap="toStory" />
-
     <!-- <view class="brand">
       <image src="/imgs/brand.png" />
       <image src="/imgs/logo.png" />
     </view> -->
-
     <!-- <view class="footer-title" bind:tap='goShop'>全部商品 go shopping......</view> -->
   </view>
-
-  <van-popup show="{{ showShare }}" position="bottom" custom-style="height: 300rpx;" bind:close="onClose"
-    custom-class='share-popup'>
+  <van-popup show="{{ showShare }}" position="bottom" custom-style="height: 300rpx;" bind:close="onClose" custom-class='share-popup'>
     <view class="share-item">
       <button open-type="share">
         <image src='/imgs/v2/微信.png' />
       </button>
       <text>发送给微信好友</text>
     </view>
-
     <view class="share-item">
       <image src='/imgs/v2/朋友圈.png' bind:tap='handleCreateBill' />
       <text>生成朋友圈海报</text>
     </view>
   </van-popup>
-
 </view>
-
-
-
 <!-- 海报 -->
 <van-popup show="{{ shareResultShow }}" position="top" custom-style="height: 1200rpx; display:flex; flex-direction:column;align-items:center;padding:0 20rpx" closeable bind:close="onRSClose">
   <image src="{{shareImage}}" class="share-image"></image>
-  <van-button color='#414141' round  bind:tap='saveBill' style='margin-top:50rpx; width:600rpx' size="large">保存图片</van-button>
+  <van-button color='#414141' round bind:tap='saveBill' style='margin-top:50rpx; width:600rpx' size="large">
+    保存图片
+  </van-button>
 </van-popup>
-
-
-<canvasdrawer painting="{{painting}}" bind:getImage="eventGetImage"/>
+<canvasdrawer painting="{{painting}}" bind:getImage="eventGetImage" />

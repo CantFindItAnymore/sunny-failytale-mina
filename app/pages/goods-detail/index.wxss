@@ -18,26 +18,42 @@ button::after {
   position: fixed;
   right: 0;
   bottom: 200rpx;
-  background: #fff;
+  /* background: #fff; */
   z-index: 9;
-  height: 140rpx;
-  width: 50rpx;
+  height: 200rpx;
+  width: 100rpx;
   padding: 20rpx;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  border-radius: 10rpx 0 0 10rpx;
+  /* border-radius: 10rpx 0 0 10rpx; */
 }
 
-.share-container image,
-.share-container>button {
+.share-btn {
+  border-radius: 50%;
+  background: #000;
+  height: 80rpx;
+  width: 80rpx;
+  opacity: .5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.share-btn image,
+.share-btn>button {
   height: 50rpx;
   width: 50rpx;
   margin: 0 !important;
   padding: 0 !important;
   background: none !important;
   overflow: visible !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* background: #000; */
+  /* opacity: .7; */
 }
 
 .share-popup {

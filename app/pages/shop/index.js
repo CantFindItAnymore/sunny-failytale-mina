@@ -23,12 +23,19 @@ Page({
 		pid: null,
 		key: '',
 		type: '',
+
+		// 筛选
+		sortInfo: null,
 	},
 
 	/**
 	 * 生命周期函数--监听页面加载
 	 */
 	onLoad: function (options) {
+		this.setData({
+			options,
+		})
+		console.log(11, options)
 		let { pid, key, type } = options
 
 		this.setData({
@@ -70,20 +77,35 @@ Page({
 		}
 
 		// 新品||热销
-		let descs = []
 		let tempPid = ''
 		if (type === 'new') {
-			descs.push('on_sale_time')
 			tempPid = ['35']
 		}
 		if (type === 'hot') {
-			descs.push('sales_volume')
 			tempPid = ['34']
 		}
+
+		// 筛选
+
+		let descs = []
+		let ascs = []
+		if (this.data.sortInfo === 'new') {
+			descs.push('on_sale_time')
+		}
+		if (this.data.sortInfo === 'rateUp') {
+			ascs.push('min_price')
+		}if (this.data.sortInfo === 'rateDown') {
+			descs.push('min_price')
+		}
+		if (this.data.sortInfo === 'volume') {
+			descs.push('sales_volume')
+		}
+
 		Shop.getShop({
 			productType: type === 'new' || type === 'hot' ? tempPid : this.data.pid,
 			keyword: this.data.key,
 			descs,
+			ascs
 		}).then(res => {
 			console.log(989, res.data)
 			const temp = []
@@ -133,16 +155,30 @@ Page({
 			return
 		}
 
-		let descs = []
 		let tempPid = ''
 		if (this.data.type === 'new') {
-			descs.push('on_sale_time')
 			tempPid = ['35']
 		}
 		if (this.data.type === 'hot') {
-			descs.push('sales_volume')
 			tempPid = ['34']
 		}
+
+		// 筛选
+
+		let descs = []
+		let ascs = []
+		if (this.data.sortInfo === 'new') {
+			descs.push('on_sale_time')
+		}
+		if (this.data.sortInfo === 'rateUp') {
+			ascs.push('min_price')
+		}if (this.data.sortInfo === 'rateDown') {
+			descs.push('min_price')
+		}
+		if (this.data.sortInfo === 'volume') {
+			descs.push('sales_volume')
+		}
+
 		Shop.getShop({
 			productType:
 				this.data.type === 'new' || this.data.type === 'hot'
@@ -151,8 +187,8 @@ Page({
 			keyword: this.data.key,
 			current: this.data.list.current + 1,
 			descs,
+			ascs
 		}).then(res => {
-
 			const temp = []
 
 			res.data.map((item, index) => {
@@ -202,8 +238,6 @@ Page({
 			// 		}
 			// 	})
 			// })
-
-
 		})
 	},
 
@@ -240,6 +274,28 @@ Page({
 		wx.navigateTo({
 			url: '/pages/goods-detail/index?gid=' + e.currentTarget.dataset.gid,
 		})
+	},
+
+	handleSort(e) {
+		const { type } = e.currentTarget.dataset
+		if (type === '') {
+			this.setData({
+				sortInfo: null,
+			})
+		} else if (type === 'new') {
+			this.setData({
+				sortInfo: 'new',
+			})
+		} else if (type === 'rate') {
+			this.setData({
+				sortInfo: this.data.sortInfo === 'rateUp' ? 'rateDown' : 'rateUp',
+			})
+		} else if (type === 'volume') {
+			this.setData({
+				sortInfo: 'volume',
+			})
+		}
+		this.onLoad(this.data.options)
 	},
 
 	_getCollection() {

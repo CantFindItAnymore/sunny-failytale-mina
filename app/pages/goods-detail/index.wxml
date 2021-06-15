@@ -1,10 +1,14 @@
 <view class="container">
 
   <view class="share-container">
-    <image src="/imgs/v2/share.png" bind:tap='handleShare' />
-    <button open-type="contact">
-      <image src="/imgs/v2/service.png" />
-    </button>
+    <view class="share-btn">
+      <image src="/imgs/v2/share.png" bind:tap='handleShare' />
+    </view>
+    <view class="share-btn">
+      <button open-type="contact">
+        <image src="/imgs/v2/service.png" />
+      </button>
+    </view>
   </view>
   <!-- 轮播图 -->
   <view class="swiper-container">

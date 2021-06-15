@@ -35,6 +35,10 @@
   border-bottom: 1rpx solid #c6c6c6;
 }
 
+.selected-sort {
+  border-bottom: 2rpx solid #414141;
+}
+
 .sort> view {
   width: 25%;
   height: 80rpx;
