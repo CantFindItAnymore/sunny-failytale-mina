@@ -42,6 +42,15 @@ Page({
 		shareImage: '',
 	},
 
+	onShareAppMessage() {
+		const url = this.data.detail.carouselPics[0].url.replace('http:', 'https:')
+    return {
+      title: `${this.data.detail.name} ￥ ${this.data.detail.minPrice}`,
+      path: 'page/goods-detail/index?gid=' +this.data.gid,
+			imageUrl: url
+    }
+  },
+
 	/**
 	 * 生命周期函数--监听页面加载
 	 */
@@ -52,7 +61,7 @@ Page({
 		})
 		// options 中的 scene 需要使用 decodeURIComponent 才能获取到生成二维码时传入的 scene
     const scene = decodeURIComponent(options.scene)
-		const gid = options.gid || scene
+		const gid = options?.gid || scene
 		console.log(gid)
 		this.setData({
 			gid,
@@ -149,7 +158,7 @@ Page({
 
 	handleCreateBill() {
 		const _this = this
-		const url = this.data.detail.carouselPics[1].url.replace('http:', 'https:')
+		const url = this.data.detail.carouselPics[0].url.replace('http:', 'https:')
 
 		wx.request({
 			url: 'https://sunnyfairytale.com/v1/mall/wechat/share/getPic',

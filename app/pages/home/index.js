@@ -34,6 +34,14 @@ Page({
 		shareImage: '',
 	},
 
+	onShareAppMessage() {
+    return {
+      title: '丽昂斯锦官方折扣商城',
+      path: 'page/home/index',
+			imageUrl: '/imgs/v2/商城分享封面-min.jpg'
+    }
+  },
+
 	onShow: function () {
 		updateManager.onCheckForUpdate(function (res) {
 			// 请求完新版本信息的回调

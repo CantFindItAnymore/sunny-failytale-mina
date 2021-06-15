@@ -17,10 +17,10 @@ button::after {
 .share-container {
   position: fixed;
   right: 0;
-  bottom: 200rpx;
+  bottom: 150rpx;
   /* background: #fff; */
   z-index: 9;
-  height: 200rpx;
+  height: 170rpx;
   width: 100rpx;
   padding: 20rpx;
   display: flex;
