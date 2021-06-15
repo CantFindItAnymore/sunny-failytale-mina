@@ -68,7 +68,7 @@ Component({
 		handleCancel(e) {
       const _this = this
 			wx.showModal({
-				content: '确定要取消订单吗',
+				content: '是否取消订单',
 				success(res) {
 					if (res.confirm) {
 						Order.cancelOrder(e.currentTarget.dataset.id).then(() => {
@@ -98,7 +98,7 @@ Component({
 		handleSureGot(e) {
       const _this = this
 			wx.showModal({
-				content: '确认收货吗',
+				content: '是否确认收货',
 				success(res) {
 					if (res.confirm) {
 						Order.sureGotOrder(e.currentTarget.dataset.id).then(() => {

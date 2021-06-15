@@ -28,7 +28,7 @@
 
   <view class="list">
     <button open-type="contact">
-      <image src="/imgs/v2/service.png" />
+      <image src="/imgs/v2/service_black.png" />
       <text>客服中心</text>
       <text>〉</text>
     </button>
