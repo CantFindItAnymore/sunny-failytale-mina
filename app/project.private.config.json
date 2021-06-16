@@ -107,6 +107,11 @@
           "pathName": "pages/story/index",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "pages/card/index",
+          "pathName": "pages/card/index",
+          "scene": null
         }
       ]
     }

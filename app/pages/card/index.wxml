@@ -6,7 +6,7 @@
         <view wx:for="{{okList}}" wx:if="{{item.flag || !from}}"  class="item" wx:key="index" bind:tap="handleSelectCard" data-index='{{index}}'>
           <view class="content">
             <view class="rate weight-font">
-              ￥{{item.couponPrice}} 
+              ￥{{item.couponPrice}}
             </view>
             <view class="desc">
               <view>{{item.rule}}</view>
@@ -27,7 +27,7 @@
       </view>
     </van-tab>
 
-    <van-tab title="已使用" name='used'>
+    <van-tab title="已使用" name='used' wx:if="{{from !== 'buyPage'}}">
       <view class="wrapper">
         <view class="item lose" wx:for="{{usedList}}" wx:key="index">
           <view class="content">
@@ -51,7 +51,7 @@
       </view>
     </van-tab>
 
-    <van-tab title="已过期" name='losed'>
+    <van-tab title="已过期" name='losed'  wx:if="{{from !== 'buyPage'}}">
       <view class="wrapper">
         <view class="item lose" wx:for="{{losedList}}" wx:key="index">
           <view class="content">
@@ -73,7 +73,7 @@
         <view class="notice" wx:if="{{!losedList.length}}">暂无已过期优惠券</view>
       </view>
     </van-tab>
-    <van-tab title="已作废" name='rabish'>
+    <van-tab title="已作废" name='rabish'  wx:if="{{from !== 'buyPage'}}">
       <view class="wrapper">
         <view class="item lose" wx:for="{{rabishList}}" wx:key="index">
           <view class="content">

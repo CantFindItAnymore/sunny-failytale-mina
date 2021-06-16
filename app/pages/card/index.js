@@ -74,6 +74,7 @@ Page({
 	_getCard() {
 		Card.getCard({
 			current: this.data.current,
+			status: this.data.from === 'buy' ? 1: null
 		}).then(res => {
 			if (this.data.from === 'buyPage') {
 				// 检查可用性
