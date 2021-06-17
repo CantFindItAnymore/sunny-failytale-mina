@@ -170,14 +170,14 @@ Page({
 	},
 
 	handleConfirm() {
-		if (!this.data.userInfo.mobile) {
-			wx.showToast({
-				title: '手机号不能为空',
-				icon: 'none',
-				duration: 2000,
-			})
-			return
-		}
+		// if (!this.data.userInfo.mobile) {
+		// 	wx.showToast({
+		// 		title: '手机号不能为空',
+		// 		icon: 'none',
+		// 		duration: 2000,
+		// 	})
+		// 	return
+		// }
 
     console.log(8, this.data.babyInfo)
 

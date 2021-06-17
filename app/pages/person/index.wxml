@@ -22,7 +22,6 @@
       input-align="right"
       maxlength='11'
       hold-keyboard
-      required
       placeholder='点击此处填写'
     />
     <van-cell
