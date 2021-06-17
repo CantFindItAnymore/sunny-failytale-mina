@@ -38,7 +38,7 @@ Page({
     return {
       title: '丽昂斯锦官方折扣商城',
       path: 'page/home/index',
-			imageUrl: '/imgs/v2/商城分享封面-min.jpg'
+			imageUrl: '/imgs/v2/home_share.jpg'
     }
   },
 
@@ -118,7 +118,7 @@ Page({
 					},
 					{
 						type: 'image',
-						url: '/imgs/v2/商城分享封面-min.jpg',
+						url: '/imgs/v2/home_share.jpg',
 						top: 0,
 						left: 0,
 						width: 300,

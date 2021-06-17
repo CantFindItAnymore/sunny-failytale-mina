@@ -109,12 +109,12 @@
   <van-popup show="{{ showShare }}" position="bottom" custom-style="height: 300rpx;" bind:close="onClose" custom-class='share-popup'>
     <view class="share-item">
       <button open-type="share">
-        <image src='/imgs/v2/微信.png' />
+        <image src='/imgs/v2/wechat.png' />
       </button>
       <text>发送给微信好友</text>
     </view>
     <view class="share-item">
-      <image src='/imgs/v2/朋友圈.png' bind:tap='handleCreateBill' />
+      <image src='/imgs/v2/time_line.png' bind:tap='handleCreateBill' />
       <text>生成朋友圈海报</text>
     </view>
   </van-popup>

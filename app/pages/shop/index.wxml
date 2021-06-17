@@ -12,8 +12,8 @@
       </view>
       <view class="{{(sortInfo === 'rateUp' || sortInfo === 'rateDown') ?'selected-sort rate-sort': 'rate-sort'}}" data-type='rate' bind:tap='handleSort'>
         价格
-        <image wx:if="{{sortInfo==='rateUp'}}" src="/imgs/v2/升序.png" />
-        <image wx:if="{{sortInfo==='rateDown'}}" src="/imgs/v2/降序.png" />
+        <image wx:if="{{sortInfo==='rateUp'}}" src="/imgs/v2/up.png" />
+        <image wx:if="{{sortInfo==='rateDown'}}" src="/imgs/v2/down.png" />
       </view>
       <view class="{{sortInfo === 'volume'?'selected-sort': ''}}" data-type='volume' bind:tap='handleSort'>
         销量
